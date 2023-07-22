@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {theme} from "../../../../styles/theme";
 
 export const StFooterWrap = styled.footer`
   width: 100%;
@@ -6,7 +7,9 @@ export const StFooterWrap = styled.footer`
   background-color: rgb(247, 249, 250);
 
   & > div {
-    padding: 0 60px;
+    ${({ theme }) => theme.container('column')};
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     font-size: 12px;
     line-height: 16px;
@@ -15,8 +18,6 @@ export const StFooterWrap = styled.footer`
     justify-content: space-between;
     align-items: flex-start;
     gap: 30px;
-    width: 100%;
-    height: 100%;
   }
 
   nav {
