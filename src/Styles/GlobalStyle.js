@@ -25,6 +25,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	color: #2F3438;
+	letter-spacing: -0.4px;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -53,11 +55,15 @@ table {
 	border-spacing: 0;
 }
 button {
+	font-family: inherit;
 	border: 0;
 }
 a {
 	text-decoration: none;
 	color: inherit;
+}
+input {
+	font-family: inherit;
 }
 `;
 
