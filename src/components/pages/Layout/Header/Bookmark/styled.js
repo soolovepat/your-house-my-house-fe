@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import theme from "../../../../../Styles/theme";
+import {theme} from "../../../../../styles/theme";
 
 
 export const StBookmark = styled.div`
