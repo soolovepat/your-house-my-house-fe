@@ -1,10 +1,11 @@
 import React from "react";
-import from "./styled";
+import {StInput} from "./styled";
 
+/** InputBox 안에 들어가는 기본 컴포넌트 */
 const Input = (props) => {
     const { value, name, type, handleChange, placeholder } = props;
     return (
-            <input 
+            <StInput 
             value={value} 
             name={name} 
             type={type} 
