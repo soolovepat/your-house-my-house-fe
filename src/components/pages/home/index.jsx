@@ -1,15 +1,20 @@
 import React from "react";
 import Thumbnail from "./thumbnail";
 import Banner from "./banner";
-import { StImgWrap, StThumbnailContainer } from "./styled";
+import { StListTitle, StImgWrap, StThumbnailContainer } from "./styled";
 import { StContainer } from "../../../styles/Container";
-import { home_img_01, product_img_01 } from "../../../asset/images";
+import {
+  home_img_01,
+  product_img_01,
+} from "../../../asset/images/sample/index";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import NumberComma from "../../shared/NumberComma";
+import Category from "./Categoty";
+import SectionTitle from "./SectionTitle";
 
 const Home = () => {
   const navigate = useNavigate();
+  const column = { house: "3", product: "4" };
   const formData = {
     articleList: [
       {
@@ -70,56 +75,76 @@ const Home = () => {
     navigate(`/products/${productId}`);
   };
 
-  const addComma = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 3자리 숫자 그룹간 경계를 ,로 치환
-  };
+  const onClickMoreView = () => {};
 
   return (
     <StContainer>
       <Banner />
-      <FontAwesomeIcon icon={faSearch} />
+      <SectionTitle title={"카테고리"} />
+      <Category />
+      <SectionTitle
+        title={"🥇 20평 대! 공간 활용 best 4 🥇"}
+        button={"더보기"}
+        onClick={onClickMoreView}
+      />
       <StThumbnailContainer>
-        {formData.articleList.map((article) => (
-          <Thumbnail
-            key={article.articleId}
-            type={"house"}
-            column={"3"}
-            align={"center"}
-            onClick={() => onClickArticleHandler(article.articleId)}
-          >
-            <StImgWrap>
-              <img src={home_img_01} alt="home_img" />
-            </StImgWrap>
-            <h1>{article.title}</h1>
-            <address>{article.nickname}</address>
-            <footer>
-              <span>스크랩 11 · 조회 250</span>
-            </footer>
-          </Thumbnail>
-        ))}
+        {formData.articleList
+          .map((article) => (
+            <Thumbnail
+              key={article.articleId}
+              type={"house"}
+              column={column.house}
+              align={"center"}
+              onClick={() => onClickArticleHandler(article.articleId)}
+            >
+              <StImgWrap>
+                <img src={home_img_01} alt="home_img" />
+              </StImgWrap>
+              <h1>{article.title}</h1>
+              <address>{article.nickname}</address>
+              <footer>
+                <span>
+                  스크랩{" "}
+                  <NumberComma number="123" size={"13px"} lineheight={"17px"} />{" "}
+                  · 조회{" "}
+                  <NumberComma number="456" size={"13px"} lineheight={"17px"} />
+                </span>
+              </footer>
+            </Thumbnail>
+          ))
+          .slice(0, column.house)}
       </StThumbnailContainer>
+      <SectionTitle
+        title={"우리 가족 맞춤 집들이 💁‍♀️"}
+        button={"더보기"}
+        onClick={onClickMoreView}
+      />
       <StThumbnailContainer>
-        {formData.itemList.map((item) => (
-          <Thumbnail
-            key={item.itemId}
-            type={"product"}
-            column={"4"}
-            align={"left"}
-            onClick={() => onClickProductHandler(item.productId)}
-          >
-            <StImgWrap>
-              <img src={product_img_01} alt="home_img" />
-            </StImgWrap>
-            <h1>
-              <span>거래처</span>
-              <span>{item.itemname}</span>
-            </h1>
-            <span>{addComma(item.price)}</span>
-            {/* <footer>
-              <span>스크랩 11 · 조회 250</span>
-            </footer> */}
-          </Thumbnail>
-        ))}
+        {formData.itemList
+          .map((item) => (
+            <Thumbnail
+              key={item.itemId}
+              type={"product"}
+              column={column.product}
+              align={"left"}
+              onClick={() => onClickProductHandler(item.productId)}
+            >
+              <StImgWrap>
+                <img src={product_img_01} alt="home_img" />
+              </StImgWrap>
+              <h1>
+                <span>거래처</span>
+                <span>{item.itemname}</span>
+              </h1>
+              <NumberComma
+                number={item.price}
+                size={"17px"}
+                weight={"700"}
+                lineheight={"23px"}
+              />
+            </Thumbnail>
+          ))
+          .slice(0, column.product)}
       </StThumbnailContainer>
     </StContainer>
   );
