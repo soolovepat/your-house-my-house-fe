@@ -83,6 +83,6 @@ export const StImgWrap = styled.div`
   }
 
   img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `;
