@@ -33,6 +33,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	letter-spacing: -0.4px;
+  	font-family: 'Noto Sans KR', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 ol, ul {
 	list-style: none;
