@@ -10,8 +10,10 @@ export const StInputBox = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
+    gap: 5px;
     padding: 0 20px;
     box-sizing: border-box;
+    color: #828C94;
 
     &:hover {
         background-color: #f7f9fa;
