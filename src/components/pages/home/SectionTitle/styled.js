@@ -5,6 +5,7 @@ export const StSectionTitle = styled.div`
   justify-content: space-between;
   padding: 20px 0;
   font-weight: 700;
+  margin-top: 30px;
 
   h1 {
     font-size: 20px;
