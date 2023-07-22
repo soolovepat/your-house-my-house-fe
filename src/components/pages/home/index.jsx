@@ -70,6 +70,10 @@ const Home = () => {
     navigate(`/products/${productId}`);
   };
 
+  const addComma = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // 3자리 숫자 그룹간 경계를 ,로 치환
+  };
+
   return (
     <StContainer>
       <Banner />
@@ -108,9 +112,9 @@ const Home = () => {
             </StImgWrap>
             <h1>
               <span>거래처</span>
-              {item.itemname}
+              <span>{item.itemname}</span>
             </h1>
-            <span>{item.price}</span>
+            <span>{addComma(item.price)}</span>
             {/* <footer>
               <span>스크랩 11 · 조회 250</span>
             </footer> */}

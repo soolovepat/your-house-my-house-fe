@@ -1,4 +1,4 @@
-// import { css } from "styled-components";
+import { css } from "styled-components";
 
 const colors = {
   whiteColor: "#ffffff",
@@ -17,9 +17,14 @@ const media = {
   mobile: "(max-width: 767px)",
 };
 
+const numberfont = css`
+  font-family: "Inter", sans-serif;
+`;
+
 const theme = {
   ...colors,
   ...media,
+  numberfont,
 };
 
 export default theme;

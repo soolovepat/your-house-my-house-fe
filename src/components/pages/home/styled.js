@@ -35,12 +35,18 @@ const house = css`
 
 const product = css`
   h1 {
+    display: flex;
+    flex-direction: column;
     margin-top: 9px;
-    line-height: 24px;
+    line-height: 17px;
     font-size: 13px;
     font-weight: 300;
     word-break: keep-all;
     word-wrap: break-word;
+
+    > span:nth-child(1) {
+      font-size: 11px;
+    }
   }
 
   > span {
