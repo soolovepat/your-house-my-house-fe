@@ -1,13 +1,17 @@
-import "./App.css";
-import GlobalStyle from "./Styles/GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
+import Router from "./router/Router";
 
-function App() {
-    return (
-        <>
-            <GlobalStyle />
-            <div></div>
-        </>
-    );
-}
+const App = () => {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <Router />
+      </ThemeProvider>
+    </>
+  );
+};
 
 export default App;
