@@ -13,4 +13,8 @@ width: 100%;
         &:focus {
             outline: none;
         }
+
+        &::placeholder {
+            color: #aaa;
+        }
 `;
