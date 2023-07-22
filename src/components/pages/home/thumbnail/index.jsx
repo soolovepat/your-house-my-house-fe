@@ -1,5 +1,5 @@
 import React from "react";
-import { StThumbnail } from "../styled";
+import { StThumbnail } from "./styled";
 
 const Thumbnail = ({ children, type, column, ...props }) => {
   return (
