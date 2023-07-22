@@ -79,10 +79,10 @@ export const StImgWrap = styled.div`
 
   img {
     width: 100%;
-    transition: transform 0.2s;
+    transition: transform 0.3s;
   }
 
   img:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
   }
 `;
