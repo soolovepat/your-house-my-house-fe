@@ -1,25 +1,25 @@
 import React from "react";
 import { StyledButton } from "./styled";
-import Icon from "../Icon";
 
-// 버튼 공통 요소 컴포넌트
-// size: large(default), medium, small
-// negative: true일 경우 line 버튼
-// onClick: 버튼에 전달할 클릭 이벤트 함수
-// isIconRight: 아이콘 있을 시 위치 텍스트의 오른쪽(true)/왼쪽(false) 선택
+/** 버튼 공통 요소 컴포넌트
+ * @param {function} handleBtnClick - 버튼 온클릭 이벤트 함수
+ * @param {string} size - 디폴트는 large, medium, small
+ * @param {boolean} $negative - true일 경우 line 디자인
+ */
 const Button = (props) => {
-    const { handleBtnClick, color = "primary", size, $negative, icon = "", isIconRight = true, children } = props;
+    const { handleBtnClick, color = "primary", size, $negative, children } = props;
     const onBtnClick = () => {
         handleBtnClick !== undefined && handleBtnClick(); // 이벤트 함수가 전달되었을 시 실행
     };
-    console.log("icon ", icon)
 
     return (
-        <StyledButton color={color} size={size} $negative={$negative} onClick={onBtnClick} $isIconRight={isIconRight}>
-            {/* 버튼 내 텍스트 */}
+        <StyledButton 
+        color={color} 
+        size={size} 
+        $negative={$negative} 
+        onClick={onBtnClick}>
+            {/* 버튼 내 텍스트 및 아이콘*/}
             {children}
-            {/* 아이콘 있을 시 Icon 컴포넌트 출력 */}
-            {icon !== "" ? <Icon iconName={icon} /> : ""}
         </StyledButton>
     );
 };
