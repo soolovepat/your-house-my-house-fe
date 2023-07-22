@@ -5,6 +5,8 @@ import { StImgWrap, StThumbnailContainer } from "./styled";
 import { StContainer } from "../../../styles/Container";
 import { home_img_01, product_img_01 } from "../../../asset/images";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -71,6 +73,7 @@ const Home = () => {
   return (
     <StContainer>
       <Banner />
+      <FontAwesomeIcon icon={faSearch} />
       <StThumbnailContainer>
         {formData.articleList.map((article) => (
           <Thumbnail
