@@ -5,16 +5,15 @@ import GlobalStyle from "../src/styles/GlobalStyle"
 
 
 const App = () => {
-    return (
-
-        <>
-            <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <Router />
-            </ThemeProvider>
-
-        </>
-    );
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <FontAwesomeIcon icon={faSearch} />
+        <Router />
+      </ThemeProvider>
+    </>
+  );
 };
 
 export default App;
