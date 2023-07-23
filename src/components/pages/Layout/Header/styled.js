@@ -5,7 +5,7 @@ export const StHeaderWrap = styled.header`
     width: 100%;    
     border-bottom: 1px solid #eaedef;
     position: ${props => props.$display ? "sticky" : "relative"};
-    top: ${props => props.$display ? '-50px' : 0};
+    top: ${props => props.$display ? '-51px' : 0};
     z-index: 1000;
 `;
 
