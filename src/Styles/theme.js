@@ -1,4 +1,4 @@
-// import { css } from "styled-components";
+import { css } from "styled-components";
 
 const colors = {
     whiteColor: "#ffffff",
@@ -25,10 +25,17 @@ const mixins = {
   `,
 };
 
+const numberfont = css`
+  font-family: "Inter", sans-serif;
+`;
+
 const theme = {
     ...colors,
     ...media,
     ...mixins,
+  numberfont,
+  ...colors,
+  ...media,
 };
 
 
