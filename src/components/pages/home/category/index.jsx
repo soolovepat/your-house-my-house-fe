@@ -19,7 +19,7 @@ import {
   shopping,
   storage,
 } from "../../../../asset/images/category";
-import { StCategories } from "./styled";
+import { StCategory } from "./styled";
 import Carousel from "../carousel";
 
 const Category = () => {
@@ -120,15 +120,15 @@ const Category = () => {
   };
 
   return (
-    <Carousel itemLength={itemLength}>
-      <StCategories>
+    <Carousel itemLength={itemLength} move={80}>
+      <StCategory>
         {CATEGORIES.map((cate) => (
           <li key={cate.id} onClick={() => onClickCategory(cate.id)}>
             <img src={cate.img} />
             <p>{cate.label}</p>
           </li>
         ))}
-      </StCategories>
+      </StCategory>
     </Carousel>
   );
 };
