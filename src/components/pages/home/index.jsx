@@ -1,10 +1,9 @@
 import React from "react";
 import Banner from "./banner";
 import { StContainer } from "../../../styles/Container";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/HouseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/ProductContainer";
-import Category from "./Category";
 
 const Home = () => {
   const column = { house: "3", product: "4" };
