@@ -4,6 +4,7 @@ import { StContainer } from "../../../styles/Container";
 import SectionTitle from "./sectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer";
+import Category from "./Categoty";
 
 const Home = () => {
   const column = { house: "3", product: "4" };
@@ -65,7 +66,7 @@ const Home = () => {
     <StContainer>
       <Banner />
       <SectionTitle title={"카테고리"} />
-      {/* <Category /> */}
+      <Category />
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
