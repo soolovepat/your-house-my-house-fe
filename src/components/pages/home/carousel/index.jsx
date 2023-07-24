@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { StCarousel } from "./styled";
+import Button from "../../../shared/Button";
 
 const Carousel = ({ children, itemLength, move }) => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
@@ -24,6 +25,7 @@ const Carousel = ({ children, itemLength, move }) => {
         </div>
         <p onClick={onDecreaseIdx}>{"<"}</p>
         <p onClick={onIncreaseIdx}>{">"}</p>
+        <Button></Button>
       </StCarousel>
 
       <CarouselDots
