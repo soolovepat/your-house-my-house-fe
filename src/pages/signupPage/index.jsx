@@ -52,20 +52,19 @@ const SignupPage = () => {
   const newUserInfoCheck = () => {
     const passwordCondition = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
     if (newuser.email < 1) {
-      emailRef.current.focus();
-      return;
+      return emailRef.current.focus();
     }
     if (!passwordCondition.test(newuser.password)) {
       alert("비밀 번호가 조건에 맞지 않습니다.");
       return passwordRef.current.focus();
     }
     if (newuser.confrim === "") {
-      confirmRef.current.focus();
-      return;
+  
+      return confirmRef.current.focus();
     }
     if (newuser.nickname === "") {
-      nicknameRef.current.focus();
-      return;
+
+      return nicknameRef.current.focus();
     }
     if (newuser.confrim !== newuser.password) {
       alert("비밀번호 확인이 올바르지 않습니다.");
