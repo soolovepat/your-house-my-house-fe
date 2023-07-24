@@ -1,15 +1,12 @@
 import React from "react";
-import Thumbnail from "./thumbnail";
 import Banner from "./banner";
-import { StImgWrap, StThumbnailContainer } from "./styled";
 import { StContainer } from "../../../styles/Container";
-import { home_img_01, product_img_01 } from "../../../asset/images";
-import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SectionTitle from "./sectionTitle";
+import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
+import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 
 const Home = () => {
-  const navigate = useNavigate();
+  const column = { house: "3", product: "4" };
   const formData = {
     articleList: [
       {
@@ -62,61 +59,31 @@ const Home = () => {
     ],
   };
 
-  const onClickArticleHandler = (articleId) => {
-    navigate(`/articles/${articleId}`);
-  };
-
-  const onClickProductHandler = (productId) => {
-    navigate(`/products/${productId}`);
-  };
+  const onClickMoreView = () => {};
 
   return (
     <StContainer>
       <Banner />
-      <FontAwesomeIcon icon={faSearch} />
-      <StThumbnailContainer>
-        {formData.articleList.map((article) => (
-          <Thumbnail
-            key={article.articleId}
-            type={"house"}
-            column={"3"}
-            align={"center"}
-            onClick={() => onClickArticleHandler(article.articleId)}
-          >
-            <StImgWrap>
-              <img src={home_img_01} alt="home_img" />
-            </StImgWrap>
-            <h1>{article.title}</h1>
-            <address>{article.nickname}</address>
-            <footer>
-              <span>스크랩 11 · 조회 250</span>
-            </footer>
-          </Thumbnail>
-        ))}
-      </StThumbnailContainer>
-      <StThumbnailContainer>
-        {formData.itemList.map((item) => (
-          <Thumbnail
-            key={item.itemId}
-            type={"product"}
-            column={"4"}
-            align={"left"}
-            onClick={() => onClickProductHandler(item.productId)}
-          >
-            <StImgWrap>
-              <img src={product_img_01} alt="home_img" />
-            </StImgWrap>
-            <h1>
-              <span>거래처</span>
-              {item.itemname}
-            </h1>
-            <span>{item.price}</span>
-            {/* <footer>
-              <span>스크랩 11 · 조회 250</span>
-            </footer> */}
-          </Thumbnail>
-        ))}
-      </StThumbnailContainer>
+      <SectionTitle title={"카테고리"} />
+      {/* <Category /> */}
+      <SectionTitle
+        title={"🥇 20평 대! 공간 활용 best 4 🥇"}
+        button={"더보기"}
+        onClick={onClickMoreView}
+      />
+      <HouseContainer
+        articleList={formData.articleList.slice(0, column.house)}
+        column={column}
+      />
+      <SectionTitle
+        title={"우리 가족 맞춤 집들이 💁‍♀️"}
+        button={"더보기"}
+        onClick={onClickMoreView}
+      />
+      <ProductContainer
+        itemList={formData.itemList.slice(0, column.product)}
+        column={column}
+      />
     </StContainer>
   );
 };
