@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../styles/theme";
+// import theme from "../../../../Styles/theme";
 
 export const StFooterWrap = styled.footer`
     width: 100%;
