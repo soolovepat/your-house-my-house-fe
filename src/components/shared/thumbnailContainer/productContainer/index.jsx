@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { StImgWrap, StThumbnailContainer } from "../../../pages/home/styled";
+import {
+  StImgWrap,
+  StThumbnailContainer,
+} from "../../../shared/thumbnailContainer/styled";
 import Thumbnail from "../../thumbnail";
 import NumberComma from "../../numberComma";
 import { product_img_01 } from "../../../../asset/images/sample";

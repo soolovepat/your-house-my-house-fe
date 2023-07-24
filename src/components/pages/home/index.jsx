@@ -1,16 +1,8 @@
 import React from "react";
-import Thumbnail from "../../shared/thumbnail";
 import Banner from "./banner";
-import { StImgWrap, StThumbnailContainer } from "./styled";
 import { StContainer } from "../../../styles/Container";
-import {
-  home_img_01,
-  product_img_01,
-} from "../../../asset/images/sample/index";
 import { useNavigate } from "react-router-dom";
-import NumberComma from "../../shared/numberComma";
 import SectionTitle from "./sectionTitle";
-import House from "../../shared/thumbnailContainer/houseContainer";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 
