@@ -5,7 +5,7 @@ import {
   StThumbnailContainer,
 } from "../../../shared/thumbnailContainer/styled";
 import Thumbnail from "../../thumbnail";
-import NumberComma from "../../NumberComma";
+import NumberComma from "../../numberComma";
 import { home_img_01 } from "../../../../asset/images/sample";
 
 function HouseContainer({ articleList, column }) {
