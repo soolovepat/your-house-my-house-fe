@@ -20,6 +20,7 @@ import {
   storage,
 } from "../../../../asset/images/category";
 import { StCategories } from "./styled";
+import Carousel from "../carousel";
 
 const Category = () => {
   const navigate = useNavigate();
@@ -111,19 +112,24 @@ const Category = () => {
     },
   ];
 
+  // 캐로셀 사용시 필수 props 요소
+  const itemLength = 3;
+
   const onClickCategory = (cateId) => {
     navigate(`/category/${cateId}`);
   };
 
   return (
-    <StCategories>
-      {CATEGORIES.map((cate) => (
-        <li key={cate.id} onClick={() => onClickCategory(cate.id)}>
-          <img src={cate.img} />
-          <p>{cate.label}</p>
-        </li>
-      ))}
-    </StCategories>
+    <Carousel itemLength={itemLength}>
+      <StCategories>
+        {CATEGORIES.map((cate) => (
+          <li key={cate.id} onClick={() => onClickCategory(cate.id)}>
+            <img src={cate.img} />
+            <p>{cate.label}</p>
+          </li>
+        ))}
+      </StCategories>
+    </Carousel>
   );
 };
 
