@@ -2,8 +2,8 @@ import React from "react";
 import Banner from "./banner";
 import { StContainer } from "../../../styles/Container";
 import SectionTitle from "./sectionTitle";
-import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
-import ProductContainer from "../../shared/thumbnailContainer/productContainer";
+import HouseContainer from "../../shared/thumbnailContainer/HouseContainer";
+import ProductContainer from "../../shared/thumbnailContainer/ProductContainer";
 
 const Home = () => {
   const column = { house: "3", product: "4" };
@@ -73,7 +73,7 @@ const Home = () => {
       />
       <HouseContainer
         articleList={formData.articleList.slice(0, column.house)}
-        column={column}
+        column={column.house}
       />
       <SectionTitle
         title={"우리 가족 맞춤 집들이 💁‍♀️"}
@@ -82,7 +82,7 @@ const Home = () => {
       />
       <ProductContainer
         itemList={formData.itemList.slice(0, column.product)}
-        column={column}
+        column={column.product}
       />
     </StContainer>
   );
