@@ -7,8 +7,8 @@ import {
   banner04,
   banner05,
   banner06,
-} from "../../../../assets/images/banner";
-import Carousel from "../carousel/Carousel";
+} from "../../../../asset/images/banner";
+import Carousel from "../carousel";
 import { StBanner, StSmallBanner } from "./styled";
 import { Link } from "react-router-dom";
 
