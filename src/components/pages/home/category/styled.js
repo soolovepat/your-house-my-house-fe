@@ -8,6 +8,7 @@ export const StCategories = styled.ul`
     flex-direction: column;
     align-items: center;
     margin-right: 44px;
+    scroll-snap-align: start;
 
     > img {
       width: 90px;
