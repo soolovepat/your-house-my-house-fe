@@ -6,8 +6,7 @@ import LoginPage from "./pages/logninPage";
 function App() {
     return (
         <> 
-         <Router />
-            <GlobalStyle />
+ 
             <div></div>
         </>
     );
