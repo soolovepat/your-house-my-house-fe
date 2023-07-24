@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "./banner";
 import { StContainer } from "../../../styles/Container";
-import SectionTitle from "./sectionTitle";
+import SectionTitle from "./SectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 
