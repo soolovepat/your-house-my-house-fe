@@ -1,10 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  StImgWrap,
-  StThumbnailContainer,
-} from "../../../shared/thumbnailContainer/styled";
-import Thumbnail from "../../thumbnail";
+import { StImgWrap, StThumbnailContainer } from "../styled";
+import Thumbnail from "../../Thumbnail";
 import NumberComma from "../../numberComma";
 import { product_img_01 } from "../../../../asset/images/sample";
 
@@ -19,7 +16,7 @@ function ProductContainer({ itemList, column }) {
         <Thumbnail
           key={item.itemId}
           type={"product"}
-          column={column.product}
+          column={column}
           align={"left"}
           onClick={() => onClickProductHandler(item.productId)}
         >
