@@ -1,13 +1,11 @@
 import React from "react";
 import Banner from "./banner";
 import { StContainer } from "../../../styles/Container";
-import { useNavigate } from "react-router-dom";
 import SectionTitle from "./sectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 
 const Home = () => {
-  const navigate = useNavigate();
   const column = { house: "3", product: "4" };
   const formData = {
     articleList: [
