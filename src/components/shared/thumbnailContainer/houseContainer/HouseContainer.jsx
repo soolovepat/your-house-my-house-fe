@@ -1,12 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  StImgWrap,
-  StThumbnailContainer,
-} from "../../../shared/thumbnailContainer/styled";
-import Thumbnail from "../../thumbnail";
-import NumberComma from "../../numberComma";
-import { home_img_01 } from "../../../../asset/images/sample";
+import { StImgWrap, StThumbnailContainer } from "../styled";
+import Thumbnail from "../../thumbnail/Thumbnail";
+import NumberComma from "../../numberComma/NumberComma";
+import { home_img_01 } from "../../../../assets/images/sample";
 
 function HouseContainer({ articleList, column }) {
   const navigate = useNavigate();
