@@ -12,7 +12,7 @@ const fadeInDown = keyframes`
     }
 `;
 
-export const StTooltip = styled.div`
+export const StDropdown = styled.div`
     display: ${props => (props.$isActive? "block" : "none")};
     position: relative;
     padding: 8px;
