@@ -6,4 +6,13 @@ export const StCarousel = styled.div`
   div {
     transition: transform 0.5s;
   }
+  > p {
+    position: absolute;
+  }
+  > p:nth-child(2) {
+    left: 10%;
+  }
+  > p:nth-child(3) {
+    right: 10%;
+  }
 `;

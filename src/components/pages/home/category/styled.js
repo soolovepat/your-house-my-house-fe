@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StCategories = styled.ul`
+export const StCategory = styled.ul`
   display: flex;
 
   li {

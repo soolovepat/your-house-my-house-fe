@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { StCarousel } from "./styled";
 
-const Carousel = ({ children, itemLength }) => {
+const Carousel = ({ children, itemLength, move }) => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
 
   const onDecreaseIdx = () => {
@@ -19,7 +19,7 @@ const Carousel = ({ children, itemLength }) => {
   return (
     <>
       <StCarousel>
-        <div style={{ transform: `translateX(-${currItemIndex * 80}%)` }}>
+        <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
         <p onClick={onDecreaseIdx}>{"<"}</p>
