@@ -1,10 +1,10 @@
 import React from 'react'
 import Write from '../components/write'
 
-function Write() {
+function Writepage() {
   return (
    <Write/>
   )
 }
 
-export default Write
+export default Writepage

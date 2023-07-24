@@ -1,19 +1,38 @@
 import React, { useState } from "react";
-import Arrow from '../icon/Arrow.svg'
-import { StArrowIcon, StButtonAdddiv, StImageTextBody, StImageTextTitle, StImagebutton, StSelectorButton, StSelectorTextMain, StSelectorTextSub, StWriteheader } from "./styled";
-import { StBodyContainer, StCoverImageContainer, StEditorContainer, StSelectorContainer, StTitleContainer } from "./container";
-import SelectorModal from "./modals/selectorModal"
+import Arrow from "../icon/Arrow.svg";
+
+import {
+  StArrowIcon,
+  StButtonAdddiv,
+  StImageTextBody,
+  StImageTextTitle,
+  StImagebutton,
+  StSelectorButton,
+  StSelectorTextMain,
+  StSelectorTextSub,
+  StWriteheader,
+} from "./styled";
+
+import {
+  StBodyContainer,
+  StCoverImageContainer,
+  StEditorContainer,
+  StSelectorContainer,
+  StTitleContainer,
+} from "./container";
+
+import SelectorModal from "./modals/selectorModal";
 import ImageModal from "./modals/imageModal";
 import Editor from "./editor";
 import InputTitle from "./inputTitle";
-import EditorToolbar from "./editor/coustomToolbar";
+import Draggable from "react-draggable";
+import DraggableButtonInCard from "./editor/imagetag";
 
 function Write() {
 
-    // for Modal opening
+  // for Modal opening
   const [isSelector, setIsSelector] = useState("");
   const [isImage, setIsImage] = useState("");
-
 
   const selectorHandler = () => {
     setIsSelector(!isSelector);
@@ -25,7 +44,6 @@ function Write() {
   return (
     <>
       <StWriteheader>
-        {/* put the editr toolbar right here */}
 
       </StWriteheader>
       <StBodyContainer>
@@ -43,7 +61,7 @@ function Write() {
             </div>
           </StSelectorButton>
         </StSelectorContainer>
-          {isSelector && <SelectorModal />}
+        {isSelector && <SelectorModal />}
 
         <StCoverImageContainer>
           <StImagebutton onClick={imageHandlerbuttton}>
@@ -67,15 +85,16 @@ function Write() {
         {isImage && <ImageModal />}
 
         <StTitleContainer>
-            <InputTitle/>
+          <InputTitle />
         </StTitleContainer>
         <StEditorContainer>
-            <Editor/>
+          <Editor />
+           <DraggableButtonInCard/>
         </StEditorContainer>
+       
       </StBodyContainer>
     </>
   );
 }
 
 export default Write;
-
