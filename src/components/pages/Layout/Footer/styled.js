@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../styles/theme";
+import theme from "../../../../styles/theme";
 
 export const StFooterWrap = styled.footer`
     width: 100%;
@@ -17,7 +17,7 @@ export const StFooterWrap = styled.footer`
     }
 
     & > div {
-        ${({ theme }) => theme.container("column")};
+        ${({ container }) => container("column")};
         width: 100%;
         height: 100%;
         box-sizing: border-box;
