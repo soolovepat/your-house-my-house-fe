@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../../shared/Button";
 import UserAvatar from "./UserAvatar";
 import InputSearch from "../../../shared/Input/InputSearch";
@@ -58,7 +59,7 @@ const Header = () => {
                         <img src="/assets/images/logo-your-house-my-house.png" alt="" />
                     </StLogo>
                     <StMenuContainer>
-                        <li>커뮤니티</li>
+                        <li><Link to="/articles">커뮤니티</Link></li>
                         <li>쇼핑</li>
                     </StMenuContainer>
                 </div>
