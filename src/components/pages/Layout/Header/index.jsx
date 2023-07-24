@@ -49,45 +49,45 @@ const Header = () => {
 
   console.log(scrollFlag);
 
-    return (
-        <StHeaderWrap $display={scrollFlag}>
-            <StHeaderBanner />
-            <StHeaderContainer>
-                <div>
-                    <StLogo>
-                        <img src="/assets/images/logo-your-house-my-house.png" alt="" />
-                    </StLogo>
-                    <StMenuContainer>
-                        <li>커뮤니티</li>
-                        <li>쇼핑</li>
-                    </StMenuContainer>
-                </div>
-                <div>
-                    <InputSearch
-                        value={value}
-                        handleChange={(e) => setValue(e.target.value)}
-                        placeholder="검색어를 입력하세요"
-                        name="search"
-                    />
-                    {true ? (
-                        <>
-                            <Bookmark />
-                            <UserAvatar />{" "}
-                        </>
-                    ) : (
-                        <StHeaderSubMenuContainer>
-                            <li>로그인</li>
-                            <li>회원가입</li>
-                            <li>고객센터</li>
-                        </StHeaderSubMenuContainer>
-                    )}
-                    <Button>
-                        글쓰기 <FontAwesomeIcon icon={faChevronDown} />
-                    </Button>
-                </div>
-            </StHeaderContainer>
-        </StHeaderWrap>
-    );
+  return (
+    <StHeaderWrap $display={scrollFlag}>
+      <StHeaderBanner />
+      <StHeaderContainer>
+        <div>
+          <StLogo>
+            <img src="/assets/images/logo-your-house-my-house.png" alt="" />
+          </StLogo>
+          <StMenuContainer>
+            <li>커뮤니티</li>
+            <li>쇼핑</li>
+          </StMenuContainer>
+        </div>
+        <div>
+          <InputSearch
+            value={value}
+            handleChange={(e) => setValue(e.target.value)}
+            placeholder="검색어를 입력하세요"
+            name="search"
+          />
+          {true ? (
+            <>
+              <Bookmark />
+              <UserAvatar />{" "}
+            </>
+          ) : (
+            <StHeaderSubMenuContainer>
+              <li>로그인</li>
+              <li>회원가입</li>
+              <li>고객센터</li>
+            </StHeaderSubMenuContainer>
+          )}
+          <Button>
+            글쓰기 <FontAwesomeIcon icon={faChevronDown} />
+          </Button>
+        </div>
+      </StHeaderContainer>
+    </StHeaderWrap>
+  );
 };
 
 export default Header;
