@@ -4,7 +4,7 @@ import { StContainer } from "../../../styles/Container";
 import SectionTitle from "./sectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer";
-import Category from "./Categoty";
+import Category from "./category";
 
 const Home = () => {
   const column = { house: "3", product: "4" };
