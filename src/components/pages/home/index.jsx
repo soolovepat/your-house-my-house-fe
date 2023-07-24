@@ -1,19 +1,11 @@
 import React from "react";
-import Thumbnail from "./thumbnail";
 import Banner from "./banner";
-import { StListTitle, StImgWrap, StThumbnailContainer } from "./styled";
 import { StContainer } from "../../../styles/Container";
-import {
-  home_img_01,
-  product_img_01,
-} from "../../../asset/images/sample/index";
-import { useNavigate } from "react-router-dom";
-import NumberComma from "../../shared/NumberComma";
-import Category from "./Categoty";
-import SectionTitle from "./SectionTitle";
+import SectionTitle from "./sectionTitle";
+import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
+import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 
 const Home = () => {
-  const navigate = useNavigate();
   const column = { house: "3", product: "4" };
   const formData = {
     articleList: [
@@ -67,85 +59,31 @@ const Home = () => {
     ],
   };
 
-  const onClickArticleHandler = (articleId) => {
-    navigate(`/articles/${articleId}`);
-  };
-
-  const onClickProductHandler = (productId) => {
-    navigate(`/products/${productId}`);
-  };
-
   const onClickMoreView = () => {};
 
   return (
     <StContainer>
       <Banner />
       <SectionTitle title={"카테고리"} />
-      <Category />
+      {/* <Category /> */}
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
         onClick={onClickMoreView}
       />
-      <StThumbnailContainer>
-        {formData.articleList
-          .map((article) => (
-            <Thumbnail
-              key={article.articleId}
-              type={"house"}
-              column={column.house}
-              align={"center"}
-              onClick={() => onClickArticleHandler(article.articleId)}
-            >
-              <StImgWrap>
-                <img src={home_img_01} alt="home_img" />
-              </StImgWrap>
-              <h1>{article.title}</h1>
-              <address>{article.nickname}</address>
-              <footer>
-                <span>
-                  스크랩{" "}
-                  <NumberComma number="123" size={"13px"} lineheight={"17px"} />{" "}
-                  · 조회{" "}
-                  <NumberComma number="456" size={"13px"} lineheight={"17px"} />
-                </span>
-              </footer>
-            </Thumbnail>
-          ))
-          .slice(0, column.house)}
-      </StThumbnailContainer>
+      <HouseContainer
+        articleList={formData.articleList.slice(0, column.house)}
+        column={column}
+      />
       <SectionTitle
         title={"우리 가족 맞춤 집들이 💁‍♀️"}
         button={"더보기"}
         onClick={onClickMoreView}
       />
-      <StThumbnailContainer>
-        {formData.itemList
-          .map((item) => (
-            <Thumbnail
-              key={item.itemId}
-              type={"product"}
-              column={column.product}
-              align={"left"}
-              onClick={() => onClickProductHandler(item.productId)}
-            >
-              <StImgWrap>
-                <img src={product_img_01} alt="home_img" />
-              </StImgWrap>
-              <h1>
-                <span>거래처</span>
-                <span>{item.itemname}</span>
-              </h1>
-              <NumberComma
-                number={item.price}
-                size={"17px"}
-                weight={"700"}
-                lineheight={"23px"}
-              />
-            </Thumbnail>
-          ))
-          .slice(0, column.product)}
-      </StThumbnailContainer>
+      <ProductContainer
+        itemList={formData.itemList.slice(0, column.product)}
+        column={column}
+      />
     </StContainer>
   );
 };
