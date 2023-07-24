@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { StCarousel } from "./styled";
-import Button from "../../../shared/Button";
+import Button from "../../../shared/button";
 
 const Carousel = ({ children, itemLength, move }) => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
