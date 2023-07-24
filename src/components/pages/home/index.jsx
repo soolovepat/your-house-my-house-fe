@@ -1,9 +1,9 @@
 import React from "react";
-import Banner from "./banner";
+import Banner from "./banner/Banner";
 import { StContainer } from "../../../styles/Container";
 import SectionTitle from "./SectionTitle";
-import HouseContainer from "../../shared/thumbnailContainer/HouseContainer";
-import ProductContainer from "../../shared/thumbnailContainer/ProductContainer";
+import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
+import ProductContainer from "../../shared/thumbnailContainer/productContainer";
 import Category from "./Category";
 
 const Home = () => {
