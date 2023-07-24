@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { StImgWrap, StThumbnailContainer } from "../styled";
 import Thumbnail from "../../Thumbnail";
-import NumberComma from "../../numberComma";
+import NumberComma from "../../NumberComma";
 import { product_img_01 } from "../../../../asset/images/sample";
 
 function ProductContainer({ itemList, column }) {
