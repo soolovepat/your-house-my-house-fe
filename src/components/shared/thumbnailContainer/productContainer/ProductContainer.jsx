@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { StImgWrap, StThumbnailContainer } from "../styled";
 import Thumbnail from "../../thumbnail/Thumbnail";
 import NumberComma from "../../numberComma/NumberComma";
-import { product_img_01 } from "../../../../asset/images/sample";
+import { product_img_01 } from "../../../../assets/images/sample";
 
 function ProductContainer({ itemList, column }) {
   const navigate = useNavigate();
