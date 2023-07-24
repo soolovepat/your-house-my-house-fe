@@ -66,7 +66,7 @@ const Home = () => {
     <StContainer>
       <Banner />
       <SectionTitle title={"카테고리"} />
-      {/* <Category /> */}
+      <Category />
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
