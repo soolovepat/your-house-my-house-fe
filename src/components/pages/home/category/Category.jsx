@@ -20,7 +20,7 @@ import {
   storage,
 } from "../../../../asset/images/category";
 import { StCategory } from "./styled";
-import Carousel from "../carousel";
+import Carousel from "../carousel/Carousel";
 
 const Category = () => {
   const navigate = useNavigate();
