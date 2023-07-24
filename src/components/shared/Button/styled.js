@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 // 컬러셋
 const $primary = "#35C5F0";
