@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../styles/theme";
+// import {theme} from "../../../../styles/theme";
 
 export const StHeaderWrap = styled.header`
   width: 100%;
@@ -15,7 +15,7 @@ export const StHeaderBanner = styled.div`
   background-color: #00bbff;
 `;
 export const StHeaderContainer = styled.div`
-  ${({ theme }) => theme.container("column")};
+  /* ${({ theme }) => theme.container("column")}; */
   width: 100%;
   height: 80px;
   padding: 10px 60px;
