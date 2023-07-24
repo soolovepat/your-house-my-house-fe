@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../components/pages/layout";
-import Home from "../components/pages/home";
-import Write from "../components/pages/write"
+import Home from "../components/pages/home/Home";
+import Write from "../components/pages/write";
 
 const Router = () => {
   return (
@@ -10,7 +10,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/write" element={<Write/>} />
+          <Route path="/write" element={<Write />} />
         </Route>
       </Routes>
     </BrowserRouter>
