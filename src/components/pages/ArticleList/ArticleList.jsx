@@ -2,8 +2,8 @@ import React from "react";
 import FilterContainer from './filterContainer/FilterContainer'
 import { StArticleWrapper } from "./styled";
 import { Link, useNavigate } from "react-router-dom";
-import Thumbnail from "../../shared/Thumbnail";
-import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
+import Thumbnail from "../../shared/thumbnail/Thumbnail";
+import HouseContainer from "../../shared/thumbnailContainer/houseContainer/HouseContainer";
 
 const ArticleList = () => {
 
