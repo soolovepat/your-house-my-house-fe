@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  bigbanner,
-  banner01,
-  banner02,
-  banner03,
-  banner04,
-  banner05,
-  banner06,
-} from "../../../../assets/images/banner";
+import React, { useState } from "react";
+import { bigbanner } from "../../../../assets/images/banner";
 import Carousel from "../carousel/Carousel";
 import { StBanner, StSmallBanner } from "./styled";
 import { Link } from "react-router-dom";
