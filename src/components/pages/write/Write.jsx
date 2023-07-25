@@ -23,9 +23,10 @@ import {
 
 import SelectorModal from "./modals/selectorModal";
 import ImageModal from "./modals/imageModal";
-import Editor from "./editor";
+import Editor from "./editor/Editor";
 import InputTitle from "./inputTitle";
-import DraggableButtonInCard from "./editor/imagetag";
+import { styled } from "styled-components";
+import ImageTagDiv from "./editor/imagetag/ImageTagDiv";
 
 function Write() {
 
@@ -88,12 +89,19 @@ function Write() {
         </StTitleContainer>
         <StEditorContainer>
           <Editor />
-           <DraggableButtonInCard/>
+           <ImageTagDiv>
+            <Imgwall src="https://johnlewis.scene7.com/is/image/johnlewis/cosy-living-room-ideas-lead?$cms-max-image-threshold$&wid=896&fit=hfit,1" />
+           </ImageTagDiv>
         </StEditorContainer>
-       
       </StBodyContainer>
     </>
   );
 }
 
 export default Write;
+
+
+const Imgwall = styled.img`
+  width: 100%;
+  height: 100%;
+`
