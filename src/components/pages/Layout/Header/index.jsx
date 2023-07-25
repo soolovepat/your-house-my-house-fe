@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../../shared/button";
+import Button from "../../../shared/button/Button";
 import UserAvatar from "./userAvatar";
 import InputSearch from "../../../shared/Input/inputSearch";
 import Bookmark from "./bookmark";
