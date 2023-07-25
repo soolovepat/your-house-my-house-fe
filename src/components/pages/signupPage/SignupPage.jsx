@@ -72,19 +72,31 @@ const SignupPage = () => {
     }
     return register();
   };
+
   const register = async () => {
     await axios
-      .post("/api/auth/signup", { newuser })
+      .post(
+        "http://3.34.5.210:3000/api/auth/signup",
+        {
+          email: newuser.email,
+          password: newuser.password,
+          confirm: newuser.confrim,
+          nickname: newuser.nickname,
+        },
+        { withcredential: true }
+      )
       .then((response) => {
         console.log(response.data.user);
         console.log(response.data.jwt);
         localStorage.setItem("token", response.data.jwt);
-        replace("/");
+        alert("회원가입에 성공 하였습니다.");
+        replace("/login");
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);
       });
   };
+
   return (
     <StSignupPage>
       <StSignupContainer>

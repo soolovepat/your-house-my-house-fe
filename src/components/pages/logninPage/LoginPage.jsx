@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { SiNaver } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import axios from "axios";
-
+import { useCookies } from "react-cookie";
 const StLoginPageSection = styled.div`
   height: 100vh;
   display: flex;
@@ -92,7 +92,7 @@ const StSnsButton = styled.div`
 const StLoginProblem = styled.div`
   font-size: 8px;
 `;
-
+axios.defaults.withCredentials = true;
 const LoginPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -100,8 +100,9 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
-  const replace = useNavigate();
-
+  const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(["cookieId"]);
+  // "XSRF-TOKEN"
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -125,13 +126,17 @@ const LoginPage = () => {
     return userRegistryCheck();
   };
 
-  const userRegistryCheck = async (user) => {
+  const userRegistryCheck = async () => {
     await axios
-      .post("/api/auth/login", { user })
+      .post("http://3.34.5.210:3000/api/auth/login", {
+        email: user.email,
+        password: user.password,
+      })
       .then((response) => {
-        console.log(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        replace("/"); // protected route
+        console.log(response);
+        setCookie("cookieId", { path: "/" });
+        navigate("/");
+        console.log(document.cookie);
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);
@@ -139,15 +144,13 @@ const LoginPage = () => {
       });
   };
 
-  //   <Route
-  //   path="/createdesk"
-  //   element={<ProtectedRoute element={<CreateDesk />} />}
-  // />
-
   return (
     <StLoginPageSection>
       <StLoginPageContainer>
-        <StLoginPageLogo>니집내집</StLoginPageLogo>
+        <StLoginPageLogo onClick={() => navigate("/")}>
+          {" "}
+          <img src="/assets/images/logo-your-house-my-house.png" alt="" />
+        </StLoginPageLogo>
 
         <StLoginForm onSubmit={handleSubmit}>
           <StEmailInput

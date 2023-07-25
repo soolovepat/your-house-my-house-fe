@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Layout from '../pages/Layout'
-import Button from '../shared/Button'
+import Button from "../shared/button";
 import Input from '../shared/Input'
 
 /** Test용 페이지 */
