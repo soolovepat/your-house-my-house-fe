@@ -25,7 +25,8 @@ const StCoverImageContainer = styled.div`
   background-color: blue;
   position: relative;
   width: 100%;
-  padding-bottom: 56.26%;
+  height: 370px;
+  margin-top: 30px;
 `;
 
 const StTitleContainer = styled.div`

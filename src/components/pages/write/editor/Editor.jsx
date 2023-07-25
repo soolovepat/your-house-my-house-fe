@@ -9,6 +9,7 @@ export default function ParentComponent() {
   const [content, setContent] = useState("");
   const quillRef = useRef();
   const [tagData, setTagData] = useState([]);
+  const [showEditor, setShowEditor] = useState(true);
 
   const imageHandler = async () => {
     const input = document.createElement('input');
@@ -28,7 +29,7 @@ export default function ParentComponent() {
       try {
         const result = await api.post('/article/contentImage', formData, {
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
           }
         });
 
@@ -37,6 +38,7 @@ export default function ParentComponent() {
         editor.insertText(index, `[Image: ${IMG_URL}]`);
 
         setTagData(oldData => [...oldData, { url: IMG_URL, tags: [] }]);
+        setShowEditor(true);
       } catch (error) {
         console.log('Upload failed');
       }
@@ -50,24 +52,23 @@ export default function ParentComponent() {
   return (
     <div>
       <button onClick={imageHandler}>Upload Image</button>
-      <Editor content={content} setContent={setContent} quillRef={quillRef} />
       {tagData.map(data => 
         <ImageTagDiv key={data.url} url={data.url} tags={data.tags} onUpdateTags={handleUpdateTags}>
           <Imgwall src={data.url} alt="Uploaded content" />
         </ImageTagDiv>
       )}
+      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor} />
     </div>
   )
 }
 
-const Editor = ({ content, setContent, quillRef }) => {
+const Editor = ({ content, setContent, quillRef, show }) => {
   const contentHandler = (value) => {
-    console.log(value);
     setContent(value);
   };
 
   return (
-    <EditorContainer>
+    <EditorContainer style={{display: show ? "block" : "none"}}>
       <ReactQuill
         ref={quillRef}
         value={content}
@@ -129,7 +130,6 @@ const EditorContainer = styled.div`
     min-height: 28px;
   }
 `;
-
 
 const Imgwall = styled.img`
   width: 100%;
