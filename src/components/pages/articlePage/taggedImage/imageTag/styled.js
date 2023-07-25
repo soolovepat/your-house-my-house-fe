@@ -28,7 +28,7 @@ export const StProductTooltip = styled.div`
     background-color: rgb(247,249, 250);
     box-shadow: rgba(63, 71, 77, 0.2) 0px 4px 10px 0px;
     position: absolute;
-    top: 40px; 
+    top: 32px; 
     left: calc(50% - 140px);
 
     &:after {
