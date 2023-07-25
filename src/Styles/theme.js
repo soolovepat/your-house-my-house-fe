@@ -34,8 +34,6 @@ const theme = {
   ...media,
   ...mixins,
   numberfont,
-  ...colors,
-  ...media,
 };
 
 export default theme;
