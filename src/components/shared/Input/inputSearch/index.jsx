@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "../index";
-import InputBox from "../../inputBox";
+import InputBox from "../../InputBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 

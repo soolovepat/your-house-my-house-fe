@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../../shared/button/Button";
+import Button from "../../../shared/Button/Button";
 import UserAvatar from "./userAvatar";
-import InputSearch from "../../../shared/input/inputSearch";
+import InputSearch from "../../../shared/Input/inputSearch";
 import Bookmark from "./bookmark";
 import {
   StHeaderWrap,

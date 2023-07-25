@@ -3,69 +3,85 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import api from "../../../../api/api";
+import ImageTagDiv from "./imagetag/ImageTagDiv";
 
-export default function Editor() {
+export default function ParentComponent() {
   const [content, setContent] = useState("");
-  const quillRef = useRef(); // Create a Ref
+  const quillRef = useRef();
+  const [tagData, setTagData] = useState([]);
+  const [showEditor, setShowEditor] = useState(true);
 
-  const contentHandler = (value) => {
-    console.log(value);
-    setContent(value);
-  };
-
-  const imageHandler = () => {
-    console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
-
+  const imageHandler = async () => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.click();
 
-    input.addEventListener('change', async () => {
-      console.log('온체인지');
+    input.onchange = async () => {
       const file = input.files[0];
       const formData = new FormData();
       formData.append('contentImage', file);
 
+      const editor = quillRef.current.getEditor();
+      let range = editor.getSelection();
+      let index = range ? range.index : editor.getLength();
+
       try {
-        const result = await api.post('api/article/contentImage', formData,{
+        const result = await api.post('/article/contentImage', formData, {
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
           }
         });
-        console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
+
         const IMG_URL = result.data.url;
+        // Insert an image placeholder
+        editor.insertText(index, `[Image: ${IMG_URL}]`);
 
-        const editor = quillRef.current.getEditor();
-        const range = editor.getSelection();
-        
-        editor.insertEmbed(range.index, 'image', IMG_URL);
-
+        setTagData(oldData => [...oldData, { url: IMG_URL, tags: [] }]);
+        setShowEditor(true);
       } catch (error) {
-        console.log('실패했어요ㅠ');
+        console.log('Upload failed');
       }
-    });
+    };
+  }
+
+  const handleUpdateTags = (url, newTags) => {
+    setTagData(oldData => oldData.map(data => data.url === url ? { url, tags: newTags } : data));
   }
 
   return (
-    <EditorContainer>
+    <div>
+      <button onClick={imageHandler}>Upload Image</button>
+      {tagData.map(data => 
+        <ImageTagDiv key={data.url} url={data.url} tags={data.tags} onUpdateTags={handleUpdateTags}>
+          <Imgwall src={data.url} alt="Uploaded content" />
+        </ImageTagDiv>
+      )}
+      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor} />
+    </div>
+  )
+}
+
+const Editor = ({ content, setContent, quillRef, show }) => {
+  const contentHandler = (value) => {
+    setContent(value);
+  };
+
+  return (
+    <EditorContainer style={{display: show ? "block" : "none"}}>
       <ReactQuill
-        ref={quillRef} // Pass the Ref
+        ref={quillRef}
         value={content}
         onChange={contentHandler}
         modules={{
           toolbar: {
             container: [
-              ["image"],
               [{ header: [false, 1, 2, 3] }],
               ["bold", "italic", "underline"],
               [{ color: ["#000000", "#e60000", "#00ffff"] }, { background: [] }],
               [{ align: [] }],
               [{ list: "ordered" }, { list: "bullet" }, "link"],
             ],
-            handlers: {
-              image : imageHandler,
-            },
           },
         }}
         placeholder="내용을 입력해주세요"
@@ -74,6 +90,7 @@ export default function Editor() {
   );
 }
 
+// Your existing styled component
 
 const EditorContainer = styled.div`
   .ql-toolbar.ql-snow {
@@ -113,3 +130,8 @@ const EditorContainer = styled.div`
     min-height: 28px;
   }
 `;
+
+const Imgwall = styled.img`
+  width: 100%;
+  height: 100%;
+`
