@@ -22,7 +22,6 @@ const Home = () => {
         const response = await getDatas();
         dispatch(setArticleList(response.data.articleList));
         dispatch(setItemList(response.data.itemList));
-        console.log(response.data.articleList);
       } catch (error) {
         console.error(error);
       }
