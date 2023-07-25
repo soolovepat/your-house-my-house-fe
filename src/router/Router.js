@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../components/pages/layout";
 import Home from "../components/pages/home/Home";
 import Write from "../components/pages/write/Write";
-import Detail from "../components/pages/detail/Detail";
+import ItemDetail from "../components/pages/detail/ItemDetail";
 
 const Router = () => {
   return (
@@ -14,7 +14,7 @@ const Router = () => {
         </Route>
         <Route path="/write" element={<Write />} />
         <Route path="/item/:itemId" element={<Layout />}>
-          <Route index element={<Detail />} />
+          <Route index element={<ItemDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
