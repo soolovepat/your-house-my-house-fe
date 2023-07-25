@@ -33,10 +33,7 @@ const Carousel = ({
         <Button>버튼</Button>
       </StCarousel>
 
-      <CarouselDots
-        currItemIndex={currItemIndex}
-        itemLength={children.length}
-      />
+      <CarouselDots currItemIndex={currItemIndex} itemLength={itemLength} />
     </>
   );
 };
