@@ -8,6 +8,7 @@ const colors = {
     BlackColor: "#000000",
 
     primaryColor: "#35c5f0",
+    primaryDarkColor: "#09addb",
     secondaryColor: "#FF7777",
 };
 
@@ -18,7 +19,7 @@ const media = {
 };
 
 const mixins = {
-    container: () => `
+    container: css`
       max-width: 1256px;
       margin: 0 auto;
       padding: 0 60px;

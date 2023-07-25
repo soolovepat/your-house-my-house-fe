@@ -58,6 +58,7 @@ table {
 button {
 	font-family: inherit;
 	border: 0;
+	cursor: pointer;
 }
 a {
 	text-decoration: none;
