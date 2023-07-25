@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme"
 
+export const StArticleWrapper = styled.div`
+    ${theme.container};
+`;
 // export const StArticleContainer = styled.div`
 //     width: 100%;
 //     display: grid;
@@ -32,11 +36,4 @@ import styled from "styled-components";
 //     }
 // `;
 
-export const StFilterContainer = styled.div`
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 5px;
-`;
+
