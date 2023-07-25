@@ -89,9 +89,6 @@ function Write() {
         </StTitleContainer>
         <StEditorContainer>
           <Editor />
-           <ImageTagDiv>
-            <Imgwall src="https://johnlewis.scene7.com/is/image/johnlewis/cosy-living-room-ideas-lead?$cms-max-image-threshold$&wid=896&fit=hfit,1" />
-           </ImageTagDiv>
         </StEditorContainer>
       </StBodyContainer>
     </>
@@ -101,7 +98,3 @@ function Write() {
 export default Write;
 
 
-const Imgwall = styled.img`
-  width: 100%;
-  height: 100%;
-`

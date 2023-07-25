@@ -13,7 +13,7 @@ export const ImageTagModal = ({
   useEffect(() => {
     if (!selectedItem) {
       api
-        .get(`api/search`, {
+        .get(`/search`, {
           params: {
             query: searchTerm,
           },
