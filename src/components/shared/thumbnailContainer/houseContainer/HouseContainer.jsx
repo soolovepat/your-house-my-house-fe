@@ -1,12 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  StImgWrap,
-  StThumbnailContainer,
-} from "../../../shared/thumbnailContainer/styled";
-import Thumbnail from "../../thumbnail";
-import NumberComma from "../../numberComma";
-import { home_img_01 } from "../../../../asset/images/sample";
+import { StImgWrap, StThumbnailContainer } from "../styled";
+import Thumbnail from "../../thumbnail/Thumbnail";
+import NumberComma from "../../numberComma/NumberComma";
+import { home_img_01 } from "../../../../assets/images/sample";
 
 function HouseContainer({ articleList, column }) {
   const navigate = useNavigate();
@@ -26,16 +23,16 @@ function HouseContainer({ articleList, column }) {
           <StImgWrap>
             <img src={home_img_01} alt="home_img" />
           </StImgWrap>
-          <h1>{article.title}</h1>
-          <address>{article.nickname}</address>
-          <footer>
+          <h5>{article.title}</h5>
+          <p>{article.nickname}</p>
+          <span>
             <span>
               스크랩{" "}
               <NumberComma number="123" size={"13px"} lineheight={"17px"} /> ·
               조회{" "}
               <NumberComma number="456" size={"13px"} lineheight={"17px"} />
             </span>
-          </footer>
+          </span>
         </Thumbnail>
       ))}
     </StThumbnailContainer>
