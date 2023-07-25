@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { StCarousel } from "./styled";
-import Button from "../../../shared/button";
+import Button from "../../../shared/button/Button";
+import theme from "../../../../styles/Theme";
 
-const Carousel = ({ children, itemLength, move }) => {
-  const [currItemIndex, setCurrItemIndex] = useState(0);
-
+const Carousel = ({
+  children,
+  currItemIndex,
+  setCurrItemIndex,
+  itemLength,
+  move,
+}) => {
   const onDecreaseIdx = () => {
     currItemIndex <= 0
       ? setCurrItemIndex(itemLength - 1)
@@ -25,13 +30,10 @@ const Carousel = ({ children, itemLength, move }) => {
         </div>
         <p onClick={onDecreaseIdx}>{"<"}</p>
         <p onClick={onIncreaseIdx}>{">"}</p>
-        <Button></Button>
+        <Button>버튼</Button>
       </StCarousel>
 
-      <CarouselDots
-        currItemIndex={currItemIndex}
-        itemLength={children.length}
-      />
+      <CarouselDots currItemIndex={currItemIndex} itemLength={itemLength} />
     </>
   );
 };
