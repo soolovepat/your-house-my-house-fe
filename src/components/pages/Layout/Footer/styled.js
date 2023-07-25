@@ -17,7 +17,7 @@ export const StFooterWrap = styled.footer`
     }
 
     & > div {
-        ${({ container }) => container("column")};
+        ${theme.container};
         width: 100%;
         height: 100%;
         box-sizing: border-box;
@@ -41,7 +41,7 @@ export const StFooterWrap = styled.footer`
           align-items: flex-start;
           gap: 12px;
 
-          & > p {
+          & > div {
             font-size: 12px;
             line-height: 20px;
             white-space: pre-wrap;
@@ -66,7 +66,7 @@ export const StFooterWrap = styled.footer`
             border-right: 0;
             padding-right: 0px;
 
-            & p, & address {
+            & div, & address {
                 color: inherit;
             }
         }

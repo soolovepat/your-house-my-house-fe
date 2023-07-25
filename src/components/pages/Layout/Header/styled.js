@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import {theme} from "../../../../styles/theme";
+import theme from "../../../../styles/theme";
 
 export const StHeaderWrap = styled.header`
-    width: 100%;    
+    width: 100%;  
+    background-color: #fff;  
     border-bottom: 1px solid #eaedef;
     position: ${props => props.$display ? "sticky" : "relative"};
     top: ${props => props.$display ? '-51px' : 0};
@@ -15,7 +16,7 @@ export const StHeaderBanner = styled.div`
     background-color: #00bbff;
 `;
 export const StHeaderContainer = styled.div`
-    ${({ theme }) => theme.container('column')};
+    ${theme.container};
     width: 100%;
     height: 80px;
     padding: 10px 60px;
@@ -58,7 +59,7 @@ export const StLogo = styled.div`
     display: inline-block;
     width: 74px;
     height: 34px;
-    & > img {
+    & img, & a {
         width: 100%;
     }
 `;
