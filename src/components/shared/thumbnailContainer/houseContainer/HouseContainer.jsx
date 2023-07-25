@@ -23,16 +23,16 @@ function HouseContainer({ articleList, column }) {
           <StImgWrap>
             <img src={home_img_01} alt="home_img" />
           </StImgWrap>
-          <h1>{article.title}</h1>
-          <address>{article.nickname}</address>
-          <footer>
+          <h5>{article.title}</h5>
+          <p>{article.nickname}</p>
+          <span>
             <span>
               스크랩{" "}
               <NumberComma number="123" size={"13px"} lineheight={"17px"} /> ·
               조회{" "}
               <NumberComma number="456" size={"13px"} lineheight={"17px"} />
             </span>
-          </footer>
+          </span>
         </Thumbnail>
       ))}
     </StThumbnailContainer>

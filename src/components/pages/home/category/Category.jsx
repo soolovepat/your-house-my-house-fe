@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   animals,
@@ -18,12 +18,13 @@ import {
   rental,
   shopping,
   storage,
-} from "../../../../assets/images/category";
+} from "../../../../assets/images/category/categoryImages";
 import { StCategory } from "./styled";
 import Carousel from "../carousel/Carousel";
 
 const Category = () => {
   const navigate = useNavigate();
+  const [currItemIndex, setCurrItemIndex] = useState(0);
   const CATEGORIES = [
     {
       id: 0,
@@ -120,7 +121,12 @@ const Category = () => {
   };
 
   return (
-    <Carousel itemLength={itemLength} move={80}>
+    <Carousel
+      currItemIndex={currItemIndex}
+      setCurrItemIndex={setCurrItemIndex}
+      itemLength={itemLength}
+      move={80}
+    >
       <StCategory>
         {CATEGORIES.map((cate) => (
           <li key={cate.id} onClick={() => onClickCategory(cate.id)}>

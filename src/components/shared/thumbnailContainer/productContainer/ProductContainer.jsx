@@ -7,8 +7,8 @@ import { product_img_01 } from "../../../../assets/images/sample";
 
 function ProductContainer({ itemList, column }) {
   const navigate = useNavigate();
-  const onClickProductHandler = (productId) => {
-    navigate(`/products/${productId}`);
+  const onClickProductHandler = (itemId) => {
+    navigate(`/products/${itemId}`);
   };
   return (
     <StThumbnailContainer>
@@ -18,15 +18,15 @@ function ProductContainer({ itemList, column }) {
           type={"product"}
           column={column}
           align={"left"}
-          onClick={() => onClickProductHandler(item.productId)}
+          onClick={() => onClickProductHandler(item.itemId)}
         >
           <StImgWrap>
             <img src={product_img_01} alt="home_img" />
           </StImgWrap>
-          <h1>
+          <h5>
             <span>거래처</span>
-            <span>{item.itemname}</span>
-          </h1>
+            <span>{item.itemName}</span>
+          </h5>
           <NumberComma
             number={item.price}
             size={"17px"}
