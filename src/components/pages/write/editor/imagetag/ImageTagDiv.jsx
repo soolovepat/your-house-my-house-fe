@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
-import { ImageTagModal } from "./tagmodal";
-import { styled } from "styled-components";
+import { ImageTagModal } from "./tagmodal/ImageTagModal";
+import styled from "styled-components";
 
-function DraggableButtonInCard() {
+function ImageTagDiv({ children }) {
   const [isEditing, setIsEditing] = useState(false);
   const addButtonRef = useRef(null);
 
@@ -62,6 +62,7 @@ function DraggableButtonInCard() {
         style={{
           width: "100%",
           backgroundColor: "lightgreen",
+          position: "relative"
         }}
       >
         <div
@@ -71,9 +72,9 @@ function DraggableButtonInCard() {
             height: "500px",
             width: "100%",
             position: "relative",
-            backgroundColor: "green",
           }}
         >
+          {children}
           {tagData.tagsId.map((tagId, index) => (
             <Draggable
               position={{ x: tagData.axisX[index], y: tagData.axisY[index] }}
@@ -114,21 +115,39 @@ function DraggableButtonInCard() {
             </Draggable>
           ))}
         </div>
+        <StTagEditorButton onClick={() => setIsEditing(!isEditing)}>
+          {isEditing ? "편집완료" : "상품 태그 편집"}
+        </StTagEditorButton>
       </div>
-      <button onClick={() => setIsEditing(!isEditing)}>
-        {isEditing ? "편집완료" : "태그편집하기"}
-      </button>
     </>
   );
 }
 
-export default DraggableButtonInCard;
+export default ImageTagDiv;
 
 const StTagButton = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 100%;
   position: relative;
   left: calc(50% - 15px);
   bottom: calc(100% + 5px);
+  color: white;
+  background-color: rgba(53, 197, 240, 0.8);
+  font-size: 13px;
+  font-weight: 900;
+`;
+
+const StTagEditorButton = styled.button`
+  position: absolute;
+  padding: 7px 25px 9px;
+  font-size: 14px;
+  line-height: 20px;
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  transition: background-color 0.1s ease 0s;
+  right: 0;
+  margin-top: 6px;
 `;
