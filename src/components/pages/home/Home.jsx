@@ -9,57 +9,6 @@ import { getDatas } from "../../../api/article";
 
 const Home = () => {
   const column = { house: "3", product: "4" };
-  const formData = {
-    articleList: [
-      {
-        articleId: 1,
-        title: "니집은 내꺼",
-        nickname: "항해의집",
-      },
-      {
-        articleId: 2,
-        title: "니집은 내꺼야",
-        nickname: "항해의집",
-      },
-      {
-        articleId: 3,
-        title: "니집은 내꺼다",
-        nickname: "항해의집",
-      },
-      {
-        articleId: 4,
-        title: "니집은 내꺼입니다",
-        nickname: "항해의집",
-      },
-    ],
-    itemList: [
-      {
-        itemId: 10,
-        itemname: "에이스 침대",
-        price: 30000,
-      },
-      {
-        itemId: 200,
-        itemname: "에이스 침대",
-        price: 30000,
-      },
-      {
-        itemId: 300,
-        itemname: "에이스 침대",
-        price: 30000,
-      },
-      {
-        itemId: 400,
-        itemname: "에이스 침대",
-        price: 30000,
-      },
-      {
-        itemId: 500,
-        itemname: "에이스 침대",
-        price: 30000,
-      },
-    ],
-  };
   const [dataList, setDataList] = useState([]);
   useEffect(() => {
     const fetchPosts = async () => {
