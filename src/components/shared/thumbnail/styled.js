@@ -8,7 +8,7 @@ const columns = {
 };
 
 const house = css`
-  h1 {
+  h5 {
     margin: 18px 0 8px;
     line-height: 24px;
     font-size: 17px;
@@ -17,14 +17,14 @@ const house = css`
     word-wrap: break-word;
   }
 
-  address {
+  p {
     margin: 8px 0;
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
   }
 
-  footer {
+  span {
     margin: 8px 0 0;
     font-size: 13px;
     line-height: 17px;
@@ -33,7 +33,7 @@ const house = css`
 `;
 
 const product = css`
-  h1 {
+  h5 {
     display: flex;
     flex-direction: column;
     margin-top: 9px;

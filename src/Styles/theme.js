@@ -1,11 +1,11 @@
 import { css } from "styled-components";
 
 const colors = {
-    whiteColor: "#ffffff",
-    lightGrayColor: "#dddddd",
-    mediumGrayColor: "#939393",
-    darkGrayColor: "#2F3438",
-    BlackColor: "#000000",
+  whiteColor: "#ffffff",
+  lightGrayColor: "#dddddd",
+  mediumGrayColor: "#939393",
+  darkGrayColor: "#2F3438",
+  BlackColor: "#000000",
 
     primaryColor: "#35c5f0",
     primaryDarkColor: "#09addb",
@@ -13,9 +13,9 @@ const colors = {
 };
 
 const media = {
-    desktop: "(min-width: 1024px)",
-    tablet: "(min-width: 768px) and (max-width: 1023px)",
-    mobile: "(max-width: 767px)",
+  desktop: "(min-width: 1024px)",
+  tablet: "(min-width: 768px) and (max-width: 1023px)",
+  mobile: "(max-width: 767px)",
 };
 
 const mixins = {
@@ -31,13 +31,10 @@ const numberfont = css`
 `;
 
 const theme = {
-    ...colors,
-    ...media,
-    ...mixins,
-  numberfont,
   ...colors,
   ...media,
+  ...mixins,
+  numberfont,
 };
-
 
 export default theme;
