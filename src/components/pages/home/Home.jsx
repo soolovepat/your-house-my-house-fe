@@ -6,22 +6,32 @@ import HouseContainer from "../../shared/thumbnailContainer/houseContainer/House
 import ProductContainer from "../../shared/thumbnailContainer/productContainer/ProductContainer";
 import Category from "./category/Category";
 import { getDatas } from "../../../api/article";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setArticleList,
+  setItemList,
+} from "../../../redux/modules/dataListSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const column = { house: "3", product: "4" };
-  const [dataList, setDataList] = useState([]);
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await getDatas();
-        setDataList(response.data);
-        console.log(dataList);
+        dispatch(setArticleList(response.data.articleList));
+        dispatch(setItemList(response.data.itemList));
+        console.log(response.data.articleList);
       } catch (error) {
         console.error(error);
       }
     };
     fetchPosts();
-  }, []);
+  }, [dispatch]);
+
+  const articleList = useSelector((state) => state.dataList.articleList);
+  const itemList = useSelector((state) => state.dataList.itemList);
 
   const onClickMoreView = () => {};
 
@@ -35,9 +45,9 @@ const Home = () => {
         button={"더보기"}
         onClick={onClickMoreView}
       />
-      {dataList.articleList && (
+      {articleList && (
         <HouseContainer
-          articleList={dataList.articleList.slice(0, column.house)}
+          articleList={articleList.slice(0, column.house)}
           column={column.house}
         />
       )}
@@ -46,9 +56,9 @@ const Home = () => {
         button={"더보기"}
         onClick={onClickMoreView}
       />
-      {dataList.itemList && (
+      {itemList && (
         <ProductContainer
-          itemList={dataList.itemList.slice(0, column.product)}
+          itemList={itemList.slice(0, column.product)}
           column={column.product}
         />
       )}
