@@ -9,6 +9,7 @@ export const StFilter = styled.div`
     padding: 7px 8px 6px;
     border-radius: 4px;
     background-color: #f5f5f5;
+    position: relative;
     cursor: pointer;
 
     & > svg {

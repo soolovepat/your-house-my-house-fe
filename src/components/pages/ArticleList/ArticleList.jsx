@@ -1,6 +1,6 @@
 import React from "react";
-import Filter from "../../shared/Filter";
-import { StFilterContainer } from "./styled";
+import FilterContainer from './filterContainer/FilterContainer'
+import { StArticleWrapper } from "./styled";
 import { Link, useNavigate } from "react-router-dom";
 import Thumbnail from "../../shared/Thumbnail";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer";
@@ -31,19 +31,14 @@ const ArticleList = () => {
     ];
 
     return (
-        <>
-            <StFilterContainer>
-                <Filter>정렬</Filter>
-                <Filter>주거형태</Filter>
-                <Filter>평수</Filter>
-                <Filter>예산</Filter>
-            </StFilterContainer>
+        <StArticleWrapper>
+            <FilterContainer />
             <p style={{ margin: "30px 0 10px" }}>전체: {articleList.length}</p>
             <HouseContainer
               articleList={articleList}
               column="3"
             />
-        </>
+        </StArticleWrapper>
     );
 };
 
