@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { StTagIcon, StProductTooltip, StProductInfo } from "./styled";
 import { Link } from "react-router-dom";
+import NumberComma from '../../../../shared/numberComma/NumberComma';
 
 const ImageTag = (props) => {
     const [isHover, setIsHover] = useState(false);
@@ -29,7 +30,7 @@ const ImageTag = (props) => {
                     <StProductInfo>
                         <p>휘뚜루마뚜루</p>
                         <p>상품명</p>
-                        <p>269000원</p>
+                        <p><NumberComma number={269000} size={"16px"} lineheight={"20px"}/> 원</p>
                     </StProductInfo>
                     <FontAwesomeIcon icon={faChevronRight} />
                 </Link>
