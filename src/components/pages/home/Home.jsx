@@ -55,7 +55,7 @@ const Home = () => {
         button={"더보기"}
         onClick={onClickMoreView}
       />
-      {itemList && (
+      {Array.isArray(itemList) && (
         <ProductContainer
           itemList={itemList.slice(0, column.product)}
           column={column.product}
