@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <StContainer>
-      <Banner />
+      <Banner articleList={dataList.articleList} />
       <SectionTitle title={"카테고리"} />
       <Category />
       <SectionTitle
