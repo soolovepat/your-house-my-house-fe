@@ -27,8 +27,6 @@ const Home = () => {
   return (
     <StContainer>
       <Banner articleList={dataList.articleList} />
-      <SectionTitle title={"카테고리"} />
-      <Category />
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
@@ -40,6 +38,8 @@ const Home = () => {
           column={column.house}
         />
       )}
+      <SectionTitle title={"카테고리"} />
+      <Category />
       <SectionTitle
         title={"우리 가족 맞춤 집들이 💁‍♀️"}
         button={"더보기"}
