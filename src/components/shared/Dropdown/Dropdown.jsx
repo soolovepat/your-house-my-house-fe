@@ -15,16 +15,17 @@ const Dropdown = (props) => {
         console.log(location);
     }, [location]);
 
-    const { isOpened, filterInfo } = props;
-
-    console.log(filterInfo)
+    const { isFirst, isOpened, filterInfo } = props;
 
     return (
-    <StDropdown $isOpened={isOpened}>
+    <StDropdown $isOpened={isOpened} $firstItem={isFirst}>
         <ul>
             {filterInfo.options.map((item, index) => {
                 return (
-                    <li key={index} onClick={() => {handleQuery(item.query[0], item.query[1])}}>
+                    <li
+                        key={index} 
+                        onClick={() => {handleQuery(item.query[0], item.query[1])}}
+                    >
                         {filterInfo.name}
                     </li>
                 );
