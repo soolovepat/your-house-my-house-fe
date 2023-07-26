@@ -12,7 +12,6 @@ const Banner = ({ articleList }) => {
     const randomIndex = Math.floor(Math.random() * article.length);
     return article[randomIndex];
   };
-  console.log(getRandomArticle(articleList));
 
   const randomArticle = articleList && getRandomArticle(articleList);
   return (

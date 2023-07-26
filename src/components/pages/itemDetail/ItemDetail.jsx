@@ -19,7 +19,6 @@ function ItemDetail() {
       try {
         const response = await getItemData(itemId);
         dispatch(setItemList(response.data));
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -27,7 +26,7 @@ function ItemDetail() {
     fetchPosts();
   }, [dispatch]);
 
-  const itemList = useSelector((state) => state.dataList.itemList);
+  const itemList = useSelector((state) => state.dataList.items);
 
   return (
     <StContainer>
