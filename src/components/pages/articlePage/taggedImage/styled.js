@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StTaggedImage = styled.div`
     width: 100%;
     position: relative;
+    margin: 10px 0 30px;
 
     & > img {
         width: 100%;

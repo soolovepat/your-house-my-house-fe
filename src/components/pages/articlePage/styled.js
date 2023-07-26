@@ -57,6 +57,10 @@ export const StArticle = styled.div`
     & > img {
         width: 100%;
     }
+    & > p {
+        margin: 10px 0;
+        line-height: 32px;    
+    }
 `;
 
 export const StArticleSideBar = styled.div`
