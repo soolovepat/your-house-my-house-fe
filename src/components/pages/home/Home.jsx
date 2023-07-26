@@ -15,7 +15,6 @@ const Home = () => {
       try {
         const response = await getDatas();
         setDataList(response.data);
-        console.log(dataList);
       } catch (error) {
         console.error(error);
       }
