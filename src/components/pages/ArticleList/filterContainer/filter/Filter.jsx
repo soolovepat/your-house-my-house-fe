@@ -12,8 +12,9 @@ const Filter = (props) => {
 
     return (
         <StFilter onClick={pageHandler} ref={pageRef}>
-            <Dropdown filterInfo={filterInfo} />
+            {filterInfo.name}
             <FontAwesomeIcon icon={faChevronDown} />
+            <Dropdown filterInfo={filterInfo} $isOpened={isOpened} />
         </StFilter>
     );
 };

@@ -44,14 +44,7 @@ const TaggedImage = (/* {tags} */) => {
                 src="https://www.vetcarepethospital.ca/wp-content/uploads/sites/247/2022/03/petrabbitcare-1-scaled.jpg"
                 alt=""
             />
-            <StImageTagWrapper
-                onMouseEnter={() => {
-                    setIsHover(true);
-                }}
-                onMouseLeave={() => {
-                    setIsHover(false);
-                }}
-                $isHover={isHover}
+            <StImageTagWrapper onMouseEnter={() => { setIsHover(true); }} onMouseLeave={() => { setIsHover(false); }} $isHover={isHover}
             >
                 <ImageTag xOffset={30} yOffset={40} />
                 <ImageTag xOffset={700} yOffset={70} />
