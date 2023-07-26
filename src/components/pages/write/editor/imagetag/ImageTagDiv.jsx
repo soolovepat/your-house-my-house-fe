@@ -18,9 +18,9 @@ function ImageTagDiv({ children }) {
 
   const addNewButton = (e) => {
     if (!isEditing || modalVisible.some((vis) => vis)) return;
-    const divRect = addButtonRef.current.getBoundingClientRect();
-    const x = e.clientX - divRect.x;
-    const y = e.clientY - divRect.y;
+    const spanRect = addButtonRef.current.getBoundingClientRect();
+    const x = e.clientX - spanRect.x;
+    const y = e.clientY - spanRect.y;
 
     setTagData((prevData) => ({
       tagsId: [...prevData.tagsId, prevData.tagsId.length],
@@ -58,20 +58,23 @@ function ImageTagDiv({ children }) {
 
   return (
     <>
-      <div
+      <span
         style={{
           width: "100%",
           backgroundColor: "lightgreen",
-          position: "relative"
+          position: "relative",
+          display:"block",
+          marginBottom:"55px"
         }}
       >
-        <div
+        <span
           ref={addButtonRef}
           onClick={addNewButton}
           style={{
             height: "500px",
             width: "100%",
             position: "relative",
+            display:"block"
           }}
         >
           {children}
@@ -83,11 +86,12 @@ function ImageTagDiv({ children }) {
               key={tagId}
               disabled={!isEditing}
             >
-              <div
+              <span
                 style={{
                   position: "absolute",
                   left: 0,
                   top: 0,
+                  display: "block"
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -111,14 +115,14 @@ function ImageTagDiv({ children }) {
                     setSelectedItem={(item) => handleSelect(index, item)}
                   />
                 )}
-              </div>
+              </span>
             </Draggable>
           ))}
-        </div>
+        </span>
         <StTagEditorButton onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? "편집완료" : "상품 태그 편집"}
         </StTagEditorButton>
-      </div>
+      </span>
     </>
   );
 }

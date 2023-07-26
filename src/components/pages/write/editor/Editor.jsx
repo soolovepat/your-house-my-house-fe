@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
@@ -10,62 +10,80 @@ export default function ParentComponent() {
   const quillRef = useRef();
   const [tagData, setTagData] = useState([]);
   const [showEditor, setShowEditor] = useState(true);
+  const [activeImage, setActiveImage] = useState(null);
+
 
   const imageHandler = async () => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/*');
     input.click();
-
+  
     input.onchange = async () => {
       const file = input.files[0];
       const formData = new FormData();
       formData.append('contentImage', file);
-
-      const editor = quillRef.current.getEditor();
-      let range = editor.getSelection();
-      let index = range ? range.index : editor.getLength();
-
+  
       try {
         const result = await api.post('/article/contentImage', formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           }
         });
-
+  
         const IMG_URL = result.data.url;
-        // Insert an image placeholder
-        editor.insertText(index, `[Image: ${IMG_URL}]`);
+        const quill = quillRef.current.getEditor();
+  
+        const range = quill.getSelection();
+        const position = range ? range.index : quill.getLength();
+        
+        // 이미지 url 에디터에 넣기
+        const imgTag = `<img src="${IMG_URL}" />\n`;
 
+        quill.insertText(position, imgTag);
         setTagData(oldData => [...oldData, { url: IMG_URL, tags: [] }]);
-        setShowEditor(true);
+        
       } catch (error) {
         console.log('Upload failed');
       }
     };
   }
-
+  
   const handleUpdateTags = (url, newTags) => {
     setTagData(oldData => oldData.map(data => data.url === url ? { url, tags: newTags } : data));
   }
 
+  useEffect(() => {
+    setActiveImage(null);
+  }, [tagData]);
   return (
     <div>
       <button onClick={imageHandler}>Upload Image</button>
-      {tagData.map(data => 
-        <ImageTagDiv key={data.url} url={data.url} tags={data.tags} onUpdateTags={handleUpdateTags}>
+      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor} />
+      {tagData.map((data) => (
+        <ImageTagDiv
+          key={data.url}
+          url={data.url}
+          tags={data.tags}
+          onUpdateTags={handleUpdateTags}
+          isActive={activeImage === data.url}
+          onClick={() => setActiveImage(data.url)}
+        >
           <Imgwall src={data.url} alt="Uploaded content" />
         </ImageTagDiv>
-      )}
-      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor} />
+      ))}
     </div>
-  )
+  );
 }
 
+
+
 const Editor = ({ content, setContent, quillRef, show }) => {
-  const contentHandler = (value) => {
-    setContent(value);
+  const contentHandler = (newContent) => {
+    setContent(newContent);
   };
+  
+  console.log(content)
 
   return (
     <EditorContainer style={{display: show ? "block" : "none"}}>
