@@ -25,33 +25,13 @@ import SelectorModal from "./modals/selectorModal";
 import Editor from "./editor/Editor";
 import InputTitle from "./inputTitle";
 import { styled } from "styled-components";
-import ImageTagDiv from "./editor/imagetag/ImageTagDiv";
+import { DataProvider } from "./hooks/useData";
 
 function Write() {
   // for Modal opening
   const [isSelector, setIsSelector] = useState("");
   const [isImage, setIsImage] = useState(false);
   const [coverImage, setCoverImage] = useState(null);
-  const [data, setData] = useState({
-    title :"",
-    residence :0,
-    area :0,
-    budget: 0,
-    content:"",
-    tags:[
-      {
-        contentImageId :"",
-        tagsId :[],
-        itemId:[],
-        itemName:[],
-        brand:[],
-        coverImage :[],
-        axisX : [],
-        axisY:[]
-      }
-    ]
-    
-  })
 
   const selectorHandler = () => {
     setIsSelector(!isSelector);
@@ -67,6 +47,7 @@ function Write() {
   }
   return (
     <>
+    <DataProvider>
       <StWriteheader>
         <button onClick={onSubmitHandler}> 발행</button>
       </StWriteheader>
@@ -132,12 +113,13 @@ function Write() {
           <InputTitle />
         </StTitleContainer>
         <StEditorContainer>
-          <Editor />
+          <Editor/>
           {/* <ImageTagDiv>
           <Imgwall src="https://images.pexels.com/photos/2440471/pexels-photo-2440471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
           </ImageTagDiv> */}
         </StEditorContainer>
       </StBodyContainer>
+      </DataProvider>
     </>
   );
 }

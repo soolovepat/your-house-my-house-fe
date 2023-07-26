@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import api from "../../../../../../api/api";
 
@@ -9,26 +9,41 @@ export const ImageTagModal = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [ page, setPage]  = useState(1)
+  console.log("search",results)
 
+
+
+
+
+  useEffect(() => {
+    if (searchTerm !== '') {
+      setPage(1);  // reset page number
+      setResults([]);  // reset results
+    }
+  }, [searchTerm]);
+  
   useEffect(() => {
     if (!selectedItem) {
       api
-        .get(`search`, {
+        .get(`article/item`, {
           params: {
-            query: searchTerm,
+            itemName: searchTerm,
+            page: page,
           },
         })
         .then((res) => {
-          setResults(res.data.articles);
+          setResults(res.data.list)
         })
         .catch((err) => {
           console.error(err);
         });
     }
-  }, [searchTerm, selectedItem]);
+  }, [searchTerm, selectedItem, page]);
+  
 
   const handleSelect = (item) => {
-    setSelectedItem(item.title);
+    setSelectedItem(item.itemName);
     closeModal();
   };
 
@@ -43,8 +58,8 @@ export const ImageTagModal = ({
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           {results.map((item, index) => (
-            <div key={item.articleId}>
-              {item.title}
+            <div key={item.itemId}>
+              {item.itemName}
               <button onClick={() => handleSelect(item)}>Select</button>
             </div>
           ))}

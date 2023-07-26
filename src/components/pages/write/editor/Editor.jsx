@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import api from "../../../../api/api";
 import ImageTagDiv from "./imagetag/ImageTagDiv";
+import { useData } from "../hooks/useData";
 
 export default function ParentComponent() {
   const [content, setContent] = useState("");
@@ -11,7 +12,7 @@ export default function ParentComponent() {
   const [tagData, setTagData] = useState([]);
   const [showEditor, setShowEditor] = useState(true);
   const [activeImage, setActiveImage] = useState(null);
-
+  const {data, setData} = useData()
 
   const imageHandler = async () => {
     const input = document.createElement('input');
@@ -41,7 +42,8 @@ export default function ParentComponent() {
         const imgTag = `<img src="${IMG_URL}" />\n`;
 
         quill.insertText(position, imgTag);
-        setTagData(oldData => [...oldData, { url: IMG_URL, tags: [] }]);
+
+        setTagData(oldData => [...oldData, {url: IMG_URL, tags: [] }]);
         
       } catch (error) {
         console.log('Upload failed');
@@ -59,14 +61,15 @@ export default function ParentComponent() {
   return (
     <div>
       <button onClick={imageHandler}>Upload Image</button>
-      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor} />
+      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor}/>
       {tagData.map((data) => (
         <ImageTagDiv
           key={data.url}
+          id={data.url}
           url={data.url}
           tags={data.tags}
           onUpdateTags={handleUpdateTags}
-          isActive={activeImage === data.url}
+          isActive={activeImage === data.id}
           onClick={() => setActiveImage(data.url)}
         >
           <Imgwall src={data.url} alt="Uploaded content" />
@@ -79,11 +82,12 @@ export default function ParentComponent() {
 
 
 const Editor = ({ content, setContent, quillRef, show }) => {
+  const {data, setData} = useData()
   const contentHandler = (newContent) => {
     setContent(newContent);
+    setData({...data, content:content})
   };
   
-  console.log(content)
 
   return (
     <EditorContainer style={{display: show ? "block" : "none"}}>

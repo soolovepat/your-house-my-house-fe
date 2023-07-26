@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
+import { useData } from "../hooks/useData";
 
 function InputTitle() {
+  const [title, setTitle] = useState('')
+  const {data, setData} = useData()
+  
+  const titleHandler = (e)=>{
+    setTitle(e.target.value)
+    setData({...data, title:title})
+  }
+
+  console.log(data)
   return (
     <>
-      <StTitleInput placeholder="제목을 입력해주세요" />
+      <StTitleInput placeholder="제목을 입력해주세요" value={title} onChange={titleHandler} />
     </>
   );
 }

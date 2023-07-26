@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { ImageTagModal } from "./tagmodal/ImageTagModal";
 import styled from "styled-components";
+import { useData } from "../../hooks/useData";
 
-function ImageTagDiv({ children }) {
+function ImageTagDiv({ children , url}) {
   const [isEditing, setIsEditing] = useState(false);
   const addButtonRef = useRef(null);
+  const {data,setData} = useData()
 
   const [tagData, setTagData] = useState({
     tagsId: [],
@@ -13,6 +15,7 @@ function ImageTagDiv({ children }) {
     axisY: [],
     selectedItems: [],
   });
+
 
   const [modalVisible, setModalVisible] = useState([]);
 
@@ -28,6 +31,41 @@ function ImageTagDiv({ children }) {
       axisY: [...prevData.axisY, y],
       selectedItems: [...prevData.selectedItems, null],
     }));
+
+    setData((prevData) => {
+      // Check if tag object for current image already exists
+      let imageTagIndex = prevData.tags.findIndex(tag => tag.contentImageId === url);
+    
+      let newTag;
+      if (imageTagIndex !== -1) {
+        // If it exists, update it
+        newTag = {
+          ...prevData.tags[imageTagIndex],
+          tagsId: [...prevData.tags[imageTagIndex].tagsId, prevData.tags[imageTagIndex].tagsId.length],
+          axisX: [...prevData.tags[imageTagIndex].axisX, x],
+          axisY: [...prevData.tags[imageTagIndex].axisY, y],
+          selectedItems: [...prevData.tags[imageTagIndex].selectedItems, null],
+        };
+    
+        prevData.tags[imageTagIndex] = newTag; // replace the tag object at the same index
+      } else {
+        // If it doesn't exist, create a new one
+        newTag = {
+          contentImageId: url,
+          tagsId: [0], // Start from 0 as it's the first tag
+          axisX: [x],
+          axisY: [y],
+          selectedItems: [null],
+        };
+    
+        prevData.tags.push(newTag); // add the new tag object to the array
+      }
+    
+      return {
+        ...prevData,
+      };
+    });
+
 
     setModalVisible((prevVisible) => [...prevVisible, true]);
   };
