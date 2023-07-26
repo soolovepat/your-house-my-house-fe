@@ -160,9 +160,7 @@ function Write() {
             setCoverImage={setCoverImage}
           />
         )}
-        <StTitleContainer>
           <InputTitle />
-        </StTitleContainer>
         <StEditorContainer>
           <Editor />
         </StEditorContainer>
