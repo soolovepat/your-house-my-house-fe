@@ -22,6 +22,7 @@ const Home = () => {
         const response = await getDatas();
         dispatch(setArticleList(response.data.articleList));
         dispatch(setItemList(response.data.itemList));
+        console.log(response.data.articleList);
       } catch (error) {
         console.error(error);
       }
@@ -36,7 +37,7 @@ const Home = () => {
 
   return (
     <StContainer>
-      <Banner articleList={dataList.articleList} />
+      <Banner articleList={articleList} />
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
