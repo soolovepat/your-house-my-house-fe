@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "../../../../styles/Theme";
+import theme from "../../../../styles/theme";
 
 export const StBanner = styled.div`
   max-width: 1256px;
