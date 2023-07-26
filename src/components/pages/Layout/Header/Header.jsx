@@ -22,7 +22,7 @@ const Header = () => {
 
     return (
         <StHeaderWrap $display={isSticky}>
-            <StHeaderBanner />
+            <StHeaderBanner>6조 수고 많으셨습니다!🎉</StHeaderBanner>
             <StHeaderContainer>
                 <div>
                     <StLogo>
