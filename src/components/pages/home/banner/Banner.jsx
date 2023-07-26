@@ -12,6 +12,7 @@ const Banner = ({ articleList }) => {
     const randomIndex = Math.floor(Math.random() * article.length);
     return article[randomIndex];
   };
+  console.log(getRandomArticle(articleList));
 
   const randomArticle = articleList && getRandomArticle(articleList);
   return (
@@ -30,7 +31,7 @@ const Banner = ({ articleList }) => {
                 <Link to={`event/${bigbanner}`}>
                   <img src={bigbanner} />
 
-                  {articleList && (
+                  {randomArticle && (
                     <div>
                       <strong>{randomArticle.title}</strong>
                       <span>지금은 null값입니다{randomArticle.nickname}</span>
