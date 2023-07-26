@@ -23,12 +23,12 @@ const Router = () => {
             path="/write"
             element={<ProtectedRoute element={<Write />} />}
           />
+          <Route path="/item/:itemId" element={<ItemDetail />} />
+          <Route path="/item/category" element={<ItemList />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/write" element={<Write />} />
-        <Route path="/item/:itemId" element={<ItemDetail />} />
-        <Route path="/item/category" element={<ItemList />} />
       </Routes>
     </BrowserRouter>
   );
