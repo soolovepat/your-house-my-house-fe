@@ -24,6 +24,7 @@ function InputTitle() {
        onChange={titleHandler} 
        onBlur={() => setTouched(true)}
        touched={touched}
+       title={title}
        />
       <StWordCount>{title.length}/80</StWordCount>
     </StTitleContainer>
@@ -46,7 +47,7 @@ const StTitleInput = styled.input`
   border: none;
   color: rgb(41, 41, 41);
   font-weight: bold;
-  border-bottom: ${props => (props.touched ? "1px solid  rgb(255, 119, 119)" : "none")};
+  border-bottom: ${props => (props.touched && props.title === "" ? "1px solid  rgb(255, 119, 119)" : "none")};
 
   &:focus {
     outline: none;

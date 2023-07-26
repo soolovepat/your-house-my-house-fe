@@ -5,6 +5,7 @@ import styled from "styled-components";
 import api from "../../../../api/api";
 import ImageTagDiv from "./imagetag/ImageTagDiv";
 import { useData } from "../hooks/useData";
+import myImage from '../../../../assets/images/sample/ico-image.svg'
 
 export default function ParentComponent() {
   const [content, setContent] = useState("");
@@ -12,55 +13,64 @@ export default function ParentComponent() {
   const [tagData, setTagData] = useState([]);
   const [showEditor, setShowEditor] = useState(true);
   const [activeImage, setActiveImage] = useState(null);
-console.log(content)
+  console.log(content);
   const imageHandler = async () => {
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
     input.click();
-  
+
     input.onchange = async () => {
       const file = input.files[0];
       const formData = new FormData();
-      formData.append('contentImage', file);
-  
+      formData.append("contentImage", file);
+
       try {
-        const result = await api.post('/article/contentImage', formData, {
+        const result = await api.post("/article/contentImage", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
-          }
+          },
         });
-  
+
         const IMG_URL = result.data.url;
         const quill = quillRef.current.getEditor();
-  
+
         const range = quill.getSelection();
         const position = range ? range.index : quill.getLength();
-        
+
         // 이미지 url 에디터에 넣기
         const imgTag = `<img src="${IMG_URL}" />\n`;
 
         quill.insertText(position, imgTag);
 
-        setTagData(oldData => [...oldData, {url: IMG_URL, tags: [] }]);
-        
+        setTagData((oldData) => [...oldData, { url: IMG_URL, tags: [] }]);
       } catch (error) {
-        console.log('Upload failed');
+        console.log("Upload failed");
       }
     };
-  }
-  
+  };
+
   const handleUpdateTags = (url, newTags) => {
-    setTagData(oldData => oldData.map(data => data.url === url ? { url, tags: newTags } : data));
-  }
+    setTagData((oldData) =>
+      oldData.map((data) => (data.url === url ? { url, tags: newTags } : data))
+    );
+  };
 
   useEffect(() => {
     setActiveImage(null);
   }, [tagData]);
   return (
     <div>
-      <button onClick={imageHandler}>Upload Image</button>
-      <Editor content={content} setContent={setContent} quillRef={quillRef} show={showEditor}/>
+      <StContentImage 
+      onClick={imageHandler}
+      src={myImage}
+      >Upload Image</StContentImage>
+      <Editor
+        content={content}
+        setContent={setContent}
+        quillRef={quillRef}
+        show={showEditor}
+      />
       {tagData.map((data) => (
         <ImageTagDiv
           key={data.url}
@@ -78,18 +88,15 @@ console.log(content)
   );
 }
 
-
-
 const Editor = ({ content, setContent, quillRef, show }) => {
-  const {data, setData} = useData()
+  const { data, setData } = useData();
   const contentHandler = (newContent) => {
     setContent(newContent);
-    setData({...data, content:content})
+    setData({ ...data, content: content });
   };
-  
 
   return (
-    <EditorContainer style={{display: show ? "block" : "none"}}>
+    <EditorContainer style={{ display: show ? "block" : "none" }}>
       <ReactQuill
         ref={quillRef}
         value={content}
@@ -99,7 +106,10 @@ const Editor = ({ content, setContent, quillRef, show }) => {
             container: [
               [{ header: [false, 1, 2, 3] }],
               ["bold", "italic", "underline"],
-              [{ color: ["#000000", "#e60000", "#00ffff"] }, { background: [] }],
+              [
+                { color: ["#000000", "#e60000", "#00ffff"] },
+                { background: [] },
+              ],
               [{ align: [] }],
               [{ list: "ordered" }, { list: "bullet" }, "link"],
             ],
@@ -109,17 +119,17 @@ const Editor = ({ content, setContent, quillRef, show }) => {
       />
     </EditorContainer>
   );
-}
+};
 
 const EditorContainer = styled.div`
   .ql-toolbar.ql-snow {
-    top: 2px;
     position: fixed;
-    z-index: 600;
-    right: 151px;
-    left: auto;
-    padding: 24px;
+    top: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px 0px 0px 15px;
     border: none;
+    z-index: 600;
   }
 
   .ql-container {
@@ -153,4 +163,15 @@ const EditorContainer = styled.div`
 const Imgwall = styled.img`
   width: 100%;
   height: 100%;
+`;
+ 
+
+const StContentImage = styled.button`
+     position: fixed;
+    top: 7%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    padding: 0px 0px 0px 15px;
+    border: none;
+    z-index: 600;
 `

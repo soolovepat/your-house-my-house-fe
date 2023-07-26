@@ -18,14 +18,13 @@ import {
   StCoverImageContainer,
   StEditorContainer,
   StSelectorContainer,
-  StTitleContainer,
 } from "./container";
 
 import SelectorModal from "./modals/selectorModal";
 import Editor from "./editor/Editor";
 import InputTitle from "./inputTitle";
-import { styled } from "styled-components";
 import { useData } from "./hooks/useData";
+import { styled } from "styled-components";
 
 function Write() {
   // for Modal opening
@@ -51,31 +50,55 @@ function Write() {
     formData.append("residence", "1");
     formData.append("content", data.content);
     
-    data.tags.forEach((tag, index) => {
-      formData.append(`tags[${index}][contentImageId]`, tag.contentImageId);
-      tag.tagsId.forEach((id, i) => {
-        formData.append(`tags[${index}][tagsId][${i}]`, id);
-      });
-      tag.itemId.forEach((id, i) => {
-        formData.append(`tags[${index}][itemId][${i}]`, id);
-      });
-      tag.itemName.forEach((name, i) => {
-        formData.append(`tags[${index}][itemName][${i}]`, name);
-      });
-      tag.brand.forEach((brand, i) => {
-        formData.append(`tags[${index}][brand][${i}]`, brand);
-      });
-      tag.coverImage.forEach((image, i) => {
-        formData.append(`tags[${index}][coverImage][${i}]`, image);
-      });
-      tag.axisX.forEach((x, i) => {
-        formData.append(`tags[${index}][axisX][${i}]`, x);
-      });
-      tag.axisY.forEach((y, i) => {
-        formData.append(`tags[${index}][axisY][${i}]`, y);
-      });
-    });
+    if (Array.isArray(data.tags)) {
+      data.tags.forEach((tag, index) => {
+        if (tag.contentImageId) {
+          formData.append(`tags[${index}][contentImageId]`, tag.contentImageId);
+        }
 
+        if (Array.isArray(tag.tagsId)) {
+          tag.tagsId.forEach((id, i) => {
+            formData.append(`tags[${index}][tagsId][${i}]`, id);
+          });
+        }
+
+        if (Array.isArray(tag.itemId)) {
+          tag.itemId.forEach((id, i) => {
+            formData.append(`tags[${index}][itemId][${i}]`, id);
+          });
+        }
+
+        if (Array.isArray(tag.itemName)) {
+          tag.itemName.forEach((name, i) => {
+            formData.append(`tags[${index}][itemName][${i}]`, name);
+          });
+        }
+
+        if (Array.isArray(tag.brand)) {
+          tag.brand.forEach((brand, i) => {
+            formData.append(`tags[${index}][brand][${i}]`, brand);
+          });
+        }
+
+        if (Array.isArray(tag.coverImage)) {
+          tag.coverImage.forEach((image, i) => {
+            formData.append(`tags[${index}][coverImage][${i}]`, image);
+          });
+        }
+
+        if (Array.isArray(tag.axisX)) {
+          tag.axisX.forEach((x, i) => {
+            formData.append(`tags[${index}][axisX][${i}]`, x);
+          });
+        }
+
+        if (Array.isArray(tag.axisY)) {
+          tag.axisY.forEach((y, i) => {
+            formData.append(`tags[${index}][axisY][${i}]`, y);
+          });
+        }
+      });
+    }
     try {
       const response = await api.post("article", formData,)
       if (!response.ok) {
@@ -92,7 +115,7 @@ function Write() {
   return (
     <>
     <form onSubmit={onSubmitHandler} encType="multipart/form-data">
-      <StWriteheader>       
+      <StWriteheader> 
           <button type="submit">
             발행
           </button>
