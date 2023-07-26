@@ -1,12 +1,13 @@
 import styled from "styled-components";
-// import {theme} from "../../../../styles/theme";
+import theme from "../../../../styles/theme";
 
 export const StHeaderWrap = styled.header`
-  width: 100%;
-  border-bottom: 1px solid #eaedef;
-  position: ${(props) => (props.$display ? "sticky" : "relative")};
-  top: ${(props) => (props.$display ? "-51px" : 0)};
-  z-index: 1000;
+    width: 100%;  
+    background-color: #fff;  
+    border-bottom: 1px solid #eaedef;
+    position: ${props => props.$display ? "sticky" : "relative"};
+    top: ${props => props.$display ? '-51px' : 0};
+    z-index: 1000;
 `;
 
 export const StHeaderBanner = styled.div`
@@ -15,15 +16,15 @@ export const StHeaderBanner = styled.div`
   background-color: #00bbff;
 `;
 export const StHeaderContainer = styled.div`
-  /* ${({ theme }) => theme.container("column")}; */
-  width: 100%;
-  height: 80px;
-  padding: 10px 60px;
-  box-sizing: border-box;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    ${theme.container};
+    width: 100%;
+    height: 80px;
+    padding: 10px 60px;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
   & > div {
     display: flex;
@@ -55,12 +56,12 @@ export const StMenuContainer = styled.ul`
 `;
 
 export const StLogo = styled.div`
-  display: inline-block;
-  width: 74px;
-  height: 34px;
-  & > img {
-    width: 100%;
-  }
+    display: inline-block;
+    width: 74px;
+    height: 34px;
+    & img, & a {
+        width: 100%;
+    }
 `;
 
 export const StHeaderSubMenuContainer = styled.ul`
