@@ -3,6 +3,15 @@ import theme from "../../../../styles/theme";
 
 const alwaysArrow = css`
   opacity: 1;
+
+  button:nth-child(1) {
+    opacity: ${(props) => (props.currItemIndex === 0 ? 0 : 1)};
+  }
+
+  button:last-child {
+    opacity: ${(props) =>
+      props.currItemIndex === props.itemLength - 1 ? 0 : 1};
+  }
 `;
 
 const hoverArrow = css`

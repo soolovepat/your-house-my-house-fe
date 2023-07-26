@@ -27,12 +27,20 @@ const Carousel = ({
 
   return (
     <>
-      <StCarousel type={type}>
+      <StCarousel
+        currItemIndex={currItemIndex}
+        itemLength={itemLength}
+        type={type}
+      >
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
         {itemLength > 1 ? (
-          <StCarouselArrow type={type}>
+          <StCarouselArrow
+            currItemIndex={currItemIndex}
+            itemLength={itemLength}
+            type={type}
+          >
             <button onClick={onDecreaseIdx}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
