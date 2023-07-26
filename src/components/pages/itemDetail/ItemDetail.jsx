@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { StContainer } from "../../../styles/Container";
 
-function ItemDetail() {
+const ItemDetail = () => {
   const dispatch = useDispatch();
   const { itemId } = useParams();
 
@@ -26,7 +26,16 @@ function ItemDetail() {
     fetchPosts();
   }, [dispatch]);
 
-  const itemList = useSelector((state) => state.dataList.items);
+  const itemList = useSelector((state) => state.dataList.itemList);
+  console.log(itemList.content);
+  const jsonString = itemList.content;
+
+  try {
+    const jsonArray = JSON.parse(jsonString);
+    console.log(jsonArray); // JavaScript 배열로 변환된 값 출력
+  } catch (error) {
+    console.error("유효하지 않은 JSON 배열 형식입니다.");
+  }
 
   return (
     <StContainer>
@@ -74,9 +83,13 @@ function ItemDetail() {
           <div>Loading...</div>
         )}
       </StItemDetailTop>
-      <span>{itemList.content}사진 들어갈 자리</span>
+      <span>
+        {/* {itemList.content && itemList.content.map((img) => <img src={img} />)} */}
+        {/* <img src={itemList.content[0]} /> */}
+        {itemList.content}
+      </span>
     </StContainer>
   );
-}
+};
 
 export default ItemDetail;
