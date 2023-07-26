@@ -37,14 +37,12 @@ const ItemDetail = () => {
   //   console.error("유효하지 않은 JSON 배열 형식입니다.");
   // }
   const urlRegex = /https?:\/\/[^"]+/g;
-  const coverImageUrlArray = itemList.content.match(urlRegex);
+  const coverImageUrlArray = itemList?.content?.match(urlRegex);
 
   const coverImageUrl =
-    coverImageUrlArray && coverImageUrlArray.length > 0
-      ? coverImageUrlArray[0]
-      : "";
+    itemList && itemList.content ? coverImageUrlArray[0] : "";
 
-  const coverImageUrlArrayExceptLast = coverImageUrlArray.slice(
+  const coverImageUrlArrayExceptLast = coverImageUrlArray?.slice(
     0,
     coverImageUrlArray.length - 1
   );
@@ -53,7 +51,7 @@ const ItemDetail = () => {
     <StContainer>
       <StItemDetailTop>
         <div>
-          <img src={product_img_01} />
+          <img src={coverImageUrl} />
         </div>
         {itemList ? (
           <div>
