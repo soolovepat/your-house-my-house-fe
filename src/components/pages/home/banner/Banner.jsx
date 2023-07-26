@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {
-  bigbanner,
-  banner01,
-  banner02,
-  banner03,
-  banner04,
-  banner05,
-  banner06,
-} from "../../../../assets/images/banner";
+import { bigbanner } from "../../../../assets/images/banner";
 import Carousel from "../carousel/Carousel";
 import { StBanner, StSmallBanner } from "./styled";
 import { Link } from "react-router-dom";
 import RightBanner from "./RightBanner";
 
-const Banner = () => {
+const Banner = ({ articleList }) => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
 
+  const getRandomArticle = (article) => {
+    const randomIndex = Math.floor(Math.random() * article.length);
+    return article[randomIndex];
+  };
+
+  const randomArticle = articleList && getRandomArticle(articleList);
   return (
     <StBanner>
       <section>
@@ -30,6 +28,13 @@ const Banner = () => {
               <li>
                 <Link to={`event/${bigbanner}`}>
                   <img src={bigbanner} />
+
+                  {articleList && (
+                    <div>
+                      <strong>{randomArticle.title}</strong>
+                      <span>{randomArticle.nickname}</span>
+                    </div>
+                  )}
                 </Link>
               </li>
             </StSmallBanner>
