@@ -8,8 +8,10 @@ import {
   banner06,
 } from "../../../../assets/images/banner";
 import Carousel from "../carousel/Carousel";
-import { StBanner, StSmallBanner } from "./styled";
+import { StSmallBanner, StSmallBannerNumber } from "./styled";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const RightBanner = () => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
@@ -77,6 +79,11 @@ const RightBanner = () => {
           ))}
         </StSmallBanner>
       </Carousel>
+      <StSmallBannerNumber>
+        <span>
+          {currItemIndex + 1}/{itemLength} <FontAwesomeIcon icon={faPlus} />
+        </span>
+      </StSmallBannerNumber>
     </div>
   );
 };
