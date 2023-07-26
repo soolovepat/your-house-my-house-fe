@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { StCarousel } from "./styled";
 import Button from "../../../shared/button/Button";
-import theme from "../../../../styles/Theme";
 
 const Carousel = ({
   children,
