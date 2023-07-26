@@ -128,7 +128,7 @@ const LoginPage = () => {
 
   const userRegistryCheck = async () => {
     await axios
-      .post("http://3.34.5.210:3000/api/auth/login", {
+      .post("/api/auth/login", {
         email: user.email,
         password: user.password,
       })
