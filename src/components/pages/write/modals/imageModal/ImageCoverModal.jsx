@@ -1,4 +1,4 @@
-import { useState } from "react";
+import api from '../../../../../api/api'
 import {
   StImageModalContainer,
   StImageModalWrapper,
@@ -15,14 +15,25 @@ const ImageCoverMdal = ({closeModal, setCoverImage}) => {
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
     input.click();
-
+  
     input.onchange = async () => {
       const file = input.files[0];
       const formData = new FormData();
-      formData.append("contentImage", file)
-      setCoverImage(URL.createObjectURL(file));
+      formData.append('coverImage', file);
 
-     closeModal()
+      try{
+        const result = await api.post('/article/coverImage',formData,{
+          headers:{
+            "Content-Type": "multipart/form-data",
+          }
+        });
+        const cover_URL = result.data.url;
+        setCoverImage(cover_URL)
+      } catch (error){
+        console.log('Upload failed')
+      }
+
+      closeModal();
     };
   };
   return (

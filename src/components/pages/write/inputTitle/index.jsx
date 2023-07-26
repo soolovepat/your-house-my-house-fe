@@ -11,7 +11,6 @@ function InputTitle() {
     setData({...data, title:title})
   }
 
-  console.log(data)
   return (
     <>
       <StTitleInput placeholder="제목을 입력해주세요" value={title} onChange={titleHandler} />

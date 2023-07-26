@@ -17,8 +17,8 @@ export const ImageTagModal = ({
 
   useEffect(() => {
     if (searchTerm !== '') {
-      setPage(1);  // reset page number
-      setResults([]);  // reset results
+      setPage(1);  
+      setResults([]);  
     }
   }, [searchTerm]);
   
@@ -42,11 +42,16 @@ export const ImageTagModal = ({
   
 
   const handleSelect = (item) => {
+    const urlRegex = /https?:\/\/[^"]+/g;
+    const coverImageUrlArray = item.coverImage.match(urlRegex);
+  
+    let coverImageUrl = coverImageUrlArray && coverImageUrlArray.length > 0 ? coverImageUrlArray[0] : '';
+
     setSelectedItem({
       itemId: item.itemId,
       itemName: item.itemName,
       brand: item.brand,
-      coverImage: item.coverImage,
+      coverImage: coverImageUrl,
     });
     closeModal();
   };

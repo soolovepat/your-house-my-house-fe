@@ -12,7 +12,7 @@ export default function ParentComponent() {
   const [tagData, setTagData] = useState([]);
   const [showEditor, setShowEditor] = useState(true);
   const [activeImage, setActiveImage] = useState(null);
-
+console.log(content)
   const imageHandler = async () => {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
@@ -110,8 +110,6 @@ const Editor = ({ content, setContent, quillRef, show }) => {
     </EditorContainer>
   );
 }
-
-// Your existing styled component
 
 const EditorContainer = styled.div`
   .ql-toolbar.ql-snow {

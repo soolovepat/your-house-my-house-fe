@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ImageCoverModal from './modals/imageModal/ImageCoverModal'
-
+import ImageCoverModal from "./modals/imageModal/ImageCoverModal";
+import api from "../../../api/api";
 import {
   StArrowIcon,
   StButtonAdddiv,
@@ -33,7 +33,7 @@ function Write() {
   const [isImage, setIsImage] = useState(false);
   const [coverImage, setCoverImage] = useState(null);
 
-  const {data} = useData()
+  const { data, setData } = useData();
   const selectorHandler = () => {
     setIsSelector(!isSelector);
   };
@@ -42,15 +42,60 @@ function Write() {
     setIsImage(!isImage);
   };
 
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
 
-  const onSubmitHandler = ()=>{
-    // post api 
+    formData.append("coverImage", coverImage);
+    formData.append("title", data.title);
+    formData.append("residence", "1");
+    formData.append("content", data.content);
+    
+    data.tags.forEach((tag, index) => {
+      formData.append(`tags[${index}][contentImageId]`, tag.contentImageId);
+      tag.tagsId.forEach((id, i) => {
+        formData.append(`tags[${index}][tagsId][${i}]`, id);
+      });
+      tag.itemId.forEach((id, i) => {
+        formData.append(`tags[${index}][itemId][${i}]`, id);
+      });
+      tag.itemName.forEach((name, i) => {
+        formData.append(`tags[${index}][itemName][${i}]`, name);
+      });
+      tag.brand.forEach((brand, i) => {
+        formData.append(`tags[${index}][brand][${i}]`, brand);
+      });
+      tag.coverImage.forEach((image, i) => {
+        formData.append(`tags[${index}][coverImage][${i}]`, image);
+      });
+      tag.axisX.forEach((x, i) => {
+        formData.append(`tags[${index}][axisX][${i}]`, x);
+      });
+      tag.axisY.forEach((y, i) => {
+        formData.append(`tags[${index}][axisY][${i}]`, y);
+      });
+    });
 
-  }
+    try {
+      const response = await api.post("article", formData,)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const apiResponse = await response.json();
+      console.log(apiResponse);
+    } catch (error) {
+      console.log("Fetch error: ", error);
+    }
+
+  };
+
   return (
     <>
-      <StWriteheader>
-        <button onClick={onSubmitHandler}> 발행</button>
+    <form onSubmit={onSubmitHandler} encType="multipart/form-data">
+      <StWriteheader>       
+          <button type="submit">
+            발행
+          </button>
       </StWriteheader>
       <StBodyContainer>
         <StSelectorContainer>
@@ -70,7 +115,7 @@ function Write() {
               />
             </div>
           </StSelectorButton>
-        {isSelector && <SelectorModal />}
+          {isSelector && <SelectorModal />}
         </StSelectorContainer>
 
         <StCoverImageContainer onClick={imageHandlerbuttton}>
@@ -78,10 +123,15 @@ function Write() {
             <img
               src={coverImage}
               alt="Cover"
-              style={{ width: "100%", height: "100%", objectFit:"cover", cursor:"pointer" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                cursor: "pointer",
+              }}
             />
           ) : (
-            <StImagebutton>
+            <StImagebutton >
               <StImageTextTitle>
                 <span>
                   드래그 앤 드롭이나 추가하기 버튼으로
@@ -114,20 +164,12 @@ function Write() {
           <InputTitle />
         </StTitleContainer>
         <StEditorContainer>
-          <Editor/>
-          {/* <ImageTagDiv>
-          <Imgwall src="https://images.pexels.com/photos/2440471/pexels-photo-2440471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
-          </ImageTagDiv> */}
+          <Editor />
         </StEditorContainer>
       </StBodyContainer>
+      </form>
     </>
   );
 }
 
 export default Write;
-
-const Imgwall = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
