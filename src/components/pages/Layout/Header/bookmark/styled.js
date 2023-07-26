@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-// import theme from "../../../../../Styles/theme";
+import theme from "../../../../../styles/theme";
 
 
 export const StBookmark = styled.div`
@@ -13,7 +13,7 @@ export const StBookmark = styled.div`
         height: 100%;
         cursor: pointer;
         &:hover {
-            color: ${({theme}) => theme.primaryColor};
+            color: ${({primaryColor}) => primaryColor};
         }
     }
 

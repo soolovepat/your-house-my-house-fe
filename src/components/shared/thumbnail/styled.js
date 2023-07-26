@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 
 const columns = {
   4: "25%",
@@ -59,4 +58,8 @@ export const StThumbnail = styled.div`
   padding-bottom: 30px;
   box-sizing: border-box;
   text-align: ${(props) => props.align};
+
+  > div {
+    cursor: pointer;
+  }
 `;

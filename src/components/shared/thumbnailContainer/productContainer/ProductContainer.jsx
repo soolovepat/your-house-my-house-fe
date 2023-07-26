@@ -20,19 +20,21 @@ function ProductContainer({ itemList, column }) {
           align={"left"}
           onClick={() => onClickProductHandler(item.itemId)}
         >
-          <StImgWrap>
-            <img src={product_img_01} alt="home_img" />
-          </StImgWrap>
-          <h5>
-            <span>거래처</span>
-            <span>{item.itemName}</span>
-          </h5>
-          <NumberComma
-            number={item.price}
-            size={"17px"}
-            weight={"700"}
-            lineheight={"23px"}
-          />
+          <div>
+            <StImgWrap>
+              <img src={product_img_01} alt="home_img" />
+            </StImgWrap>
+            <h5>
+              <span>거래처</span>
+              <span>{item.itemName}</span>
+            </h5>
+            <NumberComma
+              number={item.price}
+              size={"17px"}
+              weight={"700"}
+              lineHeight={"23px"}
+            />
+          </div>
         </Thumbnail>
       ))}
     </StThumbnailContainer>

@@ -18,8 +18,8 @@ import {
   rental,
   shopping,
   storage,
-} from "../../../../assets/images/category/categoryImages";
-import { StCategory } from "./styled";
+} from "../../../../assets/images/category";
+import { StCategory, StCategoryList } from "./styled";
 import Carousel from "../carousel/Carousel";
 
 const Category = () => {
@@ -27,87 +27,87 @@ const Category = () => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
   const CATEGORIES = [
     {
-      id: 0,
+      id: 1,
       img: furniture,
       label: "가구",
     },
     {
-      id: 1,
+      id: 2,
       img: fabric,
       label: "패브릭",
     },
     {
-      id: 2,
+      id: 3,
       img: homeappliances,
       label: "가전·디지털",
     },
     {
-      id: 3,
+      id: 4,
       img: kitchen,
       label: "주방용품",
     },
     {
-      id: 4,
+      id: 5,
       img: food,
       label: "식품",
     },
     {
-      id: 5,
+      id: 6,
       img: deco,
       label: "데코·식물",
     },
     {
-      id: 6,
+      id: 7,
       img: lighting,
       label: "조명",
     },
     {
-      id: 7,
+      id: 8,
       img: storage,
       label: "수납·정리",
     },
     {
-      id: 8,
+      id: 9,
       img: daily,
       label: "생활용품",
     },
     {
-      id: 9,
+      id: 10,
       img: consumables,
       label: "생필품",
     },
     {
-      id: 10,
+      id: 11,
       img: children,
       label: "유아·아동",
     },
     {
-      id: 11,
+      id: 12,
       img: animals,
       label: "반려동물",
     },
     {
-      id: 12,
+      id: 13,
       img: camping,
       label: "캠핑·레저",
     },
     {
-      id: 13,
+      id: 14,
       img: diy,
       label: "공구·DIY",
     },
     {
-      id: 14,
+      id: 15,
       img: interior,
       label: "인테리어",
     },
     {
-      id: 15,
+      id: 16,
       img: rental,
       label: "렌탈",
     },
     {
-      id: 16,
+      id: 17,
       img: shopping,
       label: "장보기",
     },
@@ -117,25 +117,28 @@ const Category = () => {
   const itemLength = 3;
 
   const onClickCategory = (cateId) => {
-    navigate(`/category/${cateId}`);
+    navigate(`item/category?category=${cateId}`);
   };
 
   return (
-    <Carousel
-      currItemIndex={currItemIndex}
-      setCurrItemIndex={setCurrItemIndex}
-      itemLength={itemLength}
-      move={80}
-    >
-      <StCategory>
-        {CATEGORIES.map((cate) => (
-          <li key={cate.id} onClick={() => onClickCategory(cate.id)}>
-            <img src={cate.img} />
-            <p>{cate.label}</p>
-          </li>
-        ))}
-      </StCategory>
-    </Carousel>
+    <StCategory currItemIndex={currItemIndex} itemLength={itemLength}>
+      <Carousel
+        currItemIndex={currItemIndex}
+        setCurrItemIndex={setCurrItemIndex}
+        itemLength={itemLength}
+        move={80}
+        type={"alwaysArrow"}
+      >
+        <StCategoryList>
+          {CATEGORIES.map((cate) => (
+            <li key={cate.id} onClick={() => onClickCategory(cate.id)}>
+              <img src={cate.img} />
+              <p>{cate.label}</p>
+            </li>
+          ))}
+        </StCategoryList>
+      </Carousel>
+    </StCategory>
   );
 };
 

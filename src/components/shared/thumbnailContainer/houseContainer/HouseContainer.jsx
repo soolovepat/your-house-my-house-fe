@@ -20,19 +20,21 @@ function HouseContainer({ articleList, column }) {
           align={"center"}
           onClick={() => onClickArticleHandler(article.articleId)}
         >
-          <StImgWrap>
-            <img src={home_img_01} alt="home_img" />
-          </StImgWrap>
-          <h5>{article.title}</h5>
-          <p>{article.nickname}</p>
-          <span>
+          <div>
+            <StImgWrap>
+              <img src={home_img_01} alt="home_img" />
+            </StImgWrap>
+            <h5>{article.title}</h5>
+            <p>{article.nickname}</p>
             <span>
-              스크랩{" "}
-              <NumberComma number="123" size={"13px"} lineheight={"17px"} /> ·
-              조회{" "}
-              <NumberComma number="456" size={"13px"} lineheight={"17px"} />
+              <span>
+                스크랩{" "}
+                <NumberComma number="123" size={"13px"} lineHeight={"17px"} /> ·
+                조회{" "}
+                <NumberComma number="456" size={"13px"} lineHeight={"17px"} />
+              </span>
             </span>
-          </span>
+          </div>
         </Thumbnail>
       ))}
     </StThumbnailContainer>
