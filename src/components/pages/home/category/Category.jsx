@@ -18,7 +18,7 @@ import {
   rental,
   shopping,
   storage,
-} from "../../../../assets/images/category/categoryImages";
+} from "../../../../assets/images/category";
 import { StCategory } from "./styled";
 import Carousel from "../carousel/Carousel";
 
