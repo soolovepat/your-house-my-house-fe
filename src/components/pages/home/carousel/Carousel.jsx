@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
 import { StCarousel, StCarouselArrow } from "./styled";
-import Button from "../../../shared/button/Button";
-import theme from "../../../../styles/theme";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = ({
   children,
@@ -28,11 +30,16 @@ const Carousel = ({
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
-        <StCarouselArrow>
-          <p onClick={onDecreaseIdx}>{"<"}</p>
-          <p onClick={onIncreaseIdx}>{">"}</p>
-          <Button>버튼</Button>
-        </StCarouselArrow>
+        {itemLength > 1 ? (
+          <StCarouselArrow>
+            <button onClick={onDecreaseIdx}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button onClick={onIncreaseIdx}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </StCarouselArrow>
+        ) : null}
       </StCarousel>
     </>
   );
