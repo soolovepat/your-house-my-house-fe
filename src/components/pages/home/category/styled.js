@@ -11,7 +11,7 @@ const gradientOnBoth = css`
     content: "";
     position: absolute;
     top: 0;
-    right: 80%;
+    right: 90%;
     left: 0;
     z-index: 1;
   }
@@ -27,7 +27,7 @@ const gradientOnBoth = css`
     position: absolute;
     top: 0;
     right: 0;
-    left: 80%;
+    left: 90%;
     z-index: 1;
   }
 `;
@@ -44,7 +44,7 @@ const gradientOnRight = css`
     position: absolute;
     top: 0;
     right: 0;
-    left: 80%;
+    left: 90%;
     z-index: 1;
   }
 `;
