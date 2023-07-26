@@ -76,7 +76,7 @@ const SignupPage = () => {
   const register = async () => {
     await axios
       .post(
-        "http://3.34.5.210:3000/api/auth/signup",
+        "/api/auth/signup",
         {
           email: newuser.email,
           password: newuser.password,
