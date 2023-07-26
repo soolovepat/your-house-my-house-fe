@@ -52,6 +52,7 @@ const gradientOnRight = css`
 
 export const StCategory = styled.div`
   position: relative;
+  margin-bottom: 70px;
 
   > div {
     ${(props) => (props.currItemIndex !== 0 ? gradientOnBoth : gradientOnRight)}
