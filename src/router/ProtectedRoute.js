@@ -45,7 +45,7 @@ const ProtectedRoute = ({ element }) => {
         },
       };
       const { data } = await axios.get(
-        `http://3.34.5.210:3000/api/auth/checkout`,
+        `/api/auth/checkout`,
         currentUserToken
       );
       return data.success;
