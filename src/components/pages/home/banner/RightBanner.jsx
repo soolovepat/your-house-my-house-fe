@@ -66,6 +66,7 @@ const RightBanner = () => {
         setCurrItemIndex={setCurrItemIndex}
         itemLength={itemLength}
         move={100}
+        type={"hoverArrow"}
       >
         <StSmallBanner>
           {RIGHTBANNER.map((banner) => (

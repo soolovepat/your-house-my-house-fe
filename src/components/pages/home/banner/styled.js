@@ -78,6 +78,7 @@ export const StSmallBanner = styled.ul`
         color: ${theme.whiteColor};
       }
       span {
+        margin-top: 8px;
         color: ${theme.whiteColor};
       }
     }

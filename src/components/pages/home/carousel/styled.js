@@ -3,6 +3,7 @@ import theme from "../../../../styles/theme";
 
 const alwaysArrow = css`
   opacity: 1;
+  position: relative;
 
   button:nth-child(1) {
     opacity: ${(props) => (props.currItemIndex === 0 ? 0 : 1)};
@@ -25,7 +26,6 @@ const hoverArrow = css`
 export const StCarouselArrow = styled.div`
   z-index: 100;
   transition: opacity 0.2s ease-in-out 0s;
-  position: relative;
   top: -60px;
   ${(props) => (props.type === "alwaysArrow" ? alwaysArrow : hoverArrow)}
 
