@@ -4,10 +4,11 @@ import Home from "../components/pages/home/Home";
 import ArticleList from "../components/pages/articleList/ArticleList";
 import ArticlePage from "../components/pages/articlePage/ArticlePage";
 import Layout from "../components/pages/layout/Layout";
-import Write from "../components/pages/write/Write"
+import Write from "../components/pages/write/Write";
 import LoginPage from "../components/pages/logninPage/LoginPage";
 import SignupPage from "../components/pages/signupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
+import ItemDetail from "../components/pages/itemDetail/ItemDetail";
 
 const Router = () => {
   return (
@@ -17,7 +18,6 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="/articles" element={<ArticleList />} />
           <Route path="/articles/:id" element={<ArticlePage />} />
-          {/* <Route path="/write" element={<Write />} /> */}
           <Route
             path="/write"
             element={<ProtectedRoute element={<Write />} />}
@@ -25,6 +25,10 @@ const Router = () => {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/write" element={<Write />} />
+        <Route path="/item/:itemId" element={<Layout />}>
+          <Route index element={<ItemDetail />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

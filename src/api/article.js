@@ -5,7 +5,7 @@ export const getDatas = async () => {
   return res;
 };
 
-// export const getData = async (postId) => {
-//   const res = await api.get(`/post/${postId}`);
-//   return res;
-// };
+export const getItemData = async (itemId) => {
+  const res = await api.get(`/item/${itemId}`);
+  return res;
+};

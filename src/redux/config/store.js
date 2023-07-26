@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import dataListReducer from "../modules/dataListSlice";
 
 const store = configureStore({
-    reducer:{},
+  reducer: { dataList: dataListReducer },
 });
 
-export default store
+export default store;

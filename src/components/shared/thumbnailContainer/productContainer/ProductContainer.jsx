@@ -8,7 +8,7 @@ import { product_img_01 } from "../../../../assets/images/sample";
 function ProductContainer({ itemList, column }) {
   const navigate = useNavigate();
   const onClickProductHandler = (itemId) => {
-    navigate(`/products/${itemId}`);
+    navigate(`/item/${itemId}`);
   };
   return (
     <StThumbnailContainer>
