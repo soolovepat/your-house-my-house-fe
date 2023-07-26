@@ -3,8 +3,15 @@ import theme from "../../../styles/theme";
 
 export const StItemDetailTop = styled.div`
   display: flex;
-
   margin: 40px 0;
+
+  > div {
+    width: 100%;
+    height: 670px;
+    margin: 0 0 30px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
 
   div:nth-child(1) {
     flex: 0 0 59%;
