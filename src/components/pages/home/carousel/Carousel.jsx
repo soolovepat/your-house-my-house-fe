@@ -35,21 +35,21 @@ const Carousel = ({
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
-        {itemLength > 1 ? (
-          <StCarouselArrow
-            currItemIndex={currItemIndex}
-            itemLength={itemLength}
-            type={type}
-          >
-            <button onClick={onDecreaseIdx}>
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </button>
-            <button onClick={onIncreaseIdx}>
-              <FontAwesomeIcon icon={faChevronRight} />
-            </button>
-          </StCarouselArrow>
-        ) : null}
       </StCarousel>
+      {itemLength > 1 ? (
+        <StCarouselArrow
+          currItemIndex={currItemIndex}
+          itemLength={itemLength}
+          type={type}
+        >
+          <button onClick={onDecreaseIdx}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+          <button onClick={onIncreaseIdx}>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+        </StCarouselArrow>
+      ) : null}
     </>
   );
 };

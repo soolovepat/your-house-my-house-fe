@@ -121,7 +121,7 @@ const Category = () => {
   };
 
   return (
-    <StCategory>
+    <StCategory currItemIndex={currItemIndex} itemLength={itemLength}>
       <Carousel
         currItemIndex={currItemIndex}
         setCurrItemIndex={setCurrItemIndex}

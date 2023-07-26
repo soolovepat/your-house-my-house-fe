@@ -23,7 +23,10 @@ const hoverArrow = css`
 `;
 
 export const StCarouselArrow = styled.div`
+  z-index: 100;
   transition: opacity 0.2s ease-in-out 0s;
+  position: relative;
+  top: -60px;
   ${(props) => (props.type === "alwaysArrow" ? alwaysArrow : hoverArrow)}
 
   > button {
