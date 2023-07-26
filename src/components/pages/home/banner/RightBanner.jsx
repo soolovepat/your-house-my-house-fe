@@ -10,8 +10,6 @@ import {
 import Carousel from "../carousel/Carousel";
 import { StSmallBanner, StSmallBannerNumber } from "./styled";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const RightBanner = () => {
   const [currItemIndex, setCurrItemIndex] = useState(0);
@@ -81,7 +79,7 @@ const RightBanner = () => {
       </Carousel>
       <StSmallBannerNumber>
         <span>
-          {currItemIndex + 1}/{itemLength} <FontAwesomeIcon icon={faPlus} />
+          {currItemIndex + 1}/{itemLength} <strong>+</strong>
         </span>
       </StSmallBannerNumber>
     </div>

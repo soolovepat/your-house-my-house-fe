@@ -118,6 +118,9 @@ export const StSmallBannerNumber = styled.ul`
   right: 12px;
 
   > span {
+    display: flex;
+    align-items: center;
+    gap: 2px;
     padding: 6px 10px;
     font-size: 14px;
     font-weight: 700;
@@ -125,5 +128,12 @@ export const StSmallBannerNumber = styled.ul`
     border-radius: 18px;
     color: ${theme.whiteColor};
     background-color: rgba(0, 0, 0, 0.3);
+
+    > strong {
+      font-size: 20px;
+      line-height: 20px;
+      color: ${theme.whiteColor};
+      transform: translateY(-1px);
+    }
   }
 `;
