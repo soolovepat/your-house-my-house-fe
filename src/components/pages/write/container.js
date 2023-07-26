@@ -32,7 +32,8 @@ const StCoverImageContainer = styled.div`
 const StTitleContainer = styled.div`
   margin-top: 45px;
   width: 100%;
-  border-bottom: 1px solid rgb(234, 235, 239) 
+  border-bottom: 1px solid rgb(234, 235, 239) ;
+  position: relative;
 `;
 
 const StEditorContainer = styled.div`
