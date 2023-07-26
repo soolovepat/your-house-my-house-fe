@@ -38,9 +38,8 @@ const ItemList = () => {
   return (
     <div>
       {itemList.map((item) => (
-        <list>{item.itemName}</list>
+        <li>{item.itemName}</li>
       ))}
-      ItemList
     </div>
   );
 };
