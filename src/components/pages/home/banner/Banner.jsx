@@ -33,7 +33,7 @@ const Banner = ({ articleList }) => {
                   {articleList && (
                     <div>
                       <strong>{randomArticle.title}</strong>
-                      <span>{randomArticle.nickname}</span>
+                      <span>지금은 null값입니다{randomArticle.nickname}</span>
                     </div>
                   )}
                 </Link>
