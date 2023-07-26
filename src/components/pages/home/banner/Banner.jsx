@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { bigbanner } from "../../../../assets/images/banner";
 import Carousel from "../carousel/Carousel";
 import { StBanner, StSmallBanner } from "./styled";
