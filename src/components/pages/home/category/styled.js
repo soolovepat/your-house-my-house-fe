@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import theme from "../../../../styles/theme";
 
 const gradientOnBoth = css`
   &::before {
@@ -70,6 +71,7 @@ export const StCategoryList = styled.ul`
 
     > img {
       width: 90px;
+      height: 90px;
     }
 
     > p {
@@ -83,6 +85,7 @@ export const StCategoryList = styled.ul`
       white-space: nowrap;
       overflow: hidden;
       padding: 0 4px;
+      color: ${theme.darkGrayColor};
     }
 
     cursor: pointer;
