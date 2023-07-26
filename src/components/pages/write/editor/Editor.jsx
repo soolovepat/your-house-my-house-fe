@@ -12,7 +12,6 @@ export default function ParentComponent() {
   const [tagData, setTagData] = useState([]);
   const [showEditor, setShowEditor] = useState(true);
   const [activeImage, setActiveImage] = useState(null);
-  const {data, setData} = useData()
 
   const imageHandler = async () => {
     const input = document.createElement('input');

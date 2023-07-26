@@ -25,7 +25,7 @@ import SelectorModal from "./modals/selectorModal";
 import Editor from "./editor/Editor";
 import InputTitle from "./inputTitle";
 import { styled } from "styled-components";
-import { DataProvider } from "./hooks/useData";
+import { useData } from "./hooks/useData";
 
 function Write() {
   // for Modal opening
@@ -33,6 +33,7 @@ function Write() {
   const [isImage, setIsImage] = useState(false);
   const [coverImage, setCoverImage] = useState(null);
 
+  const {data} = useData()
   const selectorHandler = () => {
     setIsSelector(!isSelector);
   };
@@ -43,11 +44,11 @@ function Write() {
 
 
   const onSubmitHandler = ()=>{
+    // post api 
 
   }
   return (
     <>
-    <DataProvider>
       <StWriteheader>
         <button onClick={onSubmitHandler}> 발행</button>
       </StWriteheader>
@@ -119,7 +120,6 @@ function Write() {
           </ImageTagDiv> */}
         </StEditorContainer>
       </StBodyContainer>
-      </DataProvider>
     </>
   );
 }

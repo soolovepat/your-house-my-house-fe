@@ -33,7 +33,7 @@ function ImageTagDiv({ children , url}) {
     }));
 
     setData((prevData) => {
-      // Check if tag object for current image already exists
+
       let imageTagIndex = prevData.tags.findIndex(tag => tag.contentImageId === url);
     
       let newTag;
@@ -47,18 +47,18 @@ function ImageTagDiv({ children , url}) {
           selectedItems: [...prevData.tags[imageTagIndex].selectedItems, null],
         };
     
-        prevData.tags[imageTagIndex] = newTag; // replace the tag object at the same index
+        prevData.tags[imageTagIndex] = newTag; 
       } else {
-        // If it doesn't exist, create a new one
+      
         newTag = {
           contentImageId: url,
-          tagsId: [0], // Start from 0 as it's the first tag
+          tagsId: [0],
           axisX: [x],
           axisY: [y],
           selectedItems: [null],
         };
     
-        prevData.tags.push(newTag); // add the new tag object to the array
+        prevData.tags.push(newTag); 
       }
     
       return {
@@ -83,6 +83,31 @@ function ImageTagDiv({ children , url}) {
         idx === index ? item : val
       ),
     }));
+
+    setData((prevData) => {
+      let updatedTags = [...prevData.tags];
+      let tagToUpdate = updatedTags.find(tag => tag.contentImageId === url); 
+      if (tagToUpdate) {
+        tagToUpdate.itemId = tagToUpdate.itemId || []; 
+        tagToUpdate.itemId[index] = item.itemId;
+    
+        tagToUpdate.itemName = tagToUpdate.itemName || [];  
+        tagToUpdate.itemName[index] = item.itemName;
+    
+        tagToUpdate.brand = tagToUpdate.brand || [];  
+        tagToUpdate.brand[index] = item.brand;
+    
+        tagToUpdate.coverImage = tagToUpdate.coverImage || [];  
+        tagToUpdate.coverImage[index] = item.coverImage;
+      } else {
+        console.error('Tag to update was not found');
+      }
+      return {
+        ...prevData,
+        tags: updatedTags
+      };
+    });
+
     toggleModal(index);
   };
 

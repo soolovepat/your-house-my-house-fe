@@ -10,7 +10,6 @@ export const ImageTagModal = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   const [ page, setPage]  = useState(1)
-  console.log("search",results)
 
 
 
@@ -43,7 +42,12 @@ export const ImageTagModal = ({
   
 
   const handleSelect = (item) => {
-    setSelectedItem(item.itemName);
+    setSelectedItem({
+      itemId: item.itemId,
+      itemName: item.itemName,
+      brand: item.brand,
+      coverImage: item.coverImage,
+    });
     closeModal();
   };
 
@@ -59,7 +63,8 @@ export const ImageTagModal = ({
           />
           {results.map((item, index) => (
             <div key={item.itemId}>
-              {item.itemName}
+              <p>{item.itemName}</p>
+             <p>{item.brand} </p>
               <button onClick={() => handleSelect(item)}>Select</button>
             </div>
           ))}
@@ -67,10 +72,10 @@ export const ImageTagModal = ({
       ) : (
         <StTagResultContainer>
           <StTagImageContainer>
-            <StTagImageStyle src="https://m.media-amazon.com/images/I/418QpEn9JKL._SY355_.jpg" />
+            <StTagImageStyle src={selectedItem.coverImage} />
           </StTagImageContainer>
           <div>
-            <h2>{selectedItem}</h2>
+            <h2>{selectedItem.itemName}</h2>
           </div>
         </StTagResultContainer>
       )}
@@ -99,6 +104,7 @@ const StTagResultContainer = styled.div`
   border-radius: 8px;
   background-color: rgb(247, 249, 250) !important;
   min-width: 200px;
+  height: auto;
 `;
 
 const StTagImageContainer = styled.div`
