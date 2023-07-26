@@ -9,6 +9,7 @@ import LoginPage from "../components/pages/logninPage/LoginPage";
 import SignupPage from "../components/pages/signupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ItemDetail from "../components/pages/itemDetail/ItemDetail";
+import ItemList from "../components/pages/itemList/ItemList";
 
 const Router = () => {
   return (
@@ -26,9 +27,8 @@ const Router = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/write" element={<Write />} />
-        <Route path="/item/:itemId" element={<Layout />}>
-          <Route index element={<ItemDetail />} />
-        </Route>
+        <Route path="/item/:itemId" element={<ItemDetail />}></Route>
+        <Route path="/item/category" element={<ItemList />}></Route>
       </Routes>
     </BrowserRouter>
   );
