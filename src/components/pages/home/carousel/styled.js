@@ -1,9 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import theme from "../../../../styles/theme";
+
+const alwaysArrow = css`
+  opacity: 1;
+`;
+
+const hoverArrow = css`
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
 
 export const StCarouselArrow = styled.div`
   transition: opacity 0.2s ease-in-out 0s;
-  opacity: 0;
+  ${(props) => (props.type === "alwaysArrow" ? alwaysArrow : hoverArrow)}
 
   > button {
     ${theme.roundBtn}
@@ -27,10 +39,6 @@ export const StCarouselArrow = styled.div`
 
     > svg {
     }
-  }
-
-  &:hover {
-    opacity: 1;
   }
 `;
 

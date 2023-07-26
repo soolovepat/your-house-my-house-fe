@@ -23,6 +23,7 @@ const Banner = ({ articleList }) => {
             setCurrItemIndex={setCurrItemIndex}
             itemLength={1}
             move={100}
+            type={"hoverArrow"}
           >
             <StSmallBanner>
               <li>

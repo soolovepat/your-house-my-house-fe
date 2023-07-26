@@ -127,6 +127,7 @@ const Category = () => {
         setCurrItemIndex={setCurrItemIndex}
         itemLength={itemLength}
         move={80}
+        type={"alwaysArrow"}
       >
         <StCategoryList>
           {CATEGORIES.map((cate) => (

@@ -1,7 +1,26 @@
 import styled from "styled-components";
 
-export const StCategory = styled.ul`
+export const StCategory = styled.div`
+  position: relative;
+`;
+
+export const StCategoryList = styled.ul`
   display: flex;
+  height: 100%;
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgb(255, 255, 255) 100%
+    );
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 80%;
+  }
 
   li {
     display: flex;

@@ -12,6 +12,7 @@ const Carousel = ({
   setCurrItemIndex,
   itemLength,
   move,
+  type,
 }) => {
   const onDecreaseIdx = () => {
     currItemIndex <= 0
@@ -26,12 +27,12 @@ const Carousel = ({
 
   return (
     <>
-      <StCarousel>
+      <StCarousel type={type}>
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
         {itemLength > 1 ? (
-          <StCarouselArrow>
+          <StCarouselArrow type={type}>
             <button onClick={onDecreaseIdx}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
