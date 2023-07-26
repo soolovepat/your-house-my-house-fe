@@ -10,8 +10,6 @@ export const StBanner = styled.div`
   section {
     position: relative;
     padding-top: 508px;
-    border-radius: 4px;
-    overflow: hidden;
 
     > div {
       position: absolute;
@@ -19,18 +17,22 @@ export const StBanner = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
+      border-radius: 4px;
     }
   }
 
   section:nth-child(1) {
     flex: 1 1 847px;
     border-radius: 4px;
+
+    > div {
+      overflow: hidden;
+    }
   }
 
   section:nth-child(2) {
     flex: 1 1 269px;
     margin-left: 20px;
-    border-radius: 4px;
   }
 
   img {
@@ -104,5 +106,24 @@ export const StSmallBanner = styled.ul`
       overflow: hidden;
       padding: 0 4px;
     }
+  }
+`;
+
+export const StSmallBannerNumber = styled.ul`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+
+  > span {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    border-radius: 18px;
+    color: ${theme.whiteColor};
+    background-color: rgba(0, 0, 0, 0.3);
   }
 `;
