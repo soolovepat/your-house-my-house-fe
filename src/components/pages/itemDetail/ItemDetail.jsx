@@ -8,6 +8,7 @@ import { StItemDetailTop } from "./style";
 import NumberComma from "../../shared/numberComma/NumberComma";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { StContainer } from "../../../styles/Container";
 
 function ItemDetail() {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ function ItemDetail() {
   const itemList = useSelector((state) => state.dataList.itemList);
 
   return (
-    <>
+    <StContainer>
       <StItemDetailTop>
         <div>
           <img src={product_img_01} />
@@ -75,7 +76,7 @@ function ItemDetail() {
         )}
       </StItemDetailTop>
       <span>{itemList.content}사진 들어갈 자리</span>
-    </>
+    </StContainer>
   );
 }
 

@@ -8,7 +8,7 @@ import Write from "../components/pages/write/Write";
 import LoginPage from "../components/pages/logninPage/LoginPage";
 import SignupPage from "../components/pages/signupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
-import ItemDetail from "../components/pages/detail/ItemDetail";
+import ItemDetail from "../components/pages/itemDetail/ItemDetail";
 
 const Router = () => {
   return (
