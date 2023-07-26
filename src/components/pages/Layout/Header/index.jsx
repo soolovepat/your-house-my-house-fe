@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../../shared/button/Button";
 import UserAvatar from "./userAvatar";
-import InputSearch from "../../../shared/input/inputSearch";
+import InputSearch from "../../../shared/Input/inputSearch/index";
 import Bookmark from "./bookmark";
 import {
   StHeaderWrap,
@@ -15,15 +15,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 
 const Header = () => {
   const [scrollFlag, setScrollFlag] = useState(false);
   const [value, setValue] = useState("");
   const navigate = useNavigate();
   const [loggedin, setLoggedin] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies();
 
+  const [nickname, setNickname] = useState("");
   /** scroll 이벤트를 위한 스로틀 함수 */
   const throttle = (callback, delay) => {
     let timer = null;
@@ -37,6 +36,7 @@ const Header = () => {
   };
 
   useEffect(() => {
+    CheckuserInfo();
     /** 스크롤 여부 판별 함수 */
     const updateScroll = () => {
       const token = localStorage.getItem("token");
@@ -51,36 +51,37 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // try {
-    //   const currentUserToken = {
-    //     headers: { Authorization: `Bearer ${token}` },
-    //   };
-    //   const { data } = await axios.get(
-    //     `http://3.34.5.210:3000/api/auth/login`,
-    //     currentUserToken
-    //   );
-    //   setLoggedin();
-    //   return data;
-    // } catch {
-    //   console.log("failed");
-    //   //   alert(e.response.data.msg);
-    // }
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // console.log(scrollFlag);
+  const token = localStorage.getItem("token");
+  const CheckuserInfo = async () => {
+    console.log("check");
 
-  // const logoutHandler = () => {
-  //   removeCookie("cookieId");
-  //   navigate("/login");
-  // };
+    const currentUserToken = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    };
+    console.log("token", token);
+    await axios
+      .get(`http://3.34.5.210:3000/api/auth/checkout`, currentUserToken)
+      .then((response) => {
+        if (response.data.success === true) {
+          console.log(response);
+          setLoggedin(true);
+          return setNickname(response.data.nickname);
+        }
+      })
+      .catch(console.log("failed"));
+  };
+
   const logoutHandler = () => {
-    removeCookie(cookies);
-    navigate("/login"); // 메인 페이지로 이동
-    console.log("cookies", cookies);
+    localStorage.removeItem("token");
+    navigate("/");
     setLoggedin(false);
   };
   return (
@@ -106,7 +107,7 @@ const Header = () => {
           {loggedin ? (
             <>
               <Bookmark />
-              <UserAvatar /> {/* {data.nickname} */}
+              <UserAvatar /> {nickname}
               <button onClick={logoutHandler}>로그아웃</button>
             </>
           ) : (

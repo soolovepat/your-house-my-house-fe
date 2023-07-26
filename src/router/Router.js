@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "../components/pages/layout";
 
-import Write from "../components/pages/write"
+import Write from "../components/pages/write/Write";
 import LoginPage from "../components/pages/logninPage/LoginPage";
 import SignupPage from "../components/pages/signupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
@@ -25,7 +25,6 @@ const Router = () => {
 
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-
       </Routes>
     </BrowserRouter>
   );

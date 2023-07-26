@@ -24,6 +24,7 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import api from "../../../api/api";
 const SignupPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -59,11 +60,9 @@ const SignupPage = () => {
       return passwordRef.current.focus();
     }
     if (newuser.confrim === "") {
-  
       return confirmRef.current.focus();
     }
     if (newuser.nickname === "") {
-
       return nicknameRef.current.focus();
     }
     if (newuser.confrim !== newuser.password) {
@@ -76,14 +75,14 @@ const SignupPage = () => {
   const register = async () => {
     await axios
       .post(
-        "/api/auth/signup",
+        "http://3.34.5.210:3000/api/auth/signup",
         {
           email: newuser.email,
           password: newuser.password,
           confirm: newuser.confrim,
           nickname: newuser.nickname,
-        },
-        { withcredential: true }
+        }
+        // { withCredentials: true }
       )
       .then((response) => {
         console.log(response.data.user);
@@ -94,6 +93,7 @@ const SignupPage = () => {
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);
+        alert("an error occurred:", error.response);
       });
   };
 
@@ -180,3 +180,20 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
+  // const res = await api.post("/api/auth/signup");
+    // try {
+    //   const res = await api.post(
+    //     "/api/auth/signup",
+    //     {
+    //       email: newuser.email,
+    //       password: newuser.password,
+    //       confirm: newuser.confrim,
+    //       nickname: newuser.nickname,
+    //     },
+    //     { withCredentials: true }
+    //   );
+    //   console.log(res);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   throw error; // Rethrow the error to let the caller handle it as well if needed
+    // }

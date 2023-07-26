@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Cookies, useCookies } from "react-cookie";
+// import { Cookies, useCookies } from "react-cookie";
 
 const ProtectedRoute = ({ element }) => {
   const navigate = useNavigate();
   const [authentication, setAuthentication] = useState(false);
-  const cookies = new Cookies();
+
+  // const cookies = new Cookies();
   // const [cookies, setCookies] = useCookies();
   useEffect(() => {
     const LoginStatusCheck = async () => {
@@ -20,7 +21,7 @@ const ProtectedRoute = ({ element }) => {
   }, [navigate]);
 
   const LoginStatus = async () => {
-    const token = cookies.get("cookieId", { path: "/" });
+    const token = localStorage.getItem("token");
     console.log("토큰", "=", token);
     if (!token) return false;
     try {
@@ -41,11 +42,11 @@ const ProtectedRoute = ({ element }) => {
       const currentUserToken = {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `${token}`,
         },
       };
       const { data } = await axios.get(
-        `/api/auth/checkout`,
+        `http://3.34.5.210:3000/api/auth/checkout`,
         currentUserToken
       );
       return data.success;
