@@ -24,6 +24,22 @@ const mixins = {
       margin: 0 auto;
       padding: 0 60px;
   `,
+    roundBtn: css`
+    // width, height, padding, margin 을 추가하셔서 사용하시면 됩니다.
+    background: #fff;
+    color: #828c94;
+    border: 1px solid #dadce0;
+    border-radius: 100%;
+    box-sizing: border-box;
+    box-shadow: 1px 3px 4px 0 rgba(209,213,217,.2);
+    transition: border-color .2s, color .2s,background-color .2s;
+    line-height: 0;
+    cursor: pointer;
+
+    &:hover {
+        color: ${colors.darkGrayColor};
+    }
+    `
 };
 
 const numberfont = css`

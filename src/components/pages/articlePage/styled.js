@@ -68,23 +68,11 @@ export const StArticleSideBar = styled.div`
     text-align: center;
 `;
 export const StBookmarkButton = styled.button`
+    ${theme.roundBtn};
     position: relative;
     width: 54px;
     height: 54px;
     padding: 14px;
     margin: 0;
-    box-sizing: border-box;
-    background: #fff;
-    border: 1px solid #dadce0;
-    color: #828c94;
-    border-radius: 100%;
     font-size: 24px;
-    line-height: 0;
-    box-shadow: 1px 3px 4px 0 rgba(209,213,217,.2);
-    transition: border-color .2s, color .2s,background-color .2s;
-    cursor: pointer;
-
-    &:hover {
-        color: ${theme.darkGrayColor};
-    }
 `;
