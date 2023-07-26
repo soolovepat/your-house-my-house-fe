@@ -4,6 +4,9 @@ import { useLocation, useParams } from "react-router-dom";
 import { getCategoryData } from "../../../api/article";
 import { useState } from "react";
 import { setCategoryList } from "../../../redux/modules/categoryListSlice";
+import ProductContainer from "../../shared/thumbnailContainer/productContainer/ProductContainer";
+import { StContainer } from "../../../styles/Container";
+import { StItemList } from "./style";
 
 const ItemList = () => {
   const dispatch = useDispatch();
@@ -36,11 +39,12 @@ const ItemList = () => {
   const itemList = useSelector((state) => state.categoryList.items);
   console.log(itemList);
   return (
-    <div>
-      {itemList.map((item) => (
-        <li>{item.itemName}</li>
-      ))}
-    </div>
+    <StContainer>
+      <StItemList>
+        <p>전체: {itemList.length}개</p>
+        {itemList && <ProductContainer itemList={itemList} column={4} />}
+      </StItemList>
+    </StContainer>
   );
 };
 
