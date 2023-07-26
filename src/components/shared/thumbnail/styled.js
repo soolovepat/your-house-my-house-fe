@@ -59,4 +59,8 @@ export const StThumbnail = styled.div`
   padding-bottom: 30px;
   box-sizing: border-box;
   text-align: ${(props) => props.align};
+
+  > div {
+    cursor: pointer;
+  }
 `;

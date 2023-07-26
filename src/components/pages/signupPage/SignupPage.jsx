@@ -52,20 +52,19 @@ const SignupPage = () => {
   const newUserInfoCheck = () => {
     const passwordCondition = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
     if (newuser.email < 1) {
-      emailRef.current.focus();
-      return;
+      return emailRef.current.focus();
     }
     if (!passwordCondition.test(newuser.password)) {
       alert("비밀 번호가 조건에 맞지 않습니다.");
       return passwordRef.current.focus();
     }
     if (newuser.confrim === "") {
-      confirmRef.current.focus();
-      return;
+  
+      return confirmRef.current.focus();
     }
     if (newuser.nickname === "") {
-      nicknameRef.current.focus();
-      return;
+
+      return nicknameRef.current.focus();
     }
     if (newuser.confrim !== newuser.password) {
       alert("비밀번호 확인이 올바르지 않습니다.");
@@ -73,19 +72,31 @@ const SignupPage = () => {
     }
     return register();
   };
+
   const register = async () => {
     await axios
-      .post("/api/auth/signup", { newuser })
+      .post(
+        "/api/auth/signup",
+        {
+          email: newuser.email,
+          password: newuser.password,
+          confirm: newuser.confrim,
+          nickname: newuser.nickname,
+        },
+        { withcredential: true }
+      )
       .then((response) => {
         console.log(response.data.user);
         console.log(response.data.jwt);
         localStorage.setItem("token", response.data.jwt);
-        replace("/");
+        alert("회원가입에 성공 하였습니다.");
+        replace("/login");
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);
       });
   };
+
   return (
     <StSignupPage>
       <StSignupContainer>
