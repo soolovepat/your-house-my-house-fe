@@ -5,7 +5,7 @@ export const StDropdown = styled.div`
     min-width: 200px;
     position: absolute;
     top: 35px;
-    left: 50%;
+    left: ${props => props.$firstItem ? "calc(50% + 60px)" : "50%" };
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(218, 221, 224);
     border-radius: 6px;
@@ -21,7 +21,7 @@ export const StDropdown = styled.div`
         width: 0;
         position: absolute;
         top: -3px;
-        left: 50%;
+        left: ${ props => props.$firstItem ? "40px" : "50%" };
         transform: translate(-50%, -50%);
         border: 12px solid transparent;
         border-top-width: 0;
@@ -34,7 +34,6 @@ export const StDropdown = styled.div`
             opacity: 1;
             visibility: visible;
             transform: translate(-50%, 0);
-            left: 50%;
         `}
 
     & > ul {
