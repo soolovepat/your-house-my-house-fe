@@ -39,15 +39,25 @@ const ItemList = () => {
   }, [category]);
 
   const itemList = useSelector((state) => state.categoryList.items);
-  console.log(itemList);
+  const itemListAll = useSelector((state) => state.dataList.itemList);
+
   return (
     <StContainer>
       <SectionTitle title={"카테고리"} marginTop={"20px"} />
       <Category />
-      <StItemList>
-        <p>전체: {itemList.length}개</p>
-        {itemList && <ProductContainer itemList={itemList} column={4} />}
-      </StItemList>
+      {itemList.length > 0 ? (
+        <StItemList>
+          <p>전체: {itemList.length}개</p>
+          {itemList && <ProductContainer itemList={itemList} column={4} />}
+        </StItemList>
+      ) : (
+        <StItemList>
+          <p>전체: {itemListAll.length}개</p>
+          {itemListAll && (
+            <ProductContainer itemList={itemListAll} column={4} />
+          )}
+        </StItemList>
+      )}
     </StContainer>
   );
 };
