@@ -35,7 +35,7 @@ const Header = () => {
               <Link to="/article">커뮤니티</Link>
             </li>
             <li>
-              <Link to="item/category">쇼핑</Link>
+              <Link to="item/category?category=1">쇼핑</Link>
             </li>
           </StMenuContainer>
         </div>

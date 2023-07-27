@@ -3,7 +3,6 @@ import { getItemData } from "../../../api/article";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemList } from "../../../redux/modules/dataListSlice";
 import { useParams } from "react-router-dom";
-import { product_img_01 } from "../../../assets/images/sample";
 import { StItemDetailTop } from "./style";
 import NumberComma from "../../shared/numberComma/NumberComma";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +26,7 @@ const ItemDetail = () => {
   }, [dispatch]);
 
   const itemList = useSelector((state) => state.dataList.itemList);
-  console.log(itemList.content);
+  console.log(itemList);
   // const jsonString = itemList.content;
 
   // try {

@@ -45,7 +45,7 @@ const Home = () => {
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
-        onClick={() => onClickMoreView("articles")}
+        onClick={() => onClickMoreView("/articles")}
       />
       {articleList && (
         <HouseContainer
@@ -58,7 +58,7 @@ const Home = () => {
       <SectionTitle
         title={"우리 가족 맞춤 집들이 💁‍♀️"}
         button={"더보기"}
-        onClick={() => onClickMoreView("item/category")}
+        onClick={() => onClickMoreView("/item/category")}
       />
       {Array.isArray(itemList) && (
         <ProductContainer
