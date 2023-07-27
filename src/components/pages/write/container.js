@@ -41,4 +41,11 @@ const StEditorContainer = styled.div`
   
 `;
 
-export {StBodyContainer,StCoverImageContainer,StEditorContainer,StSelectorContainer,StTitleContainer}
+
+export {
+  StBodyContainer,
+  StCoverImageContainer,
+  StEditorContainer,
+  StSelectorContainer,
+  StTitleContainer,
+};

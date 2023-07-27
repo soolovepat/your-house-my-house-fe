@@ -1,10 +1,14 @@
 import { styled } from "styled-components";
 import api from "../../../../../api/api";
 import {
-  StImageModalContainer,
-  StImageModalWrapper,
-  StImagePreview,
+  StBodyContainer,
+  StSelectorContainer,
+  StCoverImageContainer,
+  StTitleContainer,
   StOverlayed,
+  StImagePreview,
+  StImageModalWrapper,
+  StImageModalContainer,
 } from "./container";
 import { StImageModalButton, StImagePreviewText } from "./styled";
 
