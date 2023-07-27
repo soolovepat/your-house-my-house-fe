@@ -28,18 +28,18 @@ const ItemDetail = () => {
   const itemList = useSelector((state) => state.dataList.itemList);
   console.log(itemList);
 
-  const jsonCoverImage = itemList?.coverImage;
+  // const jsonCoverImage = itemList?.coverMainImage;
   const jsonContent = itemList?.content;
 
-  const coverImageUrlArr = JSON.parse(jsonCoverImage ?? "[]");
+  const coverImageUrl = itemList?.coverMainImage;
   const contentImageUrlArr = JSON.parse(jsonContent ?? "[]");
-  console.log(coverImageUrlArr, contentImageUrlArr);
+  console.log(coverImageUrl, contentImageUrlArr);
 
   return (
     <StContainer>
       <StItemDetailTop>
         <div>
-          <img src={coverImageUrlArr[0]} />
+          <img src={itemList.coverMainImage} />
         </div>
         {itemList ? (
           <div>
