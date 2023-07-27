@@ -71,9 +71,7 @@ const RightBanner = () => {
         <StSmallBanner>
           {RIGHTBANNER.map((banner) => (
             <li key={banner.id}>
-              <Link to={`event/${banner.id}`}>
-                <img src={banner.img} />
-              </Link>
+              <img src={banner.img} />
             </li>
           ))}
         </StSmallBanner>
