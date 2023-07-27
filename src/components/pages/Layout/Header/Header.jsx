@@ -22,14 +22,14 @@ const Header = () => {
 
     return (
         <StHeaderWrap $display={isSticky}>
-            <StHeaderBanner />
+            <StHeaderBanner>6조 수고 많으셨습니다!🎉</StHeaderBanner>
             <StHeaderContainer>
                 <div>
                     <StLogo>
                         <Link to="/"><img src="/assets/images/logo-your-house-my-house.png" alt="" /></Link>
                     </StLogo>
                     <StMenuContainer>
-                        <li><Link to="/articles">커뮤니티</Link></li>
+                        <li><Link to="/article">커뮤니티</Link></li>
                         <li>쇼핑</li>
                     </StMenuContainer>
                 </div>

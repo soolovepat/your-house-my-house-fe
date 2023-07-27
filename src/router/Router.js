@@ -12,26 +12,26 @@ import ItemDetail from "../components/pages/itemDetail/ItemDetail";
 import ItemList from "../components/pages/itemList/ItemList";
 
 const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/articles" element={<ArticleList />} />
-          <Route path="/articles/:id" element={<ArticlePage />} />
-          <Route
-            path="/write"
-            element={<ProtectedRoute element={<Write />} />}
-          />
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/write" element={<Write />} />
-        <Route path="/item/:itemId" element={<ItemDetail />}></Route>
-        <Route path="/item/category" element={<ItemList />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="/article" element={<ArticleList />} />
+                    <Route path="/article/:id" element={<ArticlePage />} />
+                    <Route path="/item/:id" element={<Home />} />
+                    <Route path="/articles" element={<ArticleList />} />
+                    <Route path="/articles/:id" element={<ArticlePage />} />
+                    <Route path="/write" element={<ProtectedRoute element={<Write />} />} />
+                </Route>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/write" element={<Write />} />
+                <Route path="/item/:itemId" element={<ItemDetail />}></Route>
+                <Route path="/item/category" element={<ItemList />}></Route>
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default Router;

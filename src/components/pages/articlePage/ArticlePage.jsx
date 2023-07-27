@@ -1,34 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StMainVis, StArticleWrapper, StArticleHeader, StArticle, StBookmarkButton, StArticleSideBar } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import TaggedImage from "./taggedImage/TaggedImage";
+import { getArticlePage } from "../../../api/article";
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 
 const ArticlePage = () => {
+    const [article, setArticle] = useState(null);
+
+    useEffect(() => {
+        getArticlePage(1) 
+            .then((res) => {
+                setArticle(res.data.findArticle);
+            })
+            .catch((err) => console.log(err));
+    }, []);
+
+    console.log("article.tags[0]", article);
     return (
         <>
             <StMainVis>
                 <img
-                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/projects/168899147747245534.JPG?w=1920&h=622.5&c=c"
+                    src={article?.coverImage}
                     alt=""
                 />
             </StMainVis>
             <StArticleWrapper>
                 <StArticleHeader>
-                    <h2>매일 보는 집은 예뻐야 하니까! 눈이 즐거운 리빙 블로거의 집</h2>
+                    <h2>{article?.title}</h2>
                     <div>
                         <div>
                             <img src="/assets/images/img-avatar.png" alt="" />
                         </div>
-                        <p>silver_daily</p>
+                        <p>{article?.nickname}</p>
                     </div>
                 </StArticleHeader>
                 <StArticle>
-                    <img
-                        src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/projects/168899147747245534.JPG?w=1920&h=622.5&c=c"
-                        alt=""
-                    />
-                    <TaggedImage />
+                    {/* 👇 Test용 TaggedImage */}
+                    {
+                        article !== null &&
+                        <TaggedImage key={1} tags={article.tags[0]} />
+                    }
+                    {article !== null &&
+                    ReactHtmlParser(article.content, {
+                        transform: (node, index) => {
+                            if(node.type === 'tag' && node.name === 'img') {
+                                return <TaggedImage key={index + 1} tags={article.tags[index]} />
+                            }
+                        }
+                    })}
                 </StArticle>
                 <StArticleSideBar>
                     <StBookmarkButton>

@@ -2,20 +2,20 @@ import styled from "styled-components";
 import theme from "../../../styles/theme";
 
 export const StMainVis = styled.div`
-  width: 100%;
-  height: 370px;
-  position: relative;
-
-  & > img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    height: 370px;
+    position: relative;
+
+    & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 `;
 
 export const StArticleWrapper = styled.div`
-  max-width: 750px;
-  margin: 0 auto;
+    max-width: 750px;
+    margin: 0 auto;
 `;
 
 export const StArticleHeader = styled.div`
@@ -43,8 +43,11 @@ export const StArticleHeader = styled.div`
       & > img {
         width: 100%;
       }
-    }
+    
     & > p {
+        margin: 10px 0;
+        line-height: 32px;    
+    }
       font-size: 16px;
       font-weight: 700;
       color: #2f3438;
@@ -52,28 +55,28 @@ export const StArticleHeader = styled.div`
   }
 `;
 export const StArticle = styled.div`
-  margin-bottom: 60px;
-  & > img {
-    width: 100%;
-  }
+    margin-bottom: 60px;
+    & > img {
+        width: 100%;
+    }
 `;
 
 export const StArticleSideBar = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 0;
-  width: calc(50% - 360px);
-  padding-top: 550px;
-  text-align: center;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: calc(50% - 360px);
+    padding-top: 550px;
+    text-align: center;
 `;
 export const StBookmarkButton = styled.button`
-  ${theme.roundBtn};
-  position: relative;
-  width: 54px;
-  height: 54px;
-  padding: 14px;
-  margin: 0;
-  font-size: 24px;
-  border: 1px solid #dadce0;
-  box-shadow: 1px 3px 4px 0 rgba(209, 213, 217, 0.2);
+    ${theme.roundBtn};
+    position: relative;
+    width: 54px;
+    height: 54px;
+    padding: 14px;
+    margin: 0;
+    font-size: 24px;
+    border: 1px solid #dadce0;
+    box-shadow: 1px 3px 4px 0 rgba(209, 213, 217, 0.2);
 `;
