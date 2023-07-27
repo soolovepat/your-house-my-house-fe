@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../shared/button/Button";
+
+// import Button from "../../../shared/button/Button";
+import Button from "../../../shared/Button/Button";
+
 import UserAvatar from "../../../shared/userAvatar/UserAvatar";
+
 // import InputSearch from "../../../shared/Input/InputSearch";
 import Bookmark from "./bookmark/Bookmark";
 import {
@@ -15,11 +19,46 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import useStickyMode from "../../../../hooks/useStickyMode";
+import { useNavigate } from "react-router-dom";
+import api from "../../../../api/api";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const isSticky = useStickyMode(0);
-  // const [value, setValue] = useState("");
 
+  useEffect(() => {
+    CheckuserInfo();
+  }, []);
+
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+  const [loggedin, setLoggedin] = useState(false);
+  const [nickname, setNickname] = useState("");
+
+  const token = localStorage.getItem("token");
+  const CheckuserInfo = async () => {
+    const currentUserToken = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    };
+    await api
+      .get("/auth/checkout", currentUserToken)
+      .then((response) => {
+        if (response.data.success === true) {
+          setLoggedin(true);
+          return setNickname(response.data.nickname);
+        }
+      })
+      .catch(console.log("failed"));
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+    setLoggedin(false);
+  };
   return (
     <StHeaderWrap $display={isSticky}>
       <StHeaderBanner>6조 수고 많으셨습니다!🎉</StHeaderBanner>
@@ -41,7 +80,7 @@ const Header = () => {
         </div>
         <div>
           {/* <InputSearch value={value} handleChange={(e) => setValue(e.target.value)} placeholder="검색어를 입력하세요" name="search" /> */}
-          {true ? (
+          {loggedin ? (
             <>
               <Bookmark />
               <UserAvatar
@@ -49,16 +88,24 @@ const Header = () => {
                 height={"40px"}
                 type={"hoverOn"}
               />{" "}
+              <button onClick={logoutHandler}>로그아웃</button>
             </>
           ) : (
             <StHeaderSubMenuContainer>
-              <li>로그인</li>
-              <li>회원가입</li>
+              <li onClick={() => navigate("/login")}>로그인</li>
+              <li onClick={() => navigate("/signup")}>회원가입</li>
               {/* <li>고객센터</li> */}
             </StHeaderSubMenuContainer>
           )}
           <Button>
-            글쓰기 <FontAwesomeIcon icon={faChevronDown} />
+            글쓰기{" "}
+            <FontAwesomeIcon
+              onClick={() => {
+                console.log("clicked");
+                return navigate("/write");
+              }}
+              icon={faChevronDown}
+            />
           </Button>
         </div>
       </StHeaderContainer>

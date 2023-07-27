@@ -23,7 +23,7 @@ import { SiNaver } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api/api";
 const SignupPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -59,11 +59,9 @@ const SignupPage = () => {
       return passwordRef.current.focus();
     }
     if (newuser.confrim === "") {
-  
       return confirmRef.current.focus();
     }
     if (newuser.nickname === "") {
-
       return nicknameRef.current.focus();
     }
     if (newuser.confrim !== newuser.password) {
@@ -74,26 +72,24 @@ const SignupPage = () => {
   };
 
   const register = async () => {
-    await axios
+    await api
       .post(
-        "/api/auth/signup",
+        "/auth/signup",
         {
           email: newuser.email,
           password: newuser.password,
           confirm: newuser.confrim,
           nickname: newuser.nickname,
-        },
-        { withcredential: true }
+        }
+        // { withCredentials: true }
       )
       .then((response) => {
-        console.log(response.data.user);
-        console.log(response.data.jwt);
-        localStorage.setItem("token", response.data.jwt);
         alert("회원가입에 성공 하였습니다.");
         replace("/login");
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);
+        alert("an error occurred:", error.response);
       });
   };
 
