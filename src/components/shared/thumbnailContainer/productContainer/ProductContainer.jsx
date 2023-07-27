@@ -3,29 +3,31 @@ import { useNavigate } from "react-router-dom";
 import { StImgWrap, StThumbnailContainer } from "../styled";
 import Thumbnail from "../../thumbnail/Thumbnail";
 import NumberComma from "../../numberComma/NumberComma";
-import { product_img_01 } from "../../../../assets/images/sample";
 
-function ProductContainer({ itemList, column }) {
+function ProductContainer({ itemList, column, align }) {
   const navigate = useNavigate();
   const onClickProductHandler = (itemId) => {
-    navigate(`/products/${itemId}`);
+    navigate(`/item/${itemId}`);
   };
+
+  console.log(itemList);
+
   return (
     <StThumbnailContainer>
-      {itemList.map((item) => (
+      {itemList?.map((item) => (
         <Thumbnail
-          key={item.itemId}
+          key={item?.itemId}
           type={"product"}
           column={column}
-          align={"left"}
+          align={align}
           onClick={() => onClickProductHandler(item.itemId)}
         >
           <div>
             <StImgWrap>
-              <img src={product_img_01} alt="home_img" />
+              <img src={item.coverMainImage} alt="home_img" />
             </StImgWrap>
             <h5>
-              <span>거래처</span>
+              <span>{item.brand}</span>
               <span>{item.itemName}</span>
             </h5>
             <NumberComma

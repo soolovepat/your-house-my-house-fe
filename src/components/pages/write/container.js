@@ -25,13 +25,15 @@ const StCoverImageContainer = styled.div`
   background-color: blue;
   position: relative;
   width: 100%;
-  padding-bottom: 56.26%;
+  height: 400px;
+  margin-top: 15px;
 `;
 
 const StTitleContainer = styled.div`
   margin-top: 45px;
   width: 100%;
-  border-bottom: 1px solid rgb(234, 235, 239) 
+  border-bottom: 1px solid rgb(234, 235, 239);
+  position: relative;
 `;
 
 const StEditorContainer = styled.div`
@@ -39,4 +41,11 @@ const StEditorContainer = styled.div`
   
 `;
 
-export {StBodyContainer,StCoverImageContainer,StEditorContainer,StSelectorContainer,StTitleContainer}
+
+export {
+  StBodyContainer,
+  StCoverImageContainer,
+  StEditorContainer,
+  StSelectorContainer,
+  StTitleContainer,
+};

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import theme from '../../../styles/theme'
+import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 export const StMainVis = styled.div`
     width: 100%;
@@ -19,44 +19,51 @@ export const StArticleWrapper = styled.div`
 `;
 
 export const StArticleHeader = styled.div`
-    margin: 60px 0;
+  margin: 60px 0;
 
-    & > h2 {
-        font-size: 34px;
-        line-height: 1.25em;
-        font-weight: 700;
-        margin-bottom: 30px;
-    }
+  & > h2 {
+    font-size: 34px;
+    line-height: 1.25em;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
 
-    // 글쓴이 정보
+  // 글쓴이 정보
+  & > div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+
     & > div {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-
-        & > div {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            & > img {
-                width: 100%;
-            }
-        }
-        & > p {
-            font-size: 16px;
-            font-weight: 700;
-            color: #2f3438;
-        }
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      & > img {
+        width: 100%;
+      }
+    
+    & > p {
+        margin: 10px 0;
+        line-height: 32px;    
     }
-
-    `;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2f3438;
+    }
+  }
+`;
 export const StArticle = styled.div`
     margin-bottom: 60px;
     & > img {
         width: 100%;
     }
+
+    & > p {
+      font-size: 16px;
+      line-height: 32px;  
+    }  
 `;
 
 export const StArticleSideBar = styled.div`
@@ -75,4 +82,6 @@ export const StBookmarkButton = styled.button`
     padding: 14px;
     margin: 0;
     font-size: 24px;
+    border: 1px solid #dadce0;
+    box-shadow: 1px 3px 4px 0 rgba(209, 213, 217, 0.2);
 `;

@@ -8,7 +8,7 @@ import {
   banner06,
 } from "../../../../assets/images/banner";
 import Carousel from "../carousel/Carousel";
-import { StBanner, StSmallBanner } from "./styled";
+import { StSmallBanner, StSmallBannerNumber } from "./styled";
 import { Link } from "react-router-dom";
 
 const RightBanner = () => {
@@ -66,17 +66,21 @@ const RightBanner = () => {
         setCurrItemIndex={setCurrItemIndex}
         itemLength={itemLength}
         move={100}
+        type={"hoverArrow"}
       >
         <StSmallBanner>
           {RIGHTBANNER.map((banner) => (
             <li key={banner.id}>
-              <Link to={`event/${banner.id}`}>
-                <img src={banner.img} />
-              </Link>
+              <img src={banner.img} />
             </li>
           ))}
         </StSmallBanner>
       </Carousel>
+      <StSmallBannerNumber>
+        <span>
+          {currItemIndex + 1}/{itemLength} <strong>+</strong>
+        </span>
+      </StSmallBannerNumber>
     </div>
   );
 };

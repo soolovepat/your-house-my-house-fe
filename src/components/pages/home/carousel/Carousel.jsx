@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { StCarousel } from "./styled";
-import Button from "../../../shared/button/Button";
+
+// import Button from "../../../shared/button/Button";
+import Button from "../../../shared/Button/Button";
+// import theme from "../../../../Styles/theme";
 import theme from "../../../../styles/theme";
+import { StCarousel, StCarouselArrow } from "./styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = ({
   children,
@@ -10,6 +18,7 @@ const Carousel = ({
   setCurrItemIndex,
   itemLength,
   move,
+  type,
 }) => {
   const onDecreaseIdx = () => {
     currItemIndex <= 0
@@ -24,53 +33,31 @@ const Carousel = ({
 
   return (
     <>
-      <StCarousel>
+      <StCarousel
+        currItemIndex={currItemIndex}
+        itemLength={itemLength}
+        type={type}
+      >
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
         </div>
-        <p onClick={onDecreaseIdx}>{"<"}</p>
-        <p onClick={onIncreaseIdx}>{">"}</p>
-        <Button>버튼</Button>
+        {itemLength > 1 ? (
+          <StCarouselArrow
+            currItemIndex={currItemIndex}
+            itemLength={itemLength}
+            type={type}
+          >
+            <button onClick={onDecreaseIdx}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button onClick={onIncreaseIdx}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </StCarouselArrow>
+        ) : null}
       </StCarousel>
-
-      <CarouselDots currItemIndex={currItemIndex} itemLength={itemLength} />
     </>
   );
 };
 
-const CarouselDots = ({ currItemIndex, itemLength }) => {
-  return (
-    <DotsBlock>
-      {Array(itemLength)
-        .fill(null)
-        .map((_, idx) => (
-          <Dot key={idx} active={currItemIndex === idx} />
-        ))}
-    </DotsBlock>
-  );
-};
-
 export default Carousel;
-
-const DotsBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 360px;
-  padding: 10px;
-`;
-
-const Dot = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-  margin: 0 5px;
-
-  ${(props) =>
-    props.active &&
-    css`
-      background: ${(props) => props.theme.whiteColor};
-    `}
-`;
