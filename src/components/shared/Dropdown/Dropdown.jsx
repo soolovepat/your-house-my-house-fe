@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { StDropdown } from "./styled";
@@ -30,7 +30,7 @@ const Dropdown = (props) => {
             })}
         </ul>
     </StDropdown>
-    );
+  );
 };
 
 export default Dropdown;

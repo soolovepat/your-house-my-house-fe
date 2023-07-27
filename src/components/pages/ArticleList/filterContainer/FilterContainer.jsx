@@ -97,6 +97,6 @@ const FilterContainer = () => {
             <FilteredInfoList removeParams={removeParams} filteredInfos={filteredInfos} />
         </>
     );
-};
+    }
 
 export default FilterContainer;

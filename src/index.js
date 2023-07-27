@@ -8,13 +8,11 @@ import { CookiesProvider } from "react-cookie";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <CookiesProvider>
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <CookiesProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </CookiesProvider>
-
-
 );
 
 reportWebVitals();

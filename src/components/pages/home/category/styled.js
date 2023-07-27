@@ -1,7 +1,67 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import theme from "../../../../styles/theme";
 
-export const StCategory = styled.ul`
+const gradientOnBoth = css`
+  &::before {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255) 0%,
+      rgb(255, 255, 255, 0) 100%
+    );
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 90%;
+    left: 0;
+    z-index: 1;
+  }
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgb(255, 255, 255) 100%
+    );
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 90%;
+    z-index: 1;
+  }
+`;
+
+const gradientOnRight = css`
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgb(255, 255, 255) 100%
+    );
+    height: 100%;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 90%;
+    z-index: 1;
+  }
+`;
+
+export const StCategory = styled.div`
+  position: relative;
+  margin-bottom: 70px;
+
+  > div {
+    ${(props) => (props.currItemIndex !== 0 ? gradientOnBoth : gradientOnRight)}
+  }
+`;
+
+export const StCategoryList = styled.ul`
   display: flex;
+  height: 100%;
 
   li {
     display: flex;
@@ -12,6 +72,7 @@ export const StCategory = styled.ul`
 
     > img {
       width: 90px;
+      height: 90px;
     }
 
     > p {
@@ -25,6 +86,7 @@ export const StCategory = styled.ul`
       white-space: nowrap;
       overflow: hidden;
       padding: 0 4px;
+      color: ${theme.darkGrayColor};
     }
 
     cursor: pointer;

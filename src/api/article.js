@@ -30,3 +30,7 @@ export const getArticlePage = async (id) => {
     throw err;
   }
 };
+export const getItemData = async (itemId) => {
+  const res = await api.get(`/item/${itemId}`);
+  return res;
+};
