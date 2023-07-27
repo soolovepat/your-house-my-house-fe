@@ -28,7 +28,7 @@ const Banner = ({ articleList }) => {
             <StSmallBanner>
               {randomArticle && (
                 <li>
-                  <Link to={`item/${randomArticle.articleId}`}>
+                  <Link to={`article/${randomArticle.articleId}`}>
                     <img src={randomArticle.coverImage} />
                     <div>
                       <strong>{randomArticle.title}</strong>
