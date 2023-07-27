@@ -17,9 +17,8 @@ import {
 import { useState, useRef } from "react";
 import { SiNaver } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import axios from "axios";
+import api from "../../../api/api";
 
-// axios.defaults.withCredentials = true;
 const LoginPage = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -42,31 +41,25 @@ const LoginPage = () => {
   const userCheck = () => {
     if (user.email < 1) {
       emailRef.current.focus();
-      return;
     }
     if (user.password < 1) {
       passwordRef.current.focus();
-      return;
     }
-    return userRegistryCheck();
+    userRegistryCheck();
   };
 
   const userRegistryCheck = async () => {
-    await axios
-      .post(
-        "http://3.34.5.210:3000/api/auth/login",
-
-        {
-          email: user.email,
-          password: user.password,
-        }
-      )
+    await api
+      .post("/auth/login", {
+        email: user.email,
+        password: user.password,
+      })
       .then((response) => {
         const token = response.headers.get("authorization");
 
         localStorage.setItem("token", token);
-
-        return navigate("/");
+        navigate("/");
+        return console.log("response", response);
       })
       .catch((error) => {
         console.log("an error occurred:", error.response);

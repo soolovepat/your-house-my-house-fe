@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../../api/api";
 
 const Header = () => {
   const [scrollFlag, setScrollFlag] = useState(false);
@@ -58,20 +58,16 @@ const Header = () => {
 
   const token = localStorage.getItem("token");
   const CheckuserInfo = async () => {
-    console.log("check");
-
     const currentUserToken = {
       headers: {
         "Content-Type": "application/json",
         Authorization: `${token}`,
       },
     };
-    console.log("token", token);
-    await axios
-      .get(`http://3.34.5.210:3000/api/auth/checkout`, currentUserToken)
+    await api
+      .get("/auth/checkout", currentUserToken)
       .then((response) => {
         if (response.data.success === true) {
-          console.log(response);
           setLoggedin(true);
           return setNickname(response.data.nickname);
         }

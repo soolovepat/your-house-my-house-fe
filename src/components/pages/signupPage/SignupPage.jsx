@@ -23,7 +23,6 @@ import { SiNaver } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import api from "../../../api/api";
 const SignupPage = () => {
   const emailRef = useRef();
@@ -73,9 +72,9 @@ const SignupPage = () => {
   };
 
   const register = async () => {
-    await axios
+    await api
       .post(
-        "http://3.34.5.210:3000/api/auth/signup",
+        "/auth/signup",
         {
           email: newuser.email,
           password: newuser.password,
@@ -85,9 +84,6 @@ const SignupPage = () => {
         // { withCredentials: true }
       )
       .then((response) => {
-        console.log(response.data.user);
-        console.log(response.data.jwt);
-        localStorage.setItem("token", response.data.jwt);
         alert("회원가입에 성공 하였습니다.");
         replace("/login");
       })
