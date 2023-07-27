@@ -58,7 +58,7 @@ const ItemDetail = () => {
             <span>{itemList.brand}</span>
             <strong>{itemList.itemName}</strong>
             <NumberComma
-              number={Number(itemList.price)}
+              number={itemList.price}
               size={"32px"}
               weight={"700"}
               lineheight={"50px"}
