@@ -21,7 +21,7 @@ const ArticleList = () => {
     <StArticleWrapper>
       <FilterContainer />
       <p style={{ margin: "30px 0 10px" }}>전체: {articles.length}</p>
-      <HouseContainer articleList={articleList} column="3" align={"center"} />
+      <HouseContainer articleList={articles} column="3" align={"center"} />
     </StArticleWrapper>
   );
 };
