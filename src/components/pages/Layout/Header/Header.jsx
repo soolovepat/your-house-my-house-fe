@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Link } from "react-router-dom";
 
 // import Button from "../../../shared/button/Button";
@@ -62,6 +63,7 @@ const Header = () => {
   return (
     <StHeaderWrap $display={isSticky}>
       <StHeaderBanner>6조 수고 많으셨습니다!🎉</StHeaderBanner>
+
       <StHeaderContainer>
         <div>
           <StLogo>
@@ -80,6 +82,7 @@ const Header = () => {
         </div>
         <div>
           {/* <InputSearch value={value} handleChange={(e) => setValue(e.target.value)} placeholder="검색어를 입력하세요" name="search" /> */}
+
           {loggedin ? (
             <>
               <Bookmark />
@@ -94,6 +97,7 @@ const Header = () => {
             <StHeaderSubMenuContainer>
               <li onClick={() => navigate("/login")}>로그인</li>
               <li onClick={() => navigate("/signup")}>회원가입</li>
+
               {/* <li>고객센터</li> */}
             </StHeaderSubMenuContainer>
           )}
