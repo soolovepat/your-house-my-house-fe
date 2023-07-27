@@ -26,7 +26,7 @@ function HouseContainer({ articleList, column, align }) {
             </StImgWrap>
             <h5>{article.title}</h5>
             <p>
-              <UserAvatar width={"30px"} height={"30px"} align={align} />{" "}
+              <UserAvatar width={"20px"} height={"20px"} align={align} />{" "}
               {article.nickname}
             </p>
             <span>
