@@ -8,6 +8,7 @@ import ProductContainer from "../../shared/thumbnailContainer/productContainer/P
 import { StContainer } from "../../../styles/Container";
 import { StItemList } from "./style";
 import Category from "../home/category/Category";
+import SectionTitle from "../home/sectionTitle/SectionTitle";
 
 const ItemList = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const ItemList = () => {
   console.log(itemList);
   return (
     <StContainer>
+      <SectionTitle title={"카테고리"} marginTop={"20px"} />
       <Category />
       <StItemList>
         <p>전체: {itemList.length}개</p>

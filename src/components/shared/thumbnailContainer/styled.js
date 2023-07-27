@@ -16,7 +16,7 @@ export const StImgWrap = styled.div`
 
   img {
     width: 100%;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
   }
 
   img:hover {
