@@ -10,7 +10,6 @@ import SignupPage from "../components/pages/signupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ItemDetail from "../components/pages/itemDetail/ItemDetail";
 import ItemList from "../components/pages/itemList/ItemList";
-
 const Router = () => {
   return (
     <BrowserRouter>

@@ -22,6 +22,8 @@ const ItemList = () => {
     category: "",
     page: 1,
   });
+  const itemList = useSelector((state) => state.categoryList?.items);
+  const itemListAll = useSelector((state) => state.dataList?.itemList);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -38,8 +40,7 @@ const ItemList = () => {
     fetchPosts();
   }, [category]);
 
-  const itemList = useSelector((state) => state.categoryList.items);
-  const itemListAll = useSelector((state) => state.dataList.itemList);
+  console.log(itemList, itemListAll);
 
   return (
     <StContainer>

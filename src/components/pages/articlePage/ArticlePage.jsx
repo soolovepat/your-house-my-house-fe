@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import TaggedImage from "./taggedImage/TaggedImage";
 import { getArticlePage } from "../../../api/article";
+
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser";
 import { useParams } from "react-router-dom";
 
@@ -31,7 +32,7 @@ const ArticlePage = () => {
                     <h2>{article?.title}</h2>
                     <div>
                         <div>
-                            <img src="/assets/images/img-avatar.png" alt="" />
+                            <UserAvatar width={"40px"} height={"40px"} />
                         </div>
                         <p>{article?.nickname}</p>
                     </div>
@@ -42,10 +43,12 @@ const ArticlePage = () => {
                             transform: (node) => {
                                 if (node.type === "tag" && node.name === "img") {
                                     if (article && Array.isArray(article.tags)) {
-                                        const target = article.tags.filter(tagData => tagData.contentImageId === node.attribs.src);
-                                        return target.map((tagData, index)=> (
+                                        const target = article.tags.filter(
+                                            (tagData) => tagData.contentImageId === node.attribs.src
+                                        );
+                                        return target.map((tagData, index) => (
                                             <TaggedImage key={index} tags={tagData} />
-                                        ))
+                                        ));
                                     }
                                 }
                             },
