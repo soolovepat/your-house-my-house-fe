@@ -4,18 +4,13 @@ import { Link } from "react-router-dom";
 import { StDropdown } from "./styled";
 
 const Dropdown = (props) => {
-
     const location = useLocation();
-
-    const handleQuery = (query, value) => {
-        console.log(query, value);
-    }
 
     useEffect(() => {
         console.log(location);
     }, [location]);
 
-    const { isFirst, isOpened, filterInfo } = props;
+    const { isFirst, isOpened, filterInfo, setParams, handleFilteredInfos } = props;
 
     return (
     <StDropdown $isOpened={isOpened} $firstItem={isFirst}>
@@ -24,9 +19,12 @@ const Dropdown = (props) => {
                 return (
                     <li
                         key={index} 
-                        onClick={() => {handleQuery(item.query[0], item.query[1])}}
+                        onClick={() => {
+                            setParams(item.category, item.query);
+                            handleFilteredInfos({ ...item });
+                        }}
                     >
-                        {filterInfo.name}
+                        {item.label}
                     </li>
                 );
             })}

@@ -10,7 +10,7 @@ export const StDropdown = styled.div`
     border: 1px solid rgb(218, 221, 224);
     border-radius: 6px;
     opacity: 0;
-    visibility: hidden;
+    display: none;
     transform: translate(-50%, -20px);
     box-shadow: rgba(63, 71, 77, 0.2) 0px 4px 10px 0px;
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
@@ -32,7 +32,7 @@ export const StDropdown = styled.div`
         $isOpened &&
         css`
             opacity: 1;
-            visibility: visible;
+            display: block;
             transform: translate(-50%, 0);
         `}
 

@@ -29,7 +29,7 @@ const Header = () => {
                         <Link to="/"><img src="/assets/images/logo-your-house-my-house.png" alt="" /></Link>
                     </StLogo>
                     <StMenuContainer>
-                        <li><Link to="/articles">커뮤니티</Link></li>
+                        <li><Link to="/article">커뮤니티</Link></li>
                         <li>쇼핑</li>
                     </StMenuContainer>
                 </div>

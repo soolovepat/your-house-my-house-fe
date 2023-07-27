@@ -9,7 +9,7 @@ import Dropdown from "../../../../shared/dropdown/Dropdown";
  * @param {filter} filterInfo - 필터 제목, 드롭다운 리스트 정보(label, 쿼리 키워드) 객체
 */
 const Filter = (props) => {
-    const { isFirst = false, filterInfo } = props;
+    const { isFirst = false, filterInfo, setParams, handleFilteredInfos } = props;
     const [isHover, setIsHover] = useState(false);
 
     return (
@@ -19,7 +19,13 @@ const Filter = (props) => {
         >
             {filterInfo.name}
             <FontAwesomeIcon icon={faChevronDown} />
-            <Dropdown filterInfo={filterInfo} isOpened={isHover} isFirst={isFirst} />
+            <Dropdown 
+            setParams={setParams} 
+            filterInfo={filterInfo} 
+            isOpened={isHover} 
+            isFirst={isFirst} 
+            handleFilteredInfos={handleFilteredInfos}
+            />
         </StFilter>
     );
 };
