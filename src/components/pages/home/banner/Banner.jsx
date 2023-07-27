@@ -12,7 +12,6 @@ const Banner = ({ articleList }) => {
     const randomIndex = Math.floor(Math.random() * article.length);
     return article[randomIndex];
   };
-  console.log(getRandomArticle(articleList));
 
   const randomArticle = articleList && getRandomArticle(articleList);
   return (
@@ -27,18 +26,17 @@ const Banner = ({ articleList }) => {
             type={"hoverArrow"}
           >
             <StSmallBanner>
-              <li>
-                <Link to={`event/${bigbanner}`}>
-                  <img src={bigbanner} />
-
-                  {randomArticle && (
+              {randomArticle && (
+                <li>
+                  <Link to={`item/${randomArticle.articleId}`}>
+                    <img src={randomArticle.coverImage} />
                     <div>
                       <strong>{randomArticle.title}</strong>
                       <span>지금은 null값입니다{randomArticle.nickname}</span>
                     </div>
-                  )}
-                </Link>
-              </li>
+                  </Link>
+                </li>
+              )}
             </StSmallBanner>
           </Carousel>
         </div>

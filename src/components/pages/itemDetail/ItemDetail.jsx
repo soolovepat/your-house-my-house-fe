@@ -3,14 +3,13 @@ import { getItemData } from "../../../api/article";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemList } from "../../../redux/modules/dataListSlice";
 import { useParams } from "react-router-dom";
-import { product_img_01 } from "../../../assets/images/sample";
 import { StItemDetailTop } from "./style";
 import NumberComma from "../../shared/numberComma/NumberComma";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { StContainer } from "../../../styles/Container";
 
-function ItemDetail() {
+const ItemDetail = () => {
   const dispatch = useDispatch();
   const { itemId } = useParams();
 
@@ -19,7 +18,6 @@ function ItemDetail() {
       try {
         const response = await getItemData(itemId);
         dispatch(setItemList(response.data));
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -28,19 +26,27 @@ function ItemDetail() {
   }, [dispatch]);
 
   const itemList = useSelector((state) => state.dataList.itemList);
+  console.log(itemList);
+
+  const jsonCoverImage = itemList?.coverImage;
+  const jsonContent = itemList?.content;
+
+  const coverImageUrlArr = JSON.parse(jsonCoverImage ?? "[]");
+  const contentImageUrlArr = JSON.parse(jsonContent ?? "[]");
+  console.log(coverImageUrlArr, contentImageUrlArr);
 
   return (
     <StContainer>
       <StItemDetailTop>
         <div>
-          <img src={product_img_01} />
+          <img src={coverImageUrlArr[0]} />
         </div>
         {itemList ? (
           <div>
             <span>{itemList.brand}</span>
             <strong>{itemList.itemName}</strong>
             <NumberComma
-              number={Number(itemList.price)}
+              number={itemList.price}
               size={"32px"}
               weight={"700"}
               lineheight={"50px"}
@@ -75,9 +81,12 @@ function ItemDetail() {
           <div>Loading...</div>
         )}
       </StItemDetailTop>
-      <span>{itemList.content}사진 들어갈 자리</span>
+      <span>
+        {contentImageUrlArr &&
+          contentImageUrlArr.map((img) => <img src={img} />)}
+      </span>
     </StContainer>
   );
-}
+};
 
 export default ItemDetail;

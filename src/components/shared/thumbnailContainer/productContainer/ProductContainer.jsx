@@ -25,7 +25,7 @@ function ProductContainer({ itemList, column }) {
               <img src={product_img_01} alt="home_img" />
             </StImgWrap>
             <h5>
-              <span>거래처</span>
+              <span>{item.brand}</span>
               <span>{item.itemName}</span>
             </h5>
             <NumberComma

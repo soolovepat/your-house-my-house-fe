@@ -117,7 +117,7 @@ const Category = () => {
   const itemLength = 3;
 
   const onClickCategory = (cateId) => {
-    navigate(`item/category?category=${cateId}&page=1`);
+    navigate(`/item/category?category=${cateId}`);
   };
 
   return (
@@ -126,7 +126,7 @@ const Category = () => {
         currItemIndex={currItemIndex}
         setCurrItemIndex={setCurrItemIndex}
         itemLength={itemLength}
-        move={80}
+        move={86}
         type={"alwaysArrow"}
       >
         <StCategoryList>
