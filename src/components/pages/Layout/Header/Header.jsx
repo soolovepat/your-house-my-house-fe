@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../shared/button/Button";
-import UserAvatar from "./userAvatar/UserAvatar";
+import UserAvatar from "../../../shared/userAvatar/UserAvatar";
 // import InputSearch from "../../../shared/Input/InputSearch";
 import Bookmark from "./bookmark/Bookmark";
 import {
@@ -44,7 +44,11 @@ const Header = () => {
           {true ? (
             <>
               <Bookmark />
-              <UserAvatar />{" "}
+              <UserAvatar
+                width={"40px"}
+                height={"40px"}
+                type={"hoverOn"}
+              />{" "}
             </>
           ) : (
             <StHeaderSubMenuContainer>

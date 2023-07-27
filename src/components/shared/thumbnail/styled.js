@@ -17,6 +17,10 @@ const house = css`
   }
 
   p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: ${(props) => props.align};
     margin: 8px 0;
     font-size: 13px;
     font-weight: 400;
