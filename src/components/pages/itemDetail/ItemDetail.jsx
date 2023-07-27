@@ -27,31 +27,19 @@ const ItemDetail = () => {
 
   const itemList = useSelector((state) => state.dataList.itemList);
   console.log(itemList);
-  // const jsonString = itemList.content;
 
-  // try {
-  //   const jsonArray = JSON.parse(jsonString);
-  //   console.log(jsonArray); // JavaScript 배열로 변환된 값 출력
-  // } catch (error) {
-  //   console.error("유효하지 않은 JSON 배열 형식입니다.");
-  // }
-  const urlRegex = /https?:\/\/[^"]+/g;
-  const contentImageUrlArr = itemList?.content?.match(urlRegex);
-  const coverImageUrlArr = itemList?.coverImage?.match(urlRegex);
+  const jsonCoverImage = itemList?.coverImage;
+  const jsonContent = itemList?.content;
 
-  const coverImageUrl =
-    itemList && itemList.coverImage ? coverImageUrlArr[0] : "";
-
-  const contentImageUrlArrExceptLast = contentImageUrlArr?.slice(
-    0,
-    coverImageUrlArr.length - 1
-  );
+  const coverImageUrlArr = JSON.parse(jsonCoverImage ?? "[]");
+  const contentImageUrlArr = JSON.parse(jsonContent ?? "[]");
+  console.log(coverImageUrlArr, contentImageUrlArr);
 
   return (
     <StContainer>
       <StItemDetailTop>
         <div>
-          <img src={coverImageUrl} />
+          <img src={coverImageUrlArr[0]} />
         </div>
         {itemList ? (
           <div>
@@ -94,8 +82,8 @@ const ItemDetail = () => {
         )}
       </StItemDetailTop>
       <span>
-        {contentImageUrlArrExceptLast &&
-          contentImageUrlArrExceptLast.map((img) => <img src={img} />)}
+        {contentImageUrlArr &&
+          contentImageUrlArr.map((img) => <img src={img} />)}
       </span>
     </StContainer>
   );
