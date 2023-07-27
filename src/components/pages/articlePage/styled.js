@@ -59,6 +59,11 @@ export const StArticle = styled.div`
     & > img {
         width: 100%;
     }
+
+    & > p {
+      font-size: 16px;
+      line-height: 32px;  
+    }  
 `;
 
 export const StArticleSideBar = styled.div`
