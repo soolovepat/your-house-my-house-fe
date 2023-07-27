@@ -44,7 +44,7 @@ const Home = () => {
     <StContainer>
       <Banner articleList={articleList} />
       <SectionTitle
-        title={"🥇 20평 대! 공간 활용 best 4 🥇"}
+        title={"🥇 원룸&오피스텔! 공간 활용 best 4 🥇"}
         button={"더보기"}
         onClick={() => onClickMoreView("/articles")}
         marginTop={"50px"}
@@ -53,6 +53,7 @@ const Home = () => {
         <HouseContainer
           articleList={articleList.slice(0, column.house)}
           column={column.house}
+          align={"left"}
         />
       )}
       <SectionTitle title={"카테고리"} marginTop={"20px"} />
@@ -67,6 +68,7 @@ const Home = () => {
         <ProductContainer
           itemList={itemList.slice(0, column.product)}
           column={column.product}
+          align={"left"}
         />
       )}
     </StContainer>

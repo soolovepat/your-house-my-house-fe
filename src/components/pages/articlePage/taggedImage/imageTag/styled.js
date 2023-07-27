@@ -73,6 +73,7 @@ export const StProductInfo = styled.div`
     width: 180px;
     height: 80px;
     padding-left: 10px;
+    line-height: 1.2em;
 
     & > p {
         color: #494949;

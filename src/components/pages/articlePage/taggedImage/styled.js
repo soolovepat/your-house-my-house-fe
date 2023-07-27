@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import theme from "../../../../styles/theme";
-import { StCategory } from "../../home/category/styled";
+import { StCategoryList } from "../../home/category/styled";
 
 export const StTaggedImage = styled.div`
     width: 100%;
     position: relative;
-    margin: 10px 0 30px;
+    margin: 40px 0 10px;
 
     & > img {
         width: 100%;
@@ -21,17 +21,18 @@ export const StImageTagWrapper = styled.div`
     object-fit: cover;
     position: absolute;
     top: 0;
-    left: 0;W
+    left: 0;
     transition: opacity 0.1s ease-in-out;
 `;
 
-export const StProductList = styled(StCategory)`
+export const StProductList = styled(StCategoryList)`
     & > li {
         width: 100px;
         height: 100px;
         border-radius: 30px;
         box-sizing: border-box;
         margin-right: 10px;
+        margin-bottom: 40px;
         border: 2px solid transparent;
         overflow: hidden;
 
