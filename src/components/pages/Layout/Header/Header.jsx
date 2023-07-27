@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // import Button from "../../../shared/button/Button";
-import Button from "../../../shared/Button/Button";
+import Button from "../../../shared/button/Button";
 
 import UserAvatar from "../../../shared/userAvatar/UserAvatar";
 

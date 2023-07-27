@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark } from "@fortawesome/free-regular-svg-icons";
 import TaggedImage from "./taggedImage/TaggedImage";
 import { getArticlePage } from "../../../api/article";
-
+import UserAvatar from "../../shared/userAvatar/UserAvatar";
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const ArticlePage = () => {
                 setArticle(newArticle);
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [id]);
 
     return (
         <>

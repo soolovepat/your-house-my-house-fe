@@ -5,7 +5,7 @@ import Home from "../components/pages/home/Home";
 import ArticleList from "../components/pages/articlePage/ArticlePage";
 import ArticlePage from "../components/pages/articlePage/ArticlePage";
 // import Layout from "../components/pages/layout/Layout";
-import Layout from "../components/pages/Layout/Layout";
+import Layout from "../components/pages/layout/Layout";
 import Write from "../components/pages/write/Write";
 import LoginPage from "../components/pages/logninPage/LoginPage";
 import SignupPage from "../components/pages/signupPage/SignupPage";

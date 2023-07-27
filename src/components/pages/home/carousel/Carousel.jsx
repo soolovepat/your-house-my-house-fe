@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 // import Button from "../../../shared/button/Button";
-import Button from "../../../shared/Button/Button";
+import Button from "../../../shared/button/Button";
 // import theme from "../../../../Styles/theme";
 import theme from "../../../../styles/theme";
 import { StCarousel, StCarouselArrow } from "./styled";
