@@ -7,15 +7,15 @@ import HouseContainer from "../../shared/thumbnailContainer/houseContainer/House
 import { getArticleList } from "../../../api/article";
 
 const ArticleList = () => {
-    const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([]);
 
-    useEffect(() => {
-      getArticleList()
+  useEffect(() => {
+    getArticleList()
       .then((res) => {
         setArticles(res.data.articleList);
       })
-      .catch(err => console.log(err));
-    },[articles]);
+      .catch((err) => console.log(err));
+  }, [articles]);
 
   const articleList = [
     {
@@ -44,7 +44,7 @@ const ArticleList = () => {
     <StArticleWrapper>
       <FilterContainer />
       <p style={{ margin: "30px 0 10px" }}>전체: {articleList.length}</p>
-      <HouseContainer articleList={articleList} column="3" />
+      <HouseContainer articleList={articleList} column="3" align={"center"} />
     </StArticleWrapper>
   );
 };

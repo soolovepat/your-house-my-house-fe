@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { StImgWrap, StThumbnailContainer } from "../styled";
 import Thumbnail from "../../thumbnail/Thumbnail";
 import NumberComma from "../../numberComma/NumberComma";
+import UserAvatar from "../../userAvatar/UserAvatar";
 
-function HouseContainer({ articleList, column }) {
+function HouseContainer({ articleList, column, align }) {
   const navigate = useNavigate();
   const onClickArticleHandler = (articleId) => {
     navigate(`/article/${articleId}`);
@@ -16,7 +17,7 @@ function HouseContainer({ articleList, column }) {
           key={article.articleId}
           type={"house"}
           column={column}
-          align={"center"}
+          align={align}
           onClick={() => onClickArticleHandler(article.articleId)}
         >
           <div>
@@ -24,14 +25,17 @@ function HouseContainer({ articleList, column }) {
               <img src={article.coverImage} alt="img" />
             </StImgWrap>
             <h5>{article.title}</h5>
-            <p>{article.nickname}</p>
+            <p>
+              <UserAvatar width={"30px"} height={"30px"} align={align} />{" "}
+              {article.nickname}
+            </p>
             <span>
-              <span>
+              {/* <span>
                 스크랩{" "}
                 <NumberComma number="123" size={"13px"} lineHeight={"17px"} /> ·
                 조회{" "}
                 <NumberComma number="456" size={"13px"} lineHeight={"17px"} />
-              </span>
+              </span> */}
             </span>
           </div>
         </Thumbnail>
