@@ -17,12 +17,10 @@ const TaggedImage = (props) => {
         navigate(`/category/${cateId}`);
     };
 
-    console.log("tags", tags.contentImageId);
-
     return (
         <>
             <StTaggedImage>
-                <img src={tags.contentImageId} />
+                <img src={tags?.contentImageId.replace("https: ", "https:")} />
                 <StImageTagWrapper
                     onMouseEnter={() => {
                         setIsHover(true);
@@ -32,7 +30,7 @@ const TaggedImage = (props) => {
                     }}
                     $isHover={isHover}
                 >
-                    {tags.tagsId.length > 0 &&
+                    {tags?.tagsId?.length > 0 &&
                     tags.tagsId.map((item, index) => {
                             return (
                                 <ImageTag
