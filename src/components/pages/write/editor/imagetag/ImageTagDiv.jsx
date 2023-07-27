@@ -203,6 +203,7 @@ const StTagButton = styled.button`
   background-color: rgba(53, 197, 240, 0.8);
   font-size: 13px;
   font-weight: 900;
+  cursor: pointer;
 `;
 
 const StTagEditorButton = styled.button`
@@ -217,4 +218,8 @@ const StTagEditorButton = styled.button`
   transition: background-color 0.1s ease 0s;
   right: 0;
   margin-top: 6px;
+  cursor: pointer;
+   &:hover {
+    filter: brightness(1.2);
+  }
 `;

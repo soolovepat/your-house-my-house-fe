@@ -64,7 +64,7 @@ export default function ParentComponent() {
       <StContentImage 
       onClick={imageHandler}
       src={myImage}
-      >Upload Image</StContentImage>
+      >Image</StContentImage>
       <Editor
         content={content}
         setContent={setContent}
@@ -124,7 +124,7 @@ const Editor = ({ content, setContent, quillRef, show }) => {
 const EditorContainer = styled.div`
   .ql-toolbar.ql-snow {
     position: fixed;
-    top: 7%;
+    top: 40px;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 0px 0px 0px 15px;
@@ -174,4 +174,8 @@ const StContentImage = styled.button`
     padding: 0px 0px 0px 15px;
     border: none;
     z-index: 600;
+    width: 24px;
+    height: 24px;
+    padding: 6px;
+    cursor: pointer;
 `

@@ -10,6 +10,7 @@ import {
   StSelectorButton,
   StSelectorTextMain,
   StSelectorTextSub,
+  StSubmitBtn,
   StWriteheader,
 } from "./styled";
 
@@ -109,16 +110,16 @@ function Write() {
     } catch (error) {
       console.log("Fetch error: ", error);
     }
-
+    window.location.href = '/';
   };
 
   return (
     <>
     <form onSubmit={onSubmitHandler} encType="multipart/form-data">
       <StWriteheader> 
-          <button type="submit">
+          <StSubmitBtn type="submit">
             발행
-          </button>
+          </StSubmitBtn>
       </StWriteheader>
       <StBodyContainer>
         <StSelectorContainer>
