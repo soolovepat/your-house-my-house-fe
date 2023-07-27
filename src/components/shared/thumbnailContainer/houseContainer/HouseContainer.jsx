@@ -21,7 +21,7 @@ function HouseContainer({ articleList, column, align }) {
           onClick={() => onClickArticleHandler(article.articleId)}
         >
           <div>
-            <StImgWrap>
+            <StImgWrap type={"house"}>
               <img src={article.coverImage} alt="img" />
             </StImgWrap>
             <h5>{article.title}</h5>

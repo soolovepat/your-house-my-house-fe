@@ -17,6 +17,10 @@ const house = css`
   }
 
   p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: ${(props) => props.align};
     margin: 8px 0;
     font-size: 13px;
     font-weight: 400;
@@ -28,13 +32,6 @@ const house = css`
     font-size: 13px;
     line-height: 17px;
     text-align: center;
-  }
-
-  p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: ${(props) => props.align};
   }
 `;
 
