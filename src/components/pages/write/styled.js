@@ -99,4 +99,41 @@ const StWriteheader = styled.div`
     z-index: 500;
 `;
 
-export {StSelectorButton, StSelectorTextMain,StArrowIcon,StButtonAdddiv,StImageTextBody,StImageTextTitle,StImagebutton,StSelectorTextSub,StWriteheader}
+const StSubmitBtn = styled.button`
+  display: inline-block;
+  width: 90px;
+  height: 45px;
+  box-sizing: border-box;
+  margin: 0px 5px;
+  padding: 11px 5px 12px;
+  background: rgb(53, 197, 240);
+  border: 1px solid rgb(53, 197, 240);
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  transition: opacity 0.1s ease 0s;
+  position: absolute;
+  right: 0px;
+  margin-top: 12px;
+  margin-right: 20px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+`;
+
+export {
+  StSelectorButton,
+  StSelectorTextMain,
+  StArrowIcon,
+  StButtonAdddiv,
+  StImageTextBody,
+  StImageTextTitle,
+  StImagebutton,
+  StSelectorTextSub,
+  StWriteheader,
+  StSubmitBtn,
+};

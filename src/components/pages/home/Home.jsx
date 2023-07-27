@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Banner from "./banner/Banner";
-import { StContainer } from "../../../Styles/Container";
+// import { StContainer } from "../../../Styles/Container";
+import { StContainer } from "../../../styles/Container";
 import SectionTitle from "./sectionTitle/SectionTitle";
 import HouseContainer from "../../shared/thumbnailContainer/houseContainer/HouseContainer";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer/ProductContainer";

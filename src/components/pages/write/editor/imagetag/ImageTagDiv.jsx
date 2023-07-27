@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import Draggable from "react-draggable";
 import { ImageTagModal } from "./tagmodal/ImageTagModal";
 import styled from "styled-components";
+import { useData } from "../../hooks/useData";
 
-function ImageTagDiv({ children }) {
+function ImageTagDiv({ children, url }) {
   const [isEditing, setIsEditing] = useState(false);
   const addButtonRef = useRef(null);
+  const { data, setData } = useData();
 
   const [tagData, setTagData] = useState({
     tagsId: [],
@@ -18,9 +20,9 @@ function ImageTagDiv({ children }) {
 
   const addNewButton = (e) => {
     if (!isEditing || modalVisible.some((vis) => vis)) return;
-    const divRect = addButtonRef.current.getBoundingClientRect();
-    const x = e.clientX - divRect.x;
-    const y = e.clientY - divRect.y;
+    const spanRect = addButtonRef.current.getBoundingClientRect();
+    const x = e.clientX - spanRect.x;
+    const y = e.clientY - spanRect.y;
 
     setTagData((prevData) => ({
       tagsId: [...prevData.tagsId, prevData.tagsId.length],
@@ -28,6 +30,43 @@ function ImageTagDiv({ children }) {
       axisY: [...prevData.axisY, y],
       selectedItems: [...prevData.selectedItems, null],
     }));
+
+    setData((prevData) => {
+      let imageTagIndex = prevData.tags.findIndex(
+        (tag) => tag.contentImageId === url
+      );
+
+      let newTag;
+      if (imageTagIndex !== -1) {
+        // If it exists, update it
+        newTag = {
+          ...prevData.tags[imageTagIndex],
+          tagsId: [
+            ...prevData.tags[imageTagIndex].tagsId,
+            prevData.tags[imageTagIndex].tagsId.length,
+          ],
+          axisX: [...prevData.tags[imageTagIndex].axisX, x],
+          axisY: [...prevData.tags[imageTagIndex].axisY, y],
+          selectedItems: [...prevData.tags[imageTagIndex].selectedItems, null],
+        };
+
+        prevData.tags[imageTagIndex] = newTag;
+      } else {
+        newTag = {
+          contentImageId: url,
+          tagsId: [0],
+          axisX: [x],
+          axisY: [y],
+          selectedItems: [null],
+        };
+
+        prevData.tags.push(newTag);
+      }
+
+      return {
+        ...prevData,
+      };
+    });
 
     setModalVisible((prevVisible) => [...prevVisible, true]);
   };
@@ -45,6 +84,31 @@ function ImageTagDiv({ children }) {
         idx === index ? item : val
       ),
     }));
+
+    setData((prevData) => {
+      let updatedTags = [...prevData.tags];
+      let tagToUpdate = updatedTags.find((tag) => tag.contentImageId === url);
+      if (tagToUpdate) {
+        tagToUpdate.itemId = tagToUpdate.itemId || [];
+        tagToUpdate.itemId[index] = item.itemId;
+
+        tagToUpdate.itemName = tagToUpdate.itemName || [];
+        tagToUpdate.itemName[index] = item.itemName;
+
+        tagToUpdate.brand = tagToUpdate.brand || [];
+        tagToUpdate.brand[index] = item.brand;
+
+        tagToUpdate.coverImage = tagToUpdate.coverImage || [];
+        tagToUpdate.coverImage[index] = item.coverImage;
+      } else {
+        console.error("Tag to update was not found");
+      }
+      return {
+        ...prevData,
+        tags: updatedTags,
+      };
+    });
+
     toggleModal(index);
   };
 
@@ -58,20 +122,23 @@ function ImageTagDiv({ children }) {
 
   return (
     <>
-      <div
+      <span
         style={{
           width: "100%",
           backgroundColor: "lightgreen",
-          position: "relative"
+          position: "relative",
+          display: "block",
+          marginBottom: "55px",
         }}
       >
-        <div
+        <span
           ref={addButtonRef}
           onClick={addNewButton}
           style={{
             height: "500px",
             width: "100%",
             position: "relative",
+            display: "block",
           }}
         >
           {children}
@@ -83,11 +150,12 @@ function ImageTagDiv({ children }) {
               key={tagId}
               disabled={!isEditing}
             >
-              <div
+              <span
                 style={{
                   position: "absolute",
                   left: 0,
                   top: 0,
+                  display: "block",
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -111,14 +179,14 @@ function ImageTagDiv({ children }) {
                     setSelectedItem={(item) => handleSelect(index, item)}
                   />
                 )}
-              </div>
+              </span>
             </Draggable>
           ))}
-        </div>
+        </span>
         <StTagEditorButton onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? "편집완료" : "상품 태그 편집"}
         </StTagEditorButton>
-      </div>
+      </span>
     </>
   );
 }
@@ -136,6 +204,7 @@ const StTagButton = styled.button`
   background-color: rgba(53, 197, 240, 0.8);
   font-size: 13px;
   font-weight: 900;
+  cursor: pointer;
 `;
 
 const StTagEditorButton = styled.button`
@@ -150,4 +219,8 @@ const StTagEditorButton = styled.button`
   transition: background-color 0.1s ease 0s;
   right: 0;
   margin-top: 6px;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(1.2);
+  }
 `;

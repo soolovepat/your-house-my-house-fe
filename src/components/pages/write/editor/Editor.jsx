@@ -1,89 +1,131 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styled from "styled-components";
 import api from "../../../../api/api";
+import ImageTagDiv from "./imagetag/ImageTagDiv";
+import { useData } from "../hooks/useData";
 
-export default function Editor() {
+export default function ParentComponent() {
   const [content, setContent] = useState("");
-  const quillRef = useRef(); // Create a Ref
-
-  const contentHandler = (value) => {
-    console.log(value);
-    setContent(value);
-  };
-
-  const imageHandler = () => {
-    console.log('에디터에서 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다!');
-
-    const input = document.createElement('input');
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
+  const quillRef = useRef();
+  const [tagData, setTagData] = useState([]);
+  const [showEditor, setShowEditor] = useState(true);
+  const [activeImage, setActiveImage] = useState(null);
+  console.log(content);
+  const imageHandler = async () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
     input.click();
 
-    input.addEventListener('change', async () => {
-      console.log('온체인지');
+    input.onchange = async () => {
       const file = input.files[0];
       const formData = new FormData();
-      formData.append('contentImage', file);
+      formData.append("contentImage", file);
 
       try {
-        const result = await api.post('api/article/contentImage', formData,{
+        const result = await api.post("/article/contentImage", formData, {
           headers: {
-            "Content-Type": "multipart/form-data"
-          }
+            "Content-Type": "multipart/form-data",
+          },
         });
-        console.log('성공 시, 백엔드가 보내주는 데이터', result.data.url);
+
         const IMG_URL = result.data.url;
+        const quill = quillRef.current.getEditor();
 
-        const editor = quillRef.current.getEditor();
-        const range = editor.getSelection();
-        
-        editor.insertEmbed(range.index, 'image', IMG_URL);
+        const range = quill.getSelection();
+        const position = range ? range.index : quill.getLength();
 
+        // 이미지 url 에디터에 넣기
+        const imgTag = `<img src="${IMG_URL}" />\n`;
+
+        quill.insertText(position, imgTag);
+
+        setTagData((oldData) => [...oldData, { url: IMG_URL, tags: [] }]);
       } catch (error) {
-        console.log('실패했어요ㅠ');
+        console.log("Upload failed");
       }
-    });
-  }
+    };
+  };
+
+  const handleUpdateTags = (url, newTags) => {
+    setTagData((oldData) =>
+      oldData.map((data) => (data.url === url ? { url, tags: newTags } : data))
+    );
+  };
+
+  useEffect(() => {
+    setActiveImage(null);
+  }, [tagData]);
+  return (
+    <div>
+      <StContentImage onClick={imageHandler}>IMG</StContentImage>
+      <Editor
+        content={content}
+        setContent={setContent}
+        quillRef={quillRef}
+        show={showEditor}
+      />
+      {tagData.map((data) => (
+        <ImageTagDiv
+          key={data.url}
+          id={data.url}
+          url={data.url}
+          tags={data.tags}
+          onUpdateTags={handleUpdateTags}
+          isActive={activeImage === data.id}
+          onClick={() => setActiveImage(data.url)}
+        >
+          <Imgwall src={data.url} alt="Uploaded content" />
+        </ImageTagDiv>
+      ))}
+    </div>
+  );
+}
+
+const Editor = ({ content, setContent, quillRef, show }) => {
+  const { data, setData } = useData();
+  const contentHandler = (newContent) => {
+    setContent(newContent);
+    setData({ ...data, content: content });
+  };
 
   return (
-    <EditorContainer>
+    <EditorContainer style={{ display: show ? "block" : "none" }}>
       <ReactQuill
-        ref={quillRef} // Pass the Ref
+        ref={quillRef}
         value={content}
         onChange={contentHandler}
         modules={{
           toolbar: {
             container: [
-              ["image"],
               [{ header: [false, 1, 2, 3] }],
               ["bold", "italic", "underline"],
-              [{ color: ["#000000", "#e60000", "#00ffff"] }, { background: [] }],
+              [
+                { color: ["#000000", "#e60000", "#00ffff"] },
+                { background: [] },
+              ],
               [{ align: [] }],
               [{ list: "ordered" }, { list: "bullet" }, "link"],
             ],
-            handlers: {
-              image : imageHandler,
-            },
           },
         }}
         placeholder="내용을 입력해주세요"
       />
     </EditorContainer>
   );
-}
-
+};
 
 const EditorContainer = styled.div`
   .ql-toolbar.ql-snow {
-    top: 2px;
     position: fixed;
-    z-index: 600;
-    right: 151px;
-    left: auto;
-    padding: 24px;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0px 0px 0px 15px;
     border: none;
+    z-index: 600;
   }
 
   .ql-container {
@@ -111,5 +153,33 @@ const EditorContainer = styled.div`
     font-weight: normal;
     line-height: 28px;
     min-height: 28px;
+  }
+`;
+
+const Imgwall = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const StContentImage = styled.button`
+  /* position: fixed;
+    top: 7%;
+    left: 23%; */
+  transform: translate(-50%, -50%);
+  padding: 0px 0px 0px 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  z-index: 600;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    filter: brightness(2.2);
   }
 `;

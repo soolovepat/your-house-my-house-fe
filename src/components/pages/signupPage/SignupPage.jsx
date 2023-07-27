@@ -176,20 +176,3 @@ const SignupPage = () => {
 };
 
 export default SignupPage;
-  // const res = await api.post("/api/auth/signup");
-    // try {
-    //   const res = await api.post(
-    //     "/api/auth/signup",
-    //     {
-    //       email: newuser.email,
-    //       password: newuser.password,
-    //       confirm: newuser.confrim,
-    //       nickname: newuser.nickname,
-    //     },
-    //     { withCredentials: true }
-    //   );
-    //   console.log(res);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   throw error; // Rethrow the error to let the caller handle it as well if needed
-    // }

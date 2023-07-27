@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import styled, { css } from "styled-components";
-import { StCarousel } from "./styled";
-import Button from "../../../shared/button/Button";
-import theme from "../../../../Styles/theme";
-=======
+
+// import Button from "../../../shared/button/Button";
+import Button from "../../../shared/Button/Button";
+// import theme from "../../../../Styles/theme";
+import theme from "../../../../styles/theme";
 import { StCarousel, StCarouselArrow } from "./styled";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
->>>>>>> 6086c2839b4abbd460f3ae3620ca4bc9b242d3a0
 
 const Carousel = ({
   children,
