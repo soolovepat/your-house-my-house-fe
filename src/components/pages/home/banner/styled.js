@@ -92,6 +92,7 @@ export const StSmallBanner = styled.ul`
 
     > a {
       display: block;
+      width: 100%;
       height: 100%;
     }
 

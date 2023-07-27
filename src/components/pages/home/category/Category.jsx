@@ -126,7 +126,7 @@ const Category = () => {
         currItemIndex={currItemIndex}
         setCurrItemIndex={setCurrItemIndex}
         itemLength={itemLength}
-        move={80}
+        move={86}
         type={"alwaysArrow"}
       >
         <StCategoryList>
