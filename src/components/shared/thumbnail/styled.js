@@ -29,6 +29,13 @@ const house = css`
     line-height: 17px;
     text-align: center;
   }
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: ${(props) => props.align};
+  }
 `;
 
 const product = css`
