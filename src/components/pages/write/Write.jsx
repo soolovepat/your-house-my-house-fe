@@ -110,7 +110,6 @@ function Write() {
     } catch (error) {
       console.log("Fetch error: ", error);
     }
-    window.location.href = '/';
   };
 
   return (

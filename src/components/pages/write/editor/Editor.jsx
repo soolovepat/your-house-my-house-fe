@@ -64,7 +64,7 @@ export default function ParentComponent() {
       <StContentImage 
       onClick={imageHandler}
       src={myImage}
-      >Image</StContentImage>
+      >IMG</StContentImage>
       <Editor
         content={content}
         setContent={setContent}
@@ -167,15 +167,24 @@ const Imgwall = styled.img`
  
 
 const StContentImage = styled.button`
-     position: fixed;
+     /* position: fixed;
     top: 7%;
-    left: 23%;
+    left: 23%; */
     transform: translate(-50%, -50%);
     padding: 0px 0px 0px 15px;
+    background-color: rgba(0,0,0,0.5);
     border: none;
     z-index: 600;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     padding: 6px;
+    border-radius: 12px;
+    color: white;
     cursor: pointer;
+    border: 1px solid transparent;
+
+    &:hover{
+      background-color: rgba(0,0,0,0.8); ;
+      filter: brightness(2.2);
+    }
 `
