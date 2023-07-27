@@ -16,6 +16,7 @@ import ReactHtmlParser, {
   convertNodeToElement,
   htmlparser2,
 } from "react-html-parser";
+import UserAvatar from "../../shared/userAvatar/UserAvatar";
 
 const ArticlePage = () => {
   const [article, setArticle] = useState(null);
