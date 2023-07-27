@@ -58,7 +58,6 @@ export const StCarousel = styled.div`
   height: 100%;
   cursor: pointer;
   border-radius: 4px;
-  /* z-index: ${(props) => props.zIndex}; */
 
   &:hover {
     ${StCarouselArrow} {

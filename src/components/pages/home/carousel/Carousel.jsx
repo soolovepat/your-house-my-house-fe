@@ -31,7 +31,6 @@ const Carousel = ({
         currItemIndex={currItemIndex}
         itemLength={itemLength}
         type={type}
-        zIndex={2}
       >
         <div style={{ transform: `translateX(-${currItemIndex * move}%)` }}>
           {children}
