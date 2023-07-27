@@ -14,6 +14,12 @@ export const StHeaderBanner = styled.div`
   width: 100%;
   height: 50px;
   background-color: #00bbff;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const StHeaderContainer = styled.div`
     ${theme.container};
