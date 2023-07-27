@@ -117,7 +117,7 @@ const Category = () => {
   const itemLength = 3;
 
   const onClickCategory = (cateId) => {
-    navigate(`item/category?category=${cateId}`);
+    navigate(`/item/category?category=${cateId}`);
   };
 
   return (

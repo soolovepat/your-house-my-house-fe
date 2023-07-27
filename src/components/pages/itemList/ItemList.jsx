@@ -7,6 +7,7 @@ import { setCategoryList } from "../../../redux/modules/categoryListSlice";
 import ProductContainer from "../../shared/thumbnailContainer/productContainer/ProductContainer";
 import { StContainer } from "../../../styles/Container";
 import { StItemList } from "./style";
+import Category from "../home/category/Category";
 
 const ItemList = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const ItemList = () => {
   console.log(itemList);
   return (
     <StContainer>
+      <Category />
       <StItemList>
         <p>전체: {itemList.length}개</p>
         {itemList && <ProductContainer itemList={itemList} column={4} />}
