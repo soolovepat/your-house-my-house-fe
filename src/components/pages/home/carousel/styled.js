@@ -3,7 +3,9 @@ import theme from "../../../../styles/theme";
 
 const alwaysArrow = css`
   opacity: 1;
-  position: relative;
+  position: absolute;
+  top: 60px;
+  width: -webkit-fill-available;
 
   button:nth-child(1) {
     opacity: ${(props) => (props.currItemIndex === 0 ? 0 : 1)};
@@ -16,6 +18,7 @@ const alwaysArrow = css`
 `;
 
 const hoverArrow = css`
+  top: -60px;
   opacity: 0;
 
   &:hover {
@@ -26,7 +29,6 @@ const hoverArrow = css`
 export const StCarouselArrow = styled.div`
   z-index: 100;
   transition: opacity 0.2s ease-in-out 0s;
-  top: -60px;
   ${(props) => (props.type === "alwaysArrow" ? alwaysArrow : hoverArrow)}
 
   > button {
@@ -48,9 +50,6 @@ export const StCarouselArrow = styled.div`
       top: 50%;
       left: 100%;
     }
-
-    > svg {
-    }
   }
 `;
 
@@ -59,6 +58,7 @@ export const StCarousel = styled.div`
   height: 100%;
   cursor: pointer;
   border-radius: 4px;
+  /* z-index: ${(props) => props.zIndex}; */
 
   &:hover {
     ${StCarouselArrow} {
