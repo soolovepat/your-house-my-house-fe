@@ -3,14 +3,13 @@ import { getItemData } from "../../../api/article";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemList } from "../../../redux/modules/dataListSlice";
 import { useParams } from "react-router-dom";
-import { product_img_01 } from "../../../assets/images/sample";
 import { StItemDetailTop } from "./style";
 import NumberComma from "../../shared/numberComma/NumberComma";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { StContainer } from "../../../styles/Container";
 
-function ItemDetail() {
+const ItemDetail = () => {
   const dispatch = useDispatch();
   const { itemId } = useParams();
 
@@ -19,7 +18,6 @@ function ItemDetail() {
       try {
         const response = await getItemData(itemId);
         dispatch(setItemList(response.data));
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -28,19 +26,39 @@ function ItemDetail() {
   }, [dispatch]);
 
   const itemList = useSelector((state) => state.dataList.itemList);
+  console.log(itemList);
+  // const jsonString = itemList.content;
+
+  // try {
+  //   const jsonArray = JSON.parse(jsonString);
+  //   console.log(jsonArray); // JavaScript 배열로 변환된 값 출력
+  // } catch (error) {
+  //   console.error("유효하지 않은 JSON 배열 형식입니다.");
+  // }
+  const urlRegex = /https?:\/\/[^"]+/g;
+  const contentImageUrlArr = itemList?.content?.match(urlRegex);
+  const coverImageUrlArr = itemList?.coverImage?.match(urlRegex);
+
+  const coverImageUrl =
+    itemList && itemList.coverImage ? coverImageUrlArr[0] : "";
+
+  const contentImageUrlArrExceptLast = contentImageUrlArr?.slice(
+    0,
+    coverImageUrlArr.length - 1
+  );
 
   return (
     <StContainer>
       <StItemDetailTop>
         <div>
-          <img src={product_img_01} />
+          <img src={coverImageUrl} />
         </div>
         {itemList ? (
           <div>
             <span>{itemList.brand}</span>
             <strong>{itemList.itemName}</strong>
             <NumberComma
-              number={Number(itemList.price)}
+              number={itemList.price}
               size={"32px"}
               weight={"700"}
               lineheight={"50px"}
@@ -75,9 +93,12 @@ function ItemDetail() {
           <div>Loading...</div>
         )}
       </StItemDetailTop>
-      <span>{itemList.content}사진 들어갈 자리</span>
+      <span>
+        {contentImageUrlArrExceptLast &&
+          contentImageUrlArrExceptLast.map((img) => <img src={img} />)}
+      </span>
     </StContainer>
   );
-}
+};
 
 export default ItemDetail;

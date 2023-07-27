@@ -1,19 +1,18 @@
 import api from "./api";
-import axios from 'axios';
+import axios from "axios";
 
 export const getDatas = async () => {
   const res = await api.get("/home");
   return res;
 };
 
-
 /** 집들이 아티클 리스트 가져오기
  * @params {object} query - 필터
  */
 export const getArticleList = async (query) => {
-  const params = { params : { ...query }};
+  const params = { params: { ...query } };
   console.log("params", params);
-  try{
+  try {
     const res = await api.get("/article", params);
     return res;
   } catch (err) {
@@ -30,7 +29,13 @@ export const getArticlePage = async (id) => {
     throw err;
   }
 };
+
 export const getItemData = async (itemId) => {
   const res = await api.get(`/item/${itemId}`);
   return res;
+};
+
+export const getCategoryData = async (query) => {
+  const res = await api.get("/item/category", { params: query });
+  return res.data;
 };

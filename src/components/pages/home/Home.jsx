@@ -11,9 +11,11 @@ import {
   setArticleList,
   setItemList,
 } from "../../../redux/modules/dataListSlice";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const column = { house: "3", product: "4" };
 
   useEffect(() => {
@@ -33,7 +35,9 @@ const Home = () => {
   const articleList = useSelector((state) => state.dataList.articleList);
   const itemList = useSelector((state) => state.dataList.itemList);
 
-  const onClickMoreView = () => {};
+  const onClickMoreView = (url) => {
+    navigate(url);
+  };
 
   return (
     <StContainer>
@@ -41,7 +45,8 @@ const Home = () => {
       <SectionTitle
         title={"🥇 20평 대! 공간 활용 best 4 🥇"}
         button={"더보기"}
-        onClick={onClickMoreView}
+        onClick={() => onClickMoreView("/articles")}
+        marginTop={"50px"}
       />
       {articleList && (
         <HouseContainer
@@ -49,12 +54,13 @@ const Home = () => {
           column={column.house}
         />
       )}
-      <SectionTitle title={"카테고리"} />
+      <SectionTitle title={"카테고리"} marginTop={"20px"} />
       <Category />
       <SectionTitle
         title={"우리 가족 맞춤 집들이 💁‍♀️"}
         button={"더보기"}
-        onClick={onClickMoreView}
+        onClick={() => onClickMoreView("/item/category")}
+        marginTop={"30px"}
       />
       {Array.isArray(itemList) && (
         <ProductContainer
