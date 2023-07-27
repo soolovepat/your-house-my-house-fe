@@ -10,7 +10,8 @@ import {
   StMenuContainer,
   StHeaderSubMenuContainer,
   StLogo,
-} from "./styled";
+} from "/styled";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
